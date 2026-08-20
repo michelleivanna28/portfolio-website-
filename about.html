@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Michelle Ivanna</title>
+  <link rel="icon" type="image/png" href="uploads/favicon.png">
+  <meta property="og:title" content="About — Michelle Ivanna">
+  <meta property="og:image" content="uploads/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400&family=Newsreader:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #F5F1E8; }
+    a { color: #221F1A; text-decoration: none; }
+    a:hover { color: #8A3A21; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  </style>
+</helmet>
+
+<div style="min-height:100svh; background:#F5F1E8; color:#221F1A; display:flex; flex-direction:column">
+
+  <div style="position:sticky; top:0; z-index:20; background:#F5F1E8">
+    <div style="width:{{ colW }}; margin:0 auto; padding:22px 0 18px; display:flex; justify-content:space-between; align-items:center; font:400 12px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; text-transform:uppercase">
+      <div>Michelle Ivanna</div>
+      <div style="display:flex; align-items:center; gap:20px; color:#8A8175">
+        <a href="index.html">WORK</a>
+        <a href="about.html" style="border-bottom:1px solid currentColor; padding-bottom:3px; color:#221F1A">ABOUT</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1; display:flex; align-items:center">
+    <div style="width:{{ colW }}; margin:0 auto; padding:{{ padY }} 0">
+      <div style="font:400 {{ heroSize }} 'Instrument Serif',serif; line-height:1.2">
+        <sc-for list="{{ lines }}" as="ln" hint-placeholder-count="2">
+          <div style="display:flex; flex-wrap:wrap; gap:0 11px">
+            <sc-for list="{{ ln.words }}" as="w" hint-placeholder-count="4">
+              <span style="opacity:{{ w.o }}; transition:opacity 700ms ease">{{ w.t }}</span>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="width:{{ colW }}; margin:0 auto; padding:0 0 40px; display:flex; justify-content:space-between; border-top:1px solid #E6E1D6; padding-top:14px; font:400 9.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; color:#8A8175">
+    <div>© MICHELLE IVANNA 2026</div>
+    <div style="display:flex; gap:20px">
+      <a href="mailto:michelle.ivanna02@gmail.com">CONTACT</a>
+      <a href="https://www.linkedin.com/in/michelle-ivanna/" target="_blank" rel="noopener">LINKEDIN</a>
+      <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener">RESUME</a>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== "undefined" ? window.innerWidth : 1440, fill: 0 };
+
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener("resize", this.onResize);
+    const t0 = performance.now();
+    const step = now => {
+      const k = Math.min(1, (now - t0) / 1400);
+      this.setState({ fill: k });
+      if (k < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  componentWillUnmount() { window.removeEventListener("resize", this.onResize); }
+
+  renderVals() {
+    const mobile = this.state.w < 820;
+    const colPx = mobile ? Math.min(Math.round(this.state.w * 0.88), 420) : Math.min(960, this.state.w - 192);
+    const src = ["Draft in progress —", "I take this part seriously."].map(s => s.split(/\s+/));
+    const total = src.reduce((n, w) => n + w.length, 0);
+    const filled = Math.round(this.state.fill * total);
+    let wi = 0;
+    const lines = src.map(words => ({
+      words: words.map(t => ({ t, o: wi++ < filled ? 1 : 0.12 }))
+    }));
+    return {
+      lines,
+      colW: colPx + "px",
+      heroSize: (mobile ? 40 : Math.round(colPx * 0.063)) + "px",
+      padY: mobile ? "40px" : "56px"
+    };
+  }
+}
+
+</script>
+</body>
+</html>
