@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Michelle Ivanna — Product &amp; Visual Designer</title>
+<meta name="description" content="Portfolio of Michelle Ivanna — product, brand and visual design across UI/UX, identity systems and immersive storytelling.">
+<meta property="og:title" content="Michelle Ivanna — Product &amp; Visual Designer">
+<meta property="og:description" content="Selected work across product design, brand systems and immersive storytelling.">
+<meta property="og:image" content="uploads/thumbnails/thumbnail%20-%203%20starise%20rebranding.png">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&amp;family=Instrument+Serif:ital@0;1&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; }
+  * { box-sizing: border-box; }
+  body { overflow-x: hidden; }
+  body { -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  @keyframes goldenDrift {
+    0%   { transform: translate3d(-130px,-40px,0) rotate(-10deg) scaleX(0.9); opacity: 0.35; }
+    50%  { transform: translate3d(220px,60px,0) rotate(-6deg) scaleX(1.28); opacity: 1; }
+    100% { transform: translate3d(-130px,-40px,0) rotate(-10deg) scaleX(0.9); opacity: 0.35; }
+  }
+  @keyframes goldenGlow {
+    0%,100% { opacity: 0.2; transform: translateX(-70px) scale(0.95); }
+    50%     { opacity: 0.9; transform: translateX(110px) scale(1.14); }
+  }
+  @keyframes vinylSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes slideL { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes slideR { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes pillIn { from { opacity: 0; transform: translateY(14px) rotate(var(--r)); } to { opacity: 1; transform: translateY(0) rotate(var(--r)); } }
+  @keyframes csFade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes bbFloatIn { from { opacity: 0; transform: translateY(18px) scale(0.94); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @keyframes csIn { from { opacity: 0; transform: scale(0.86); } to { opacity: 1; transform: scale(1); } }
+  @keyframes csNextA { from { opacity: 0; transform: translateX(72px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes csNextB { from { opacity: 0; transform: translateX(72px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes csPrevA { from { opacity: 0; transform: translateX(-72px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes csPrevB { from { opacity: 0; transform: translateX(-72px); } to { opacity: 1; transform: translateX(0); } }
+</style>
+</helmet>
+
+<div style="min-height:100svh; background:{{ bg }}; color:{{ fg }}; position:relative; font-family:'IBM Plex Mono',monospace">
+
+  <div style="position:fixed; inset:-12%; pointer-events:none; z-index:0; opacity:{{ light }}; transform:{{ leakT }}; transition:opacity 600ms ease, transform 850ms cubic-bezier(.2,.7,.3,1)">
+    <div style="position:absolute; left:2%; top:-18%; width:34vw; height:136%; background:{{ beam1 }}; filter:blur(34px); animation:goldenDrift 30s ease-in-out infinite"></div>
+    <div style="position:absolute; left:26%; top:-18%; width:16vw; height:136%; background:{{ beam2 }}; filter:blur(44px); animation:goldenDrift 44s ease-in-out infinite reverse"></div>
+    <div style="position:absolute; left:0; top:0; width:70%; height:100%; background:{{ bloom }}; animation:goldenGlow 20s ease-in-out infinite"></div>
+    <div style="position:absolute; inset:0; background:{{ shadowPool }}"></div>
+  </div>
+
+  <div style="position:sticky; top:0; z-index:20; background:{{ bg }}; transition:background 500ms ease">
+    <div style="width:{{ colW }}; margin:0 auto; padding:22px 0 18px; display:flex; justify-content:space-between; align-items:center; font:400 12px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; text-transform:uppercase">
+      <div>{{ name }}</div>
+      <div style="display:flex; align-items:center; gap:20px; color:{{ muted }}">
+        <a href="#work" style="border-bottom:1px solid currentColor; padding-bottom:3px; color:{{ fg }}">WORK</a>
+        <a href="#work">ABOUT</a>
+      </div>
+    </div>
+  </div>
+
+  <div data-hero="" style="position:relative; z-index:1; height:66svh">
+   <div style="position:sticky; top:0; height:56svh; display:flex; align-items:center">
+    <div style="width:{{ colW }}; margin:0 auto; display:flex; flex-direction:column; gap:20px">
+    <div style="font:400 {{ heroSize }} 'Instrument Serif',serif; line-height:1.2">
+      <sc-for list="{{ lines }}" as="ln">
+        <div style="display:flex; flex-wrap:wrap; gap:0 11px">
+          <sc-for list="{{ ln.words }}" as="w">
+            <span onMouseEnter="{{ w.enter }}" onMouseLeave="{{ w.leave }}" style="transition:color 700ms ease; color:{{ w.c }}; font-style:{{ w.fs }}; font-family:'Instrument Serif',serif; cursor:{{ w.cursor }}">{{ w.t }}</span>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+    <div style="font: 400 13px/1.75 'IBM Plex Mono',monospace; color: {{ muted }}; max-width: 480px; width: 641px; height: 82px">{{ smallPrint }}</div>
+    </div>
+   </div>
+  </div>
+
+  <div id="work" style="position:relative; z-index:1; width:{{ colW }}; margin:0 auto; padding-bottom:96px">
+    <div style="display:flex; align-items:center; gap:12px; padding-bottom:2px">
+      <div style="font:400 11.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.2em; white-space:nowrap">RECORD CATALOGUE</div>
+      <div style="flex:1"></div>
+      <div style="display:flex; align-items:center; gap:3px; padding:3px; flex:none; border:1px solid {{ rule }}; border-radius:999px; font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.2em; white-space:nowrap">
+        <div onClick="{{ setLight }}" style="padding:7px 13px 6px; border-radius:999px; cursor:pointer; white-space:nowrap; transition:background 300ms ease, color 300ms ease; background:{{ onBg }}; color:{{ onFg }}">REMASTERED</div>
+        <div onClick="{{ setDark }}" style="padding:7px 13px 6px; border-radius:999px; cursor:pointer; white-space:nowrap; transition:background 300ms ease, color 300ms ease; background:{{ offBg }}; color:{{ offFg }}">DEMO TRACK</div>
+      </div>
+    </div>
+
+    <div style="margin-top:34px; display:grid; grid-template-columns:{{ cols }}; gap:{{ gridGap }}">
+      <sc-for list="{{ projects }}" as="p">
+        <a data-card="{{ p.i }}" onClick="{{ p.open }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="cursor:pointer; display:flex; flex-direction:column; gap:13px; opacity:{{ p.appear }}; transform:{{ p.rise }}; transition:opacity 700ms ease, transform 700ms cubic-bezier(.2,.7,.3,1)">
+          <div style="position:relative; width:{{ p.holderW }}; height:{{ p.holderH }}; perspective:900px">
+            <div style="position:absolute; inset:-16%; border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(255,216,158,0.85), rgba(255,199,124,0.32) 42%, rgba(255,190,110,0) 74%); opacity:{{ p.glow }}; transition:opacity 450ms ease; pointer-events:none"></div>
+            <div style="position:absolute; top:0; left:{{ p.discLeft }}; width:{{ p.discSize }}; height:{{ p.discSize }}; transition:transform 420ms cubic-bezier(.2,.7,.3,1); transform:{{ p.discT }}">
+              <div style="position:relative; width:100%; height:100%; border-radius:50%; background:radial-gradient(circle at 50% 50%, #1C1917 0 34%, #23201D 34% 41%, #191614 41.4% 42%, #23201D 42% 55%, #191614 55.4% 56%, #23201D 56% 68%, #191614 68.4% 69%, #23201D 69% 81%, #191614 81.4% 82%, #23201D 82% 100%); box-shadow:0 3px 10px rgba(28,25,23,0.5); animation:{{ p.discA }}">
+                <div style="position:absolute; top:26%; left:26%; width:48%; height:48%; border-radius:50%; background-color:{{ accent }}; background-image:url({{ p.img }}); background-size:cover; background-position:center; background-repeat:no-repeat; box-shadow:0 0 0 1px rgba(0,0,0,0.35)"></div>
+                <div style="position:absolute; left:50%; top:50%; width:7px; height:7px; margin:-3.5px 0 0 -3.5px; border-radius:50%; background:{{ bg }}"></div>
+              </div>
+            </div>
+            <div style="position:absolute; top:{{ p.peek }}; left:7px; width:{{ p.coverW }}; height:{{ p.coverW }}; transform-origin:top center; transform:{{ p.tilt }}; transition:transform 460ms cubic-bezier(.2,.7,.3,1)">
+              <div style="position:relative; width:100%; height:100%; background-color:{{ card }}; background-image:url({{ p.img }}); background-size:cover; background-position:center; background-repeat:no-repeat; border:1px solid {{ rule }}; box-shadow:1px 3px 10px rgba(28,25,23,0.18)">
+                <div style="position:absolute; inset:0; pointer-events:none; background-image:{{ catchLight }}; background-attachment:fixed; mix-blend-mode:screen"></div>
+              </div>
+              <div style="position:absolute; top:-8px; left:-10px; right:-12px; bottom:-6px; pointer-events:none; clip-path:{{ p.clip }}; transform:{{ p.crinkle }}; opacity:0.5; background:{{ p.plastic }}, {{ p.plasticSheen }}; box-shadow:inset 0 0 6px rgba(255,255,255,0.1)"></div>
+              <div style="position:absolute; top:-8px; left:-10px; right:-12px; height:9px; pointer-events:none; clip-path:{{ p.clip }}; background:linear-gradient(180deg, rgba(255,255,255,0.26), rgba(255,255,255,0))"></div>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:7px">
+            <div style="display:flex; gap:7px; align-items:baseline">
+              <div style="font:400 10.5px/1.4 'IBM Plex Mono',monospace; color:{{ muted }}">{{ p.n }}</div>
+              <div style="font:400 19px/1.2 Newsreader,serif">{{ p.title }}</div>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:5px">
+              <sc-for list="{{ p.pills }}" as="t">
+                <span onMouseEnter="{{ t.enter }}" onMouseLeave="{{ t.leave }}" style="border:1px solid {{ t.bd }}; border-radius:999px; padding:4px 10px 3px; font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.1em; white-space:nowrap; background:{{ t.bg }}; color:{{ t.fg }}; transition:background 200ms ease, color 200ms ease, border-color 200ms ease">{{ t.t }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:fixed; left:0; top:0; z-index:40; pointer-events:none; transform:{{ cursorT }}; opacity:{{ cursorOn }}; transition:opacity 240ms ease">
+    <div style="width:{{ cursorW }}; height:{{ cursorH }}; margin:{{ cursorM }}; border:{{ cursorBorder }}; border-radius:{{ cursorR }}; background-color:{{ cursorBg }}; background-image:url({{ cursorImg }}); background-size:{{ cursorSize }}; background-repeat:no-repeat; background-position:{{ cursorPos }}; box-shadow:{{ cursorShadow }}"></div>
+  </div>
+
+  <div style="position:relative; z-index:1; width:{{ colW }}; margin:0 auto; padding:0 0 40px; display:flex; justify-content:space-between; border-top:1px solid {{ rule }}; padding-top:14px; font:400 11px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:{{ muted }}">
+    <div>© MICHELLE IVANNA 2026</div>
+    <div style="display:flex; gap:20px"><a href="#work">CONTACT</a><a href="#work">LINKEDIN</a><a href="#work">RESUME</a></div>
+  </div>
+
+  <sc-if value="{{ csOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ csClose }}" style="position:fixed; inset:0; z-index:60; background:rgba(28,25,23,0.55); display:flex; align-items:center; justify-content:center; padding:{{ csPad }}; animation:csFade 300ms ease both">
+
+    <sc-if value="{{ csArrows }}" hint-placeholder-val="{{ true }}">
+    <div onClick="{{ csPrev }}" style="position:fixed; left:28px; top:50%; z-index:62; margin-top:-23px; cursor:pointer; width:46px; height:46px; border-radius:50%; background:#FFFFFF; color:#221F1A; display:flex; align-items:center; justify-content:center; font:400 14px/1 'IBM Plex Mono',monospace; box-shadow:0 8px 26px rgba(28,25,23,0.35)">←</div>
+    <div onClick="{{ csNext }}" style="position:fixed; right:28px; top:50%; z-index:62; margin-top:-23px; cursor:pointer; width:46px; height:46px; border-radius:50%; background:#FFFFFF; color:#221F1A; display:flex; align-items:center; justify-content:center; font:400 14px/1 'IBM Plex Mono',monospace; box-shadow:0 8px 26px rgba(28,25,23,0.35)">→</div>
+    </sc-if>
+
+    <div onClick="{{ csStop }}" style="width:{{ csCardW }}; height:{{ csCardH }}; display:flex; flex-direction:{{ csDir }}; overflow:hidden; border-radius:{{ csCardR }}; background:#FFFFFF; box-shadow:0 30px 80px rgba(28,25,23,0.45); transform-origin:{{ csOrigin }}; animation:{{ csAnim }}">
+
+      <div data-cs-col="" style="flex:1; min-width:0; min-height:0; overflow-y:auto; overflow-x:hidden; padding:{{ csColPad }}">
+        <div style="width:100%; aspect-ratio:16/9; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csCover }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+
+        <sc-if value="{{ csCustom }}" hint-placeholder-val="{{ false }}">
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:12px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">PROJECT SUMMARY</div>
+            <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; max-width:640px; text-wrap:pretty">A full brand refresh for Starise — an enterprise communication platform.</div>
+            <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; max-width:640px; text-wrap:pretty">I had two months to take the brand from a vague brief to a shipped identity. I pitched progress to leadership every week until launch</div>
+          </div>
+
+          <div style="margin-top:64px; display:grid; grid-template-columns:{{ csSplitCols }}; gap:28px; align-items:start">
+            <div style="display:flex; flex-direction:column; gap:12px">
+              <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">PROBLEM STATEMENT</div>
+              <div style="font:700 40px/1.1 'Instrument Serif',serif; color:{{ csAccent }}">“Make it Americanized”</div>
+              <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">The old mark felt rooted in traditional enterprise. There wasn't much philosophy behind it, so the first challenge was figuring out what that brief could actually mean.</div>
+            </div>
+            <div style="width:100%; aspect-ratio:1846/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csBeforeAfter }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+          </div>
+
+          <div style="margin-top:34px; width:100%; aspect-ratio:2118/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csIdentity }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+
+          <div style="margin-top: 12px; font: 400 12px/1.7 'IBM Plex Mono',monospace; color: #8A8175; max-width: 600px; text-wrap:pretty">A new identity built around a stronger idea: a rice-like star (米) paired with a directional arrow. Fresh, modern, collaborative.</div>
+
+          <div style="margin-top:64px; font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">THE PROCESS</div>
+
+          <div style="margin-top:20px; border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ p1Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">01</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Sketch exploration</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ p1Mark }}</div>
+            </div>
+            <sc-if value="{{ p1On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid; grid-template-columns:{{ csHalfCols }}; gap:24px; align-items:start; padding:0 2px 26px 36px">
+                <div style="display:flex; flex-direction:column; gap:12px">
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">One line of direction. No reference. No constraints.</div>
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">I had to define what “Americanized” could mean for an enterprise communication platform before I could design for it.</div>
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">I started on paper, exploring a dozen marks before anything went digital.</div>
+                </div>
+                <div style="width:100%; aspect-ratio:1/1; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csSketch }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ p2Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">02</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Proposal</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ p2Mark }}</div>
+            </div><div style="display:flex; flex-direction:column; gap:14px; padding:0 2px 26px 36px">
+                <div style="display:flex; flex-direction:column; gap:12px; max-width:600px">
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">Designing for the person making the decision.</div>
+                  
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">Instead of presenting one direction and asking for feedback, I put five variations into the first proposal so they could be compared side by side.</div>
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">Two were my explorations; three came from another designer working on the project.</div>
+                </div><a href="https://drive.google.com/file/d/1nyONBQa5IceyhiRCt_5IBKs2tXeMW913/view?usp=sharing" target="_blank" rel="noopener" style="align-self:flex-start; font:400 10px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; border:1px solid #E6E1D6; border-radius:999px; padding:9px 15px 8px; white-space:nowrap">VIEW STARISE LOGO PROPOSAL ↗</a>
+                
+              </div>
+            <sc-if value="{{ p2On }}" hint-placeholder-val="{{ false }}">
+              
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; border-bottom:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ p3Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">03</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Iterations</div>
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175">HOVER TO PLAY · CLICK TO STEP</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ p3Mark }}</div>
+            </div>
+            <sc-if value="{{ p3On }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-direction:column; gap:16px; padding:0 2px 26px 36px">
+              <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">Four versions. Several rounds of refinement.</div>
+              <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px">
+                <sc-for list="{{ csIter }}" as="v" hint-placeholder-count="4">
+                  <div onMouseEnter="{{ v.enter }}" onMouseLeave="{{ v.leave }}" onClick="{{ v.step }}" style="cursor:pointer; display:flex; flex-direction:column; gap:7px">
+                    <div style="position:relative; width:100%; aspect-ratio:1/1; border-radius:16px; overflow:hidden; background-color:#F2EFE8; border:1px solid #E6E1D6">
+                      <div style="position:absolute; inset:0; opacity:{{ v.opA }}; transition:opacity 450ms ease; background-image:url({{ v.imgA }}); background-size:cover; background-position:center"></div>
+                      <div style="position:absolute; inset:0; opacity:{{ v.opB }}; transition:opacity 450ms ease; background-image:url({{ v.imgB }}); background-size:cover; background-position:center"></div>                    </div>
+                    <div style="display:flex; justify-content:space-between; font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; color:#8A8175">
+                      <span>{{ v.label }}</span><span>{{ v.count }}</span>
+                    </div>
+                    <div style="font:400 8px/1.5 'IBM Plex Mono',monospace; letter-spacing:0.04em; color:#8A8175; text-wrap:pretty">{{ v.caption }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            </sc-if>
+          </div>
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:14px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">RESULT</div>
+            <div style="font:700 40px/1.1 'Instrument Serif',serif; color:{{ csAccent }}">The Brand Guidelines</div>
+            <div style="font: 400 19px/1.5 Newsreader,serif; color: #221F1A; max-width: 640px; text-wrap:pretty">4 versions and several iterations later, the brand was approved. Logo guidelines presented to stakeholders, documented in full on <a href="https://www.behance.net/gallery/242418927/Starise-20-Branding-Guidelines" target="_blank" rel="noopener" style="border-bottom:1px solid #E6E1D6">Behance ↗</a></div>
+            <div style="position:relative; width:100%; aspect-ratio:2133/1200; border-radius:16px; overflow:hidden; background-color:#F2EFE8; background-image:url({{ csFrame }}); background-size:cover; background-position:center">
+              <div style="position:absolute; left:11.5%; top:10.6%; width:77%; height:76.8%; background:#FFFFFF; overflow:hidden">
+                <sc-for list="{{ csGuideLayers }}" as="g" hint-placeholder-count="1">
+                  <div style="position:absolute; inset:0; opacity:{{ g.op }}; transition:opacity 450ms ease; background-image:url({{ g.src }}); background-size:cover; background-position:center"></div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:12px">
+            <div style="font:400 26px/1.15 'Instrument Serif',serif; color:#221F1A">What I’d do differently</div>
+            <div style="font:400 15px/1.65 Newsreader,serif; color:#221F1A; max-width:620px; text-wrap:pretty">Given the time constraint, I couldn’t do much exploration; if i do I would start with the user, do more research on that part, the whole psychology behind branding.</div>
+          </div>
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:14px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">RESULT</div>
+            <div style="font:700 40px/1.1 'Instrument Serif',serif; color:{{ csAccent }}">Now Live Across Product Ecosystem</div>
+            <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; max-width:640px">App, Website, Products, and Marketing Collaterals.</div>
+          </div>
+
+          <div style="margin:22px {{ csBleed }} {{ csBleedB }}; position:relative; overflow:hidden; border-radius:0 0 {{ csCardR }} 0; aspect-ratio:16/9; background-color:#2258F5; background-image:url({{ csResultBg }}); background-size:cover; background-position:center">
+            <sc-if value="{{ csOutline }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute; left:-6%; bottom:-8%; width:46%; aspect-ratio:1172/1200; background-image:url({{ csOutlineImg }}); background-size:contain; background-repeat:no-repeat; background-position:bottom left; opacity:0.85"></div>
+            </sc-if>
+            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:5%">
+              <div style="width:100%; aspect-ratio:3060/1627; background-image:url({{ csResultFg }}); background-size:contain; background-repeat:no-repeat; background-position:center"></div>
+            </div>
+          </div>
+
+        </sc-if>
+
+        <sc-if value="{{ csOrion }}" hint-placeholder-val="{{ false }}">
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:12px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">PROJECT SUMMARY</div>
+            <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; text-wrap:pretty"><span data-metadata="&lt;!--(figmeta)eyJmaWxlS2V5IjoicmJ5a3VjQ0dQWm9yZkY2QWpncUN0ciIsInBhc3RlSUQiOjE0NDQxNTc0NTMsImRhdGFUeXBlIjoic2NlbmUiLCJlZGl0b3JUeXBlIjoiZGVzaWduIiwiZW52aXJvbm1lbnQiOiJ3d3cuZmlnbWEuY29tIiwic2VsZWN0ZWROb2RlRGF0YSI6IjExNjo1Mzd8MzF8MHwwIn0K(/figmeta)--&gt;"></span><span data-buffer="&lt;!--(figma)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(/figma)--&gt;"></span><span style="white-space: pre-wrap;">Orion is Octon’s flagship enterprise communication platform, with a growing ecosystem of products and sales materials around it.</span><br><br><span style="white-space: pre-wrap;"></span><br><span style="white-space: pre-wrap;"></span></div>
+          </div>
+
+          <div style="margin-top:64px; display:grid; grid-template-columns:{{ csSplitCols }}; gap:30px; align-items:start">
+            <div style="display:flex; flex-direction:column; gap:12px">
+              <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">PROBLEM STATEMENT</div>
+              <div style="font:700 40px/1.12 'Instrument Serif',serif; color:{{ csAccent }}">Keeping Consistency across Products</div>
+              
+              <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; text-wrap:pretty">My role was to keep&nbsp;<span style="white-space: pre-wrap;">system consistent across every format it touched — UI, mockups, data sheet brochures, product video, website. 
+</span><br><span style="white-space: pre-wrap;">Even one-off logo extensions stayed on-system.</span><br></div>
+            </div><div style="width: 517px; aspect-ratio: 2033/1200; border-radius: 16px; background-color: #F2EFE8; background-image: url({{ csOWebsite }}); background-size: cover; background-repeat: no-repeat; background-position: center; animation: slideR 800ms cubic-bezier(.2,.7,.3,1) 60ms both; height: 392px"></div>
+            
+          </div>
+
+          <div style="margin-top:52px; display:flex; flex-direction:column; gap:16px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">SELECTED WORK</div>
+            <div style="display:grid; grid-template-columns:{{ csOrionCols }}; gap:14px; align-items:start">
+              <div style="width:100%; aspect-ratio: 1/1; border-radius: 16px; background-color: #F2EFE8; background-image: url({{ csOLogos }}); background-size: contain; background-repeat: no-repeat; background-position: center; animation: slideL 800ms cubic-bezier(.2,.7,.3,1) 0ms both"></div><div style="width:100%; aspect-ratio: 1/1; border-radius: 16px; background-color: #F2EFE8; background-image: url({{ csOMockup }}); background-size: contain; background-repeat: no-repeat; background-position: center; animation: slideR 800ms cubic-bezier(.2,.7,.3,1) 100ms both"></div>
+              
+            </div>
+            <div style="width:100%; aspect-ratio:{{ csOrionBoxRatio }}; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csOBrochure }}); background-size:contain; background-repeat:no-repeat; background-position:center; animation:slideL 800ms cubic-bezier(.2,.7,.3,1) 180ms both"></div>
+          </div>
+
+          <div style="margin-top:100px; display:grid; grid-template-columns:{{ csOrionVidCols }}; gap:20px; align-items:start">
+            <div style="display:flex; flex-direction:column; gap:16px">
+              <div style="font: 700 40px/1.12 'Instrument Serif',serif; color: {{ csAccent }}">Product Videos that keeps the money rolling</div>
+              <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">Product and PoC videos for government subsidies and project proposals played a big part in how investors perceived our product.</div>
+              <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">I directed and edited a portion of these, some are public, most remain confidential.</div>
+              <a href="https://www.youtube.com/watch?v=rYtnvDispc4" target="_blank" rel="noopener" style="align-self:flex-start; font:400 10px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:{{ csAccent }}; border-bottom:1px solid {{ csAccent }}; padding-bottom:4px; white-space:nowrap">WATCH ON YOUTUBE →</a>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:12px">
+              <div style="width:100%; aspect-ratio:1338/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csOThumb1 }}); background-size:cover; background-repeat:no-repeat; background-position:center; animation:slideL 800ms cubic-bezier(.2,.7,.3,1) 0ms both"></div><div style="width:100%; aspect-ratio:1320/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csOThumb2 }}); background-size:cover; background-repeat:no-repeat; background-position:center; animation:slideL 800ms cubic-bezier(.2,.7,.3,1) 130ms both"></div>
+              
+            </div>
+            <div style="margin-right:{{ csOrionBleed }}">
+              
+            <div style="width:100%; aspect-ratio:1549/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csOVideo }}); background-size:cover; background-repeat:no-repeat; background-position:center; animation:slideR 800ms cubic-bezier(.2,.7,.3,1) 90ms both"></div></div>
+          </div>
+
+        </sc-if>
+
+        <sc-if value="{{ csIM }}" hint-placeholder-val="{{ false }}">
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:12px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">PROJECT SUMMARY</div>
+            <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; max-width:640px; text-wrap:pretty">A first-time onboarding experience for Octon’s iManager platform, guiding company developers through the initial setup of their workspace.</div>
+            <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; max-width:640px; text-wrap:pretty">The project started from a developer’s observation that new users were dropped into the main dashboard without any clear next step. I stepped in to turn that gap into a structured onboarding flow.</div>
+          </div>
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:12px; max-width:640px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">PROBLEM STATEMENT</div>
+            <div style="font:700 40px/1.1 'Instrument Serif',serif; color:{{ csAccent }}">Where do I start?</div>
+            <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">The existing product took developers straight to the main dashboard, without guidance for the initial setup.</div>
+            <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">I needed to make the setup process clear without adding unnecessary complexity to an already technical product.</div>
+          </div>
+
+          <div style="margin-top:64px; font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">THE PROCESS</div>
+
+          <div style="margin-top:20px; border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ m1Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">01</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Benchmark</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ m1Mark }}</div>
+            </div>
+            <sc-if value="{{ m1On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:14px; padding:0 2px 30px 36px">
+                <div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A">Learning how enterprise products onboard.</div>
+                <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">I looked at onboarding patterns from other enterprise products and mapped what could work within iManager’s existing structure.</div>
+                <div style="font:400 11px/1.6 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#A79F92">SCREENS ARE GETTING DRESSED</div>
+                <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">I wasn’t trying to copy another product — I was looking for patterns that could make a technical setup feel more predictable.</div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ m2Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">02</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Structure</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ m2Mark }}</div>
+            </div>
+            <sc-if value="{{ m2On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:18px; padding:0 2px 30px 36px">
+                <div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A">Turning setup into a sequence.</div>
+                <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px">
+                  <sc-for list="{{ imFlow }}" as="s" hint-placeholder-count="7">
+                    <span style="border:1px solid #E6E1D6; border-radius:999px; padding:8px 14px 7px; font:400 10px/1 'IBM Plex Mono',monospace; letter-spacing:0.1em; color:#221F1A; white-space:nowrap">{{ s.t }}</span>
+                    <span style="font:400 10px/1 'IBM Plex Mono',monospace; color:{{ s.arrowC }}">→</span>
+                  </sc-for>
+                </div>
+                <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">Each step had one clear purpose, so users always knew what they were doing and what came next.</div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ m3Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">03</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Design &amp; Prototype</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ m3Mark }}</div>
+            </div>
+            <sc-if value="{{ m3On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:14px; padding:0 2px 30px 36px">
+                <div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A">Designing the flow from scratch.</div>
+                <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">I designed the UI and built reusable components in Figma while working within iManager’s existing product language.</div>
+                <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">I also created a fully clickable prototype — even though it wasn’t required — so developers could understand not just how each screen looked, but how it behaved.</div>
+                <div style="font:400 11px/1.6 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#A79F92">UI IS STILL RENDERING</div>
+                <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">I made sure interaction states were clear in the static designs too — whether an element was clickable, scrollable, selectable, or required multiple choices.</div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; border-bottom:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ m4Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">04</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Handoff</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ m4Mark }}</div>
+            </div>
+            <sc-if value="{{ m4On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:14px; padding:0 2px 30px 36px">
+                <div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A">Good design should make the next step obvious.</div>
+                <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">I worked directly with the developer throughout the process, resolving technical constraints and documenting the interaction logic for handoff.</div>
+                <div style="font:400 11px/1.6 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#A79F92">NOTES ARE BEING UN-MESSED</div>
+                <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">After handoff, I received no major implementation complaints, and the designs were implemented by development.</div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:14px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">RESULT</div>
+            <div style="font:700 40px/1.05 'Instrument Serif',serif; color:{{ csAccent }}">A clearer first step into iManager.</div>
+            <div style="font:400 11px/1.6 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#A79F92">DIAGRAM IS FINDING ITS ARROWS</div>
+            <div style="display:grid; grid-template-columns:{{ imOutcomeCols }}; gap:20px; margin-top:6px">
+              <sc-for list="{{ imOutcomes }}" as="o" hint-placeholder-count="3">
+                <div style="display:flex; flex-direction:column; gap:6px">
+                  <div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A">{{ o.t }}</div>
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">{{ o.b }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+        </sc-if>
+
+        <sc-if value="{{ csTP }}" hint-placeholder-val="{{ false }}">
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:12px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">PROJECT SUMMARY</div>
+            <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; max-width:640px; text-wrap:pretty">Taipei People reimagines Taiwanese literature through Mahjong gameplay and projection mapping.</div>
+            <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; max-width:640px; text-wrap:pretty">Our team adapted the opening chapter, Eternal Snow Beauty, turning each Mahjong move into part of a projected narrative — bringing audiences into the fading world of Shanghai’s upper class.</div>
+          </div>
+
+          <div style="margin-top:64px; display:grid; grid-template-columns:{{ csHalfCols }}; gap:28px; align-items:start">
+            <div style="display:flex; flex-direction:column; gap:12px">
+              <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">PROBLEM STATEMENT</div>
+              <div style="font:700 30px/1.15 'Instrument Serif',serif; color:{{ csAccent }}; text-wrap:pretty">How do you make a classic literary work feel accessible without losing its character?</div>
+              <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">We wanted to retell a literary work for contemporary audiences who might never pick up the original book.</div>
+              <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">The answer was to let them play through the story rather than simply watch it.</div>
+            </div>
+            <div style="width:100%; aspect-ratio:1846/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ tpProblem }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+          </div>
+
+          <div style="margin-top:34px; width:100%; aspect-ratio:1926/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ tpPoster }}); background-size:cover; background-position:center"></div>
+
+          <div style="margin-top:64px; font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">THE PROCESS</div>
+
+          <div style="margin-top:20px; border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ t1Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">01</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Design Concept</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ t1Mark }}</div>
+            </div>
+            <sc-if value="{{ t1On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid; grid-template-columns:{{ csHalfCols }}; gap:26px; align-items:start; padding:0 2px 30px 36px">
+                <div style="display:flex; flex-direction:column; gap:12px">
+                  <div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A; text-wrap:pretty">Mahjong became the narrative controller.</div>
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">Each tile action — taking or throwing — triggers projected scenes, animation, and narration, gradually unfolding the story.</div>
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">The experience culminates in a symbolic Four Happiness win: a metaphor for fleeting beauty and lost time.</div>
+                </div>
+                <div style="width:100%; aspect-ratio:1/1; border-radius:16px; background-color:#F2EFE8; background-image:url({{ tpConcept }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ t2Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">02</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Key Features</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ t2Mark }}</div>
+            </div>
+            <sc-if value="{{ t2On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:20px; padding:0 2px 30px 36px">
+                <div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A">A physical game, a projected story.</div>
+                <div style="display:grid; grid-template-columns:{{ tpFeatCols }}; gap:24px; align-items:center">
+                  <div style="display:flex; flex-direction:column; gap:18px">
+                    <sc-for list="{{ tpFeatures }}" as="f" hint-placeholder-count="3">
+                      <div style="display:flex; gap:11px; align-items:flex-start">
+                        <div style="margin-top:6px; width:5px; height:5px; flex:none; border-radius:50%; background:{{ csAccent }}"></div>
+                        <div style="display:flex; flex-direction:column; gap:5px">
+                          <div style="font:600 14px/1.4 Newsreader,serif; color:#221F1A">{{ f.t }}</div>
+                          <div style="font:400 12px/1.65 'IBM Plex Mono',monospace; color:#8A8175; text-wrap:pretty">{{ f.b }}</div>
+                        </div>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <div style="width:100%; aspect-ratio:1666/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ tpTable }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ t3Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">03</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Storyboard</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ t3Mark }}</div>
+            </div>
+            <sc-if value="{{ t3On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:14px; padding:0 2px 30px 36px">
+                <div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A">The blueprint for the experience.</div>
+                <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">We mapped the narrative beats, Mahjong interactions, projected scenes, and transitions before translating them into animation.</div>
+                <div style="width:100%; aspect-ratio:2436/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ tpStoryboard }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; border-bottom:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ t4Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">04</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">UI &amp; Animation</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ t4Mark }}</div>
+            </div>
+            <sc-if value="{{ t4On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:20px; padding:0 2px 30px 36px">
+                <div style="display:flex; flex-direction:column; gap:12px">
+                  <div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A">Making the story readable while keeping it atmospheric.</div>
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">I designed the projection UI and animation system around the physical Mahjong interaction, balancing narrative clarity with the mood of the original literature.</div>
+                </div>
+                <div style="width:100%; aspect-ratio:1247/1200; max-width:420px; border-radius:16px; background-color:#F2EFE8; background-image:url({{ tpUI }}); background-size:contain; background-repeat:no-repeat; background-position:center; border:1px solid #E6E1D6"></div>
+                <div style="display:grid; grid-template-columns:{{ tpVidCols }}; gap:12px; align-items:start">
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+                    <sc-for list="{{ tpVidSmall }}" as="v" hint-placeholder-count="4">
+                      <video src="{{ v.src }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" onMouseEnter="{{ v.play }}" onMouseLeave="{{ v.stop }}" onClick="{{ v.toggle }}" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:12px; background:#EDE9DF; border:1px solid #E6E1D6; cursor:pointer; display:block"></video>
+                    </sc-for>
+                  </div>
+                  <video src="{{ tpVidLarge }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" onMouseEnter="{{ tpVidLargePlay }}" onMouseLeave="{{ tpVidLargeStop }}" onClick="{{ tpVidLargeToggle }}" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:12px; background:#EDE9DF; border:1px solid #E6E1D6; cursor:pointer; display:block"></video>
+                </div>
+                <div style="font:400 9px/1.6 'IBM Plex Mono',monospace; letter-spacing:0.06em; color:#8A8175">Hover to play · click to pause.</div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:14px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">RESULT</div>
+            <div style="font:700 40px/1.05 'Instrument Serif',serif; color:{{ csAccent }}">Exhibition Day</div>
+            <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; max-width:560px">A story you could play.</div>
+            <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; max-width:620px; text-wrap:pretty">The final installation paired a tactile Mahjong set with projection mapping, turning a literary narrative into something audiences could physically interact with.</div>
+            <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; max-width:620px; text-wrap:pretty">The novelty of manipulating real tiles while watching the story unfold became one of the experience’s strongest points.</div>
+            <a href="https://www.figma.com/deck/bfkfJkbl8HSy4WpyfjtqWI/Taipei-People---Mahjong-Installation?node-id=1-32&amp;t=hGymRsc3fjaglxB6-1" target="_blank" rel="noopener" style="align-self:flex-start; margin-top:4px; font:400 10px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:{{ csAccent }}; border-bottom:1px solid {{ csAccent }}; padding-bottom:5px; white-space:nowrap">EXPLORE THE FULL PROJECT →</a>
+          </div>
+
+          <div style="margin:26px {{ csBleed }} {{ csBleedB }}; position:relative; overflow:hidden; border-radius:0 0 {{ csCardR }} 0; aspect-ratio:2133/1200; background-color:#14110E; background-image:url({{ tpExhibition }}); background-size:cover; background-position:center">
+            <div style="position:absolute; right:4%; top:50%; transform:translateY(-50%); max-width:{{ tpLineW }}; padding:16px 18px; border-radius:12px; background:rgba(20,17,14,0.52); font:400 12px/1.7 'IBM Plex Mono',monospace; color:#EDE7DA; text-wrap:pretty">One semester of exploring Taiwanese literature, interaction, and narrative through a very unexpected interface.</div>
+          </div>
+
+        </sc-if>
+
+        <sc-if value="{{ csBB }}" hint-placeholder-val="{{ false }}">
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:12px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">PROJECT SUMMARY</div>
+            <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; max-width:640px; text-wrap:pretty">Beyond Being is an immersive VR story about a young girl confined by illness, finding freedom and strength through imagination.</div>
+            <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; max-width:640px; text-wrap:pretty">Across three semesters, I worked across visual identity, storyboarding, 3D environments, and experience design — in a spatial medium I had never designed for before.</div>
+          </div>
+
+          <div style="margin-top:64px; display:grid; grid-template-columns:{{ csHalfCols }}; gap:28px; align-items:start">
+            <div style="display:flex; flex-direction:column; gap:12px">
+              <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">PROBLEM STATEMENT</div>
+              <div style="font:700 40px/1.1 'Instrument Serif',serif; color:{{ csAccent }}">How do you visualize resilience?</div>
+              <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">The project explored how immersive storytelling could help people with physical limitations access a sense of emotional freedom, strength, and possibility.</div>
+              <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">At its core, it became a story about life, love, and resilience.</div>
+            </div>
+            <div style="width:100%; aspect-ratio:1846/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ bbProblem }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+          </div>
+
+          <div style="margin-top:34px; width:100%; aspect-ratio:1776/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ bbPoster }}); background-size:cover; background-position:center"></div>
+
+          <div style="margin-top:64px; font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">THE PROCESS</div>
+
+          <div style="margin-top:20px; border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ b1Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">01</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Storyboarding</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ b1Mark }}</div>
+            </div>
+            <sc-if value="{{ b1On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:16px; padding:0 2px 30px 36px">
+                <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">Turning the story into an experience — mapping scenes, atmosphere, movement, and emotional beats before building the world.</div>
+                <div style="width:100%; aspect-ratio:2537/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ bbStoryboard }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ b2Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">02</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">3D Environment</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ b2Mark }}</div>
+            </div>
+            <sc-if value="{{ b2On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:14px; padding:0 2px 30px 36px">
+                <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">Building the world that would carry the story, from spatial composition to the visual details of the environment.</div>
+                <div style="width:100%; aspect-ratio:16/9; border-radius:16px; background-color:#F2EFE8; background-image:url({{ bb3DLarge }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+                <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px">
+                  <sc-for list="{{ bb3DRow }}" as="v" hint-placeholder-count="3">
+                    <div style="width:100%; aspect-ratio:16/9; border-radius:12px; background-color:#F2EFE8; background-image:url({{ v.src }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; border-bottom:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ b3Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">03</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Bringing the Story to Life</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ b3Mark }}</div>
+            </div>
+            <sc-if value="{{ b3On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:18px; padding:0 2px 30px 36px">
+                <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">What I loved most was seeing the project become something people could actually encounter — from behind-the-scenes interviews and social content to the final exhibition and brand book.</div>
+                <div style="display:flex; flex-wrap:wrap; gap:8px">
+                  <sc-for list="{{ bbChannels }}" as="ch" hint-placeholder-count="4">
+                    <span style="border:1px solid #E6E1D6; border-radius:999px; padding:6px 13px 5px; font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; white-space:nowrap">{{ ch.t }}</span>
+                  </sc-for>
+                </div>
+                <div style="display:grid; grid-template-columns:{{ bbSocialCols }}; gap:12px">
+                  <sc-for list="{{ bbSocial }}" as="s" hint-placeholder-count="3">
+                    <div style="width:100%; aspect-ratio:{{ s.ratio }}; border-radius:12px; background-color:#F2EFE8; background-image:url({{ s.src }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+                  </sc-for>
+                </div>
+                <div style="width:100%; aspect-ratio:2139/1200; border-radius:12px; background-color:#F2EFE8; background-image:url({{ bbYoutube }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:14px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">RESULT</div>
+            <div style="font:700 40px/1.05 'Instrument Serif',serif; color:{{ csAccent }}; max-width:620px; text-wrap:pretty">Some things can’t be condensed into one page.</div>
+            <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; max-width:560px; text-wrap:pretty">A story that grew from a VR prototype into a complete visual world.</div>
+          </div>
+
+          <div data-bb-overflow="" style="margin:26px {{ csBleed }} 0; position:relative; overflow:hidden; aspect-ratio:2133/1200; background-color:#221F1A; background-image:url({{ bbOverflowBg }}); background-size:cover; background-position:center">
+            <sc-for list="{{ bbFloats }}" as="f" hint-placeholder-count="6">
+              <div style="position:absolute; left:{{ f.left }}; top:{{ f.top }}; width:{{ f.w }}; aspect-ratio:{{ f.ratio }}; opacity:{{ f.op }}; animation:{{ f.anim }}; border-radius:6px; overflow:hidden; box-shadow:0 14px 34px rgba(20,16,8,0.4); background-color:#2A251C; background-image:url({{ f.src }}); background-size:cover; background-position:center"></div>
+            </sc-for>
+          </div>
+
+          <div style="margin:34px 0 0; display:flex; flex-direction:column; gap:14px">
+            <a href="https://www.behance.net/gallery/226322365/Beyond-Being-An-Immersive-VR-Short-Film" target="_blank" rel="noopener" style="align-self:flex-start; font:400 10px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:{{ csAccent }}; border-bottom:1px solid {{ csAccent }}; padding-bottom:5px; white-space:nowrap">READ THE FULL BEYOND BEING CASE STUDY →</a>
+          </div>
+
+        </sc-if>
+
+        <sc-if value="{{ csAI }}" hint-placeholder-val="{{ false }}">
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:12px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">PROJECT SUMMARY</div>
+            <div style="font:400 19px/1.45 Newsreader,serif; color:#221F1A; text-wrap:pretty">I was asked to ship an AI feature for a banking-sector PoC. but, the product had no design system, no documentation, and years of inconsistent patterns baked into it.</div>
+          </div>
+
+          <div style="margin-top:38px; display:grid; grid-template-columns:{{ csSplitCols2 }}; gap:30px; align-items:start">
+            <div style="width:100%; aspect-ratio:1600/1000; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csAI2Products }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+            <div style="display:flex; flex-direction:column; gap:26px">
+              <div style="display:flex; flex-direction:column; gap:10px">
+                <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">PROBLEM STATEMENT</div>
+                <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">I could have designed the new feature on top of the existing UI. Instead, I first had to understand what was already there — and decide what was worth fixing before adding something new.</div>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:10px; border-top:1px solid #E6E1D6; padding-top:22px">
+                <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">GOAL</div>
+                <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">Build and demo an AI Knowledge + IVR PoC across Concio and iManager, while creating a foundation the team could actually keep using.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:64px; font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">THE PROCESS</div>
+
+          <div style="margin-top:20px; border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ a1Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">01</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Ambiguity</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ a1Mark }}</div>
+            </div>
+            <sc-if value="{{ a1On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:22px; padding:0 2px 30px 36px">
+                <div style="display:grid; grid-template-columns:{{ csHalfCols }}; gap:26px; align-items:start">
+                  <div style="display:flex; flex-direction:column; gap:10px; align-items:flex-start">
+                    <span style="--r:-3deg; align-self:flex-start; display:inline-block; max-width:280px; background:#3B4C8F; color:#FFFFFF; border-radius:999px; padding:11px 20px 12px; font:500 13px/1.35 'IBM Plex Mono',monospace; transform:rotate(-3deg); animation:pillIn 700ms cubic-bezier(.2,.7,.3,1) 0ms both">Lead designer on leave — D-1 handover</span>
+                    <span style="--r:2.2deg; align-self:flex-start; display:inline-block; max-width:250px; background:#3B4C8F; color:#FFFFFF; border-radius:999px; padding:11px 20px 12px; font:500 13px/1.35 'IBM Plex Mono',monospace; transform:rotate(2.2deg); animation:pillIn 700ms cubic-bezier(.2,.7,.3,1) 90ms both">No existing component library</span>
+                    <span style="--r:-1.6deg; align-self:flex-start; display:inline-block; max-width:210px; background:#3B4C8F; color:#FFFFFF; border-radius:999px; padding:11px 20px 12px; font:500 13px/1.35 'IBM Plex Mono',monospace; transform:rotate(-1.6deg); animation:pillIn 700ms cubic-bezier(.2,.7,.3,1) 180ms both">No documentation</span>
+                    <span style="--r:2.8deg; align-self:flex-start; display:inline-block; max-width:260px; background:#3B4C8F; color:#FFFFFF; border-radius:999px; padding:11px 20px 12px; font:500 13px/1.35 'IBM Plex Mono',monospace; transform:rotate(2.8deg); animation:pillIn 700ms cubic-bezier(.2,.7,.3,1) 270ms both">Sketch → Figma migration task</span>
+                    <span style="--r:-2.2deg; align-self:flex-start; display:inline-block; max-width:280px; background:#3B4C8F; color:#FFFFFF; border-radius:999px; padding:11px 20px 12px; font:500 13px/1.35 'IBM Plex Mono',monospace; transform:rotate(-2.2deg); animation:pillIn 700ms cubic-bezier(.2,.7,.3,1) 360ms both">Design student, figuring it out alone</span>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:12px">
+                    <div style="font:700 26px/1.25 'Instrument Serif',serif; color:{{ csAccent }}">I wasn’t starting with a clean brief.</div><div style="font:700 26px/1.25 'Instrument Serif',serif; color:{{ csAccent }}; margin-bottom:8px">I was inheriting years of decisions.</div><div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A; max-width:560px; text-wrap:pretty">A D-1 handover and a blank Figma file.</div>
+                    <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">The lead designer went on leave the day before I took over. I was asked to migrate the product from Sketch to Figma and design an AI Knowledge + IVR PoC — but there was no component library, documentation, or established system to work from.</div>
+                  </div>
+                </div>
+                <div style="padding-left:36px; display:flex; flex-direction:column; gap:2px">
+                  
+                  
+                </div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ a2Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">02</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Audit</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ a2Mark }}</div>
+            </div>
+            <sc-if value="{{ a2On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:24px; padding:0 2px 30px 36px">
+                <div style="display:flex; flex-direction:column; gap:12px">
+                  <div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A; max-width:560px; text-wrap:pretty">Before designing anything new, I needed to understand what was already broken.</div>
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">I audited the existing flows and benchmarked familiar products including WhatsApp, LINE, Teams, and Slack.</div>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px">
+                  <div style="width:100%; aspect-ratio:4/3; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csAudit1 }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+                  <div style="width:100%; aspect-ratio:4/3; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csAudit2 }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:14px; margin-top:10px">
+                  <div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A; max-width:560px; text-wrap:pretty">Three findings came out of the audit.</div>
+                  <div style="width:100%; aspect-ratio:1556/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csFComposite }}); background-size:contain; background-repeat:no-repeat; background-position:center"></div>
+                  <div style="font:400 9px/1.6 'IBM Plex Mono',monospace; letter-spacing:0.06em; color:#8A8175">Navigation had no labels · iconography had no system · padding varied across screens.</div>
+                </div>
+
+                <div style="display:grid; grid-template-columns:{{ csHalfCols }}; gap:26px; align-items:center">
+                  <div style="display:flex; flex-direction:column; gap:10px; align-items:flex-start">
+                    <span style="--r:-3.4deg; align-self:flex-start; display:inline-block; max-width:290px; background:#3B4C8F; color:#FFFFFF; border-radius:999px; padding:11px 20px 12px; font:500 13px/1.35 'IBM Plex Mono',monospace; transform:rotate(-3.4deg); animation:pillIn 700ms cubic-bezier(.2,.7,.3,1) 0ms both">These weren’t just aesthetic issues</span>
+                    <span style="--r:2.4deg; align-self:flex-start; display:inline-block; max-width:300px; background:#3B4C8F; color:#FFFFFF; border-radius:999px; padding:11px 20px 12px; font:500 13px/1.35 'IBM Plex Mono',monospace; transform:rotate(2.4deg); animation:pillIn 700ms cubic-bezier(.2,.7,.3,1) 140ms both">They were the reason the platform felt hard to use</span>
+                  </div>
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">These weren’t just visual inconsistencies. They made the product harder to understand — and harder to extend.</div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ a3Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">03</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Foundation</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ a3Mark }}</div>
+            </div>
+            <sc-if value="{{ a3On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:24px; padding:0 2px 30px 36px">
+                
+                <div style="display:grid; grid-template-columns:{{ csHalfCols }}; gap:26px; align-items:start">
+                  <div style="width: 284px; aspect-ratio: 664/1200; border-radius: 16px; background-color: #F2EFE8; background-image: url({{ csSystem }}); background-size: contain; background-repeat: no-repeat; background-position: center; border: 1px solid #E6E1D6"></div>
+                  <div style="display: flex; flex-direction: column; gap: 16px; width: 432px; height: 386px">
+                    <div style="display:flex; flex-direction:column; gap:12px">
+                  <div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A; max-width:560px; text-wrap:pretty">Before the AI, I built the system.</div>
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">I could have designed the new feature on top of the existing patterns. Instead, I decided to establish a reusable foundation first, so the PoC wouldn’t become another one-off.</div>
+                </div><div style="display:flex; flex-direction:column; gap:4px"><div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A; max-width:560px; text-wrap:pretty">Iconography</div><div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">Unified styles, naming, states, and badges.</div></div>
+                    <div style="display:flex; flex-direction:column; gap:4px"><div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A; max-width:560px; text-wrap:pretty">Components</div><div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">Buttons, inputs, dropdowns, navigation, progress indicators.</div></div>
+                    <div style="display:flex; flex-direction:column; gap:4px"><div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A; max-width:560px; text-wrap:pretty">Variables &amp; instances</div><div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">Structured for handoff and future scale.</div></div>
+                    <div style="display:flex; flex-direction:column; gap:4px"><div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A; max-width:560px; text-wrap:pretty">Typography &amp; colour</div><div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">A consistent visual language across app and desktop.</div></div>
+                  </div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:12px">
+                  <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">BEFORE / AFTER</div>
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px">
+                    <div style="width:100%; aspect-ratio:1228/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csBAApp }}); background-size:contain; background-repeat:no-repeat; background-position:center; border:1px solid #E6E1D6; "></div>
+                    <div style="width:100%; aspect-ratio:1361/1200; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csBADesktop }}); background-size:contain; background-repeat:no-repeat; background-position:center; border:1px solid #E6E1D6; "></div>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ a4Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">04</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Prototype</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ a4Mark }}</div>
+            </div>
+            <sc-if value="{{ a4On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:26px; padding:0 2px 30px 36px">
+                
+                <div style="display:flex; flex-direction:column; gap:12px">
+                  <div style="font:700 32px/1.15 'Instrument Serif',serif; color:#221F1A">Concio — AI Knowledge</div>
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">The existing app couldn’t be completely redesigned within the PoC timeline, so I worked within its constraints and focused the redesign where it mattered most.</div>
+                  <div style="width:100%; aspect-ratio:16/9; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csProtoApp }}); background-size:cover; background-position:center; border:1px solid #E6E1D6; "></div>
+                  <div style="font:400 9px/1.6 'IBM Plex Mono',monospace; letter-spacing:0.06em; color:#8A8175">Full AI feature walkthrough available upon request.</div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:12px">
+                  <div style="font:700 32px/1.15 'Instrument Serif',serif; color:#221F1A">iManager — AI Knowledge + IVR</div>
+                  <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">The same foundation was extended into the desktop experience, adapting the patterns for a more complex admin workflow.</div>
+                  <div style="width:100%; aspect-ratio:16/9; border-radius:16px; background-color:#F2EFE8; background-image:url({{ csProtoDesktop }}); background-size:cover; background-position:center; border:1px solid #E6E1D6; "></div>
+                  <div style="font:400 9px/1.6 'IBM Plex Mono',monospace; letter-spacing:0.06em; color:#8A8175">Full walkthrough available upon request.</div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-top:1px solid #E6E1D6; border-bottom:1px solid #E6E1D6; display:flex; flex-direction:column">
+            <div onClick="{{ a5Toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:17px 2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">05</div>
+              <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">Tradeoffs</div>
+              <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ a5Mark }}</div>
+            </div>
+            <sc-if value="{{ a5On }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:12px; padding:0 2px 30px 36px">
+                <div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A; max-width:560px; text-wrap:pretty">Not everything made it into the PoC.</div>
+                <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">The timeline and management constraints meant some of the problems I identified stayed as findings rather than becoming product changes.</div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="margin-top:64px; display:flex; flex-direction:column; gap:14px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">RESULT</div>
+            <div style="font:700 40px/1.1 'Instrument Serif',serif; color:{{ csAccent }}">Shipped, Adopted, Extended</div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:6px">
+              <div style="display:flex; flex-direction:column; gap:6px"><div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A; max-width:560px; text-wrap:pretty">AI PoC</div><div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">Successfully demoed.</div></div>
+              <div style="display:flex; flex-direction:column; gap:6px"><div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A; max-width:560px; text-wrap:pretty">Design System</div><div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">Adopted as the team’s Figma baseline.</div></div>
+              <div style="display:flex; flex-direction:column; gap:6px"><div style="font:600 15px/1.5 Newsreader,serif; color:#221F1A; max-width:560px; text-wrap:pretty">Cross-platform</div><div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">Foundation applied across Concio and iManager.</div></div>
+            </div>
+          </div>
+
+          
+
+          <div style="margin-top:34px; display:grid; grid-template-columns:{{ csSplitCols }}; gap:26px; align-items:center">
+            <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">The AI Knowledge + IVR PoC was successfully demoed to a major banking-sector client.</div>
+            <div style="width: 100%; aspect-ratio: 1465/1200; border-radius: 16px; background-color: #F2EFE8; background-image: url({{ csPoC }}); background-size: contain; background-repeat: no-repeat; background-position: center; border: 1px solid #E6E1D6; overflow: visible"></div>
+          </div>
+
+          <div style="margin-top:64px; display:grid; grid-template-columns:{{ csHalfCols }}; gap:26px; align-items:center">
+            <div style="width: 489px; aspect-ratio: 4/3; border-radius: 16px; background-color: #F2EFE8; background-image: url({{ csReferences }}); background-size: cover; background-position: center; border: 1px solid #E6E1D6"></div>
+            <div style="display:flex; flex-direction:column; gap:12px">
+              <div style="font:700 40px/1.1 'Instrument Serif',serif; color:{{ csAccent }}">A foundation that outlived the PoC</div>
+              <div style="font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A">The component library and foundation I built from scratch became the team’s Figma design-system baseline — and is still in use today.</div>
+            </div>
+          </div>
+
+        </sc-if>
+
+        <sc-if value="{{ csGeneric }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:36px; display:grid; grid-template-columns:{{ csIntroCols }}; gap:{{ csIntroGap }}">
+          <sc-for list="{{ csIntro }}" as="s" hint-placeholder-count="2">
+            <div style="display:flex; flex-direction:column; gap:11px">
+              <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">{{ s.label }}</div>
+              <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; text-wrap:pretty">{{ s.body }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="margin-top:44px; display:flex; flex-direction:column; gap:11px">
+          <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">GOAL</div>
+          <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; max-width:640px; text-wrap:pretty">{{ csGoal }}</div>
+        </div>
+
+        <div style="margin-top:52px; display:flex; flex-direction:column">
+          <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175; padding-bottom:14px">THE PROCESS</div>
+          <sc-for list="{{ csProcess }}" as="s" hint-placeholder-count="3">
+            <div style="border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
+              <div onClick="{{ s.toggle }}" style="cursor:pointer; display:flex; align-items:baseline; gap:14px; padding:16px 2px">
+                <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; width:22px">{{ s.n }}</div>
+                <div style="flex:1; font:400 21px/1.2 'Instrument Serif',serif; color:#221F1A">{{ s.t }}</div>
+                <div style="font:400 13px/1 'IBM Plex Mono',monospace; color:#8A8175">{{ s.mark }}</div>
+              </div>
+              <sc-if value="{{ s.on }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:0 2px 24px 36px; font:400 13px/1.7 'IBM Plex Mono',monospace; color:#221F1A; max-width:600px">{{ s.body }}</div>
+              </sc-if>
+            </div>
+          </sc-for>
+          <div style="border-top:1px solid #E6E1D6"></div>
+        </div>
+
+        <sc-for list="{{ csResults }}" as="r" hint-placeholder-count="2">
+          <div style="margin-top:52px; display:flex; flex-direction:column; gap:14px">
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">{{ r.label }}</div>
+            <div style="font:400 19px/1.5 Newsreader,serif; color:#221F1A; max-width:640px; text-wrap:pretty">{{ r.body }}</div>
+            <sc-if value="{{ r.hasImg }}" hint-placeholder-val="{{ true }}">
+              <div style="width:100%; aspect-ratio:16/9; border-radius:16px; background-color:#F2EFE8; background-image:url({{ r.img }}); background-size:cover; background-position:center; border:1px solid #E6E1D6"></div>
+            </sc-if>
+          </div>
+        </sc-for>
+        </sc-if>
+      </div><div style="width:{{ csSideW }}; flex:none; border-left:{{ csSideBorder }}; border-bottom:{{ csSideBorderB }}; padding:22px 26px 28px; display:flex; flex-direction:column">
+        <div style="display:flex; justify-content:flex-end; gap:14px; align-items:center">
+          <sc-if value="{{ csMobile }}" hint-placeholder-val="{{ false }}">
+            <div style="flex:1; display:flex; gap:9px">
+              <div onClick="{{ csPrev }}" style="cursor:pointer; width:34px; height:34px; border:1px solid #E6E1D6; border-radius:50%; display:flex; align-items:center; justify-content:center; font:400 11px/1 'IBM Plex Mono',monospace; color:#221F1A">←</div>
+              <div onClick="{{ csNext }}" style="cursor:pointer; width:34px; height:34px; border:1px solid #E6E1D6; border-radius:50%; display:flex; align-items:center; justify-content:center; font:400 11px/1 'IBM Plex Mono',monospace; color:#221F1A">→</div>
+            </div>
+          </sc-if>
+          <div onClick="{{ csClose }}" style="cursor:pointer; display:flex; align-items:center; gap:8px; font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">
+            <span>CLOSE</span><span style="font-size:13px; line-height:1">✕</span>
+          </div>
+        </div>
+        <div style="flex:1"></div>
+        <div style="display:flex; flex-direction:column; align-items:flex-end; text-align:right; gap:6px">
+          <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">{{ csNum }}</div>
+          <div style="font:400 34px/1.05 'Instrument Serif',serif; color:#221F1A">{{ csTitle }}</div>
+        </div>
+        <div style="margin-top:20px; padding-top:18px; border-top:1px solid #E6E1D6; display:flex; flex-direction:column; align-items:flex-end; text-align:right; gap:15px">
+          <sc-for list="{{ csMeta }}" as="m" hint-placeholder-count="4">
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">{{ m.k }}</div>
+              <div style="font:400 12.5px/1.6 Newsreader,serif; color:#221F1A">{{ m.v }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:22px; padding-top:16px; border-top:1px solid #E6E1D6; font:400 8px/1.5 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; text-align:right">{{ csNextLabel }}</div>
+      </div>
+
+      
+
+    </div>
+  </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;name&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Michelle Ivanna&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;line1&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Hi! I'm Michelle&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;line2&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;a Designer working across&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;line3&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;UI/UX, Brand, and Product&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;smallPrint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;I am good at turning concepts into something structured and presentable. Product designer who thinks deeply and communicates visually&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#8A3A21&quot;,&quot;options&quot;:[&quot;#8A3A21&quot;,&quot;#3F5A52&quot;,&quot;#7A6A3F&quot;,&quot;#221F1A&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Art direction&quot;},&quot;lightIntensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.7,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Art direction&quot;}}">
+const DIR = "uploads/thumbnails/";
+const RAW = [
+  ["01", "Starise", "Visual System / Brand / Product", "thumbnail%20-%203%20starise%20rebranding.png"],
+  ["02", "AI Feature", "Product / UX / Design System", "thumbnail%20-%201%20AI%20Feature.png"],
+  ["03", "Orion", "Product Communication / Visual Design", "thumbnail%20-%205%20marketing%20orion%20suite.png"],
+  ["04", "iManager Onboarding", "Product / UX", "thumbnail%20-%202%20iManager%20onboarding.png"],
+  ["05", "Beyond Being", "Storytelling / Visual Identity / VR", "thumbnail%20-%204%20beyond%20being.png"],
+  ["06", "Taipei People", "Interaction / Installation / Visual Design", "thumbnail%20-%20%206%20taipei%20people.png"]
+];
+const PROJECTS = RAW.map(([n, title, cat, file], i) => ({
+  i, n, title,
+  tags: cat.split("/").map(s => s.trim().toUpperCase()),
+  img: DIR + file
+}));
+const ITALIC = ["michelle", "designer"];
+const PLASTIC = [
+  "linear-gradient(107deg, rgba(255,255,255,0.34) 0 6%, rgba(255,255,255,0.02) 11% 19%, rgba(255,255,255,0.2) 23% 26%, rgba(255,255,255,0) 33% 58%, rgba(255,255,255,0.12) 63% 67%, rgba(255,255,255,0.02) 71% 88%, rgba(255,255,255,0.16) 94%)",
+  "linear-gradient(128deg, rgba(255,255,255,0.12) 0 8%, rgba(255,255,255,0.3) 12% 15%, rgba(255,255,255,0.02) 21% 41%, rgba(255,255,255,0.18) 46% 49%, rgba(255,255,255,0) 55% 79%, rgba(255,255,255,0.22) 85% 88%, rgba(255,255,255,0.04) 96%)",
+  "linear-gradient(96deg, rgba(255,255,255,0.06) 0 4%, rgba(255,255,255,0.28) 9% 13%, rgba(255,255,255,0) 18% 34%, rgba(255,255,255,0.12) 39% 44%, rgba(255,255,255,0.02) 50% 72%, rgba(255,255,255,0.26) 77% 80%, rgba(255,255,255,0) 90%)",
+  "linear-gradient(141deg, rgba(255,255,255,0.32) 0 5%, rgba(255,255,255,0.04) 10% 24%, rgba(255,255,255,0.16) 29% 31%, rgba(255,255,255,0) 38% 61%, rgba(255,255,255,0.2) 66% 70%, rgba(255,255,255,0.03) 76% 92%, rgba(255,255,255,0.12) 98%)",
+  "linear-gradient(88deg, rgba(255,255,255,0.1) 0 7%, rgba(255,255,255,0.3) 11% 14%, rgba(255,255,255,0.01) 20% 38%, rgba(255,255,255,0.14) 43% 47%, rgba(255,255,255,0) 53% 74%, rgba(255,255,255,0.24) 80% 83%, rgba(255,255,255,0.05) 93%)",
+  "linear-gradient(117deg, rgba(255,255,255,0.26) 0 4%, rgba(255,255,255,0.05) 9% 17%, rgba(255,255,255,0.2) 22% 27%, rgba(255,255,255,0) 34% 63%, rgba(255,255,255,0.16) 68% 71%, rgba(255,255,255,0.02) 78% 90%, rgba(255,255,255,0.18) 97%)"
+];
+const SHEEN = [
+  "repeating-linear-gradient(74deg, rgba(255,255,255,0.09) 0 2px, rgba(255,255,255,0) 2px 9px, rgba(255,255,255,0.05) 9px 11px, rgba(255,255,255,0) 11px 23px)",
+  "repeating-linear-gradient(-61deg, rgba(255,255,255,0.08) 0 3px, rgba(255,255,255,0) 3px 14px, rgba(255,255,255,0.06) 14px 15px, rgba(255,255,255,0) 15px 27px)",
+  "repeating-linear-gradient(83deg, rgba(255,255,255,0.07) 0 2px, rgba(255,255,255,0) 2px 7px, rgba(255,255,255,0.09) 7px 8px, rgba(255,255,255,0) 8px 19px)",
+  "repeating-linear-gradient(-48deg, rgba(255,255,255,0.1) 0 2px, rgba(255,255,255,0) 2px 11px, rgba(255,255,255,0.04) 11px 13px, rgba(255,255,255,0) 13px 21px)",
+  "repeating-linear-gradient(67deg, rgba(255,255,255,0.08) 0 4px, rgba(255,255,255,0) 4px 12px, rgba(255,255,255,0.05) 12px 14px, rgba(255,255,255,0) 14px 25px)",
+  "repeating-linear-gradient(-77deg, rgba(255,255,255,0.09) 0 2px, rgba(255,255,255,0) 2px 8px, rgba(255,255,255,0.06) 8px 10px, rgba(255,255,255,0) 10px 17px)"
+];
+const CLIP = [
+  "polygon(3% 1%, 51% 0%, 97% 2%, 100% 48%, 98% 97%, 54% 100%, 4% 98%, 1% 52%)",
+  "polygon(1% 3%, 48% 1%, 99% 0%, 98% 46%, 100% 96%, 49% 99%, 2% 100%, 3% 49%)",
+  "polygon(4% 0%, 53% 2%, 98% 1%, 100% 51%, 97% 98%, 47% 97%, 1% 100%, 2% 47%)",
+  "polygon(2% 2%, 49% 0%, 96% 3%, 99% 47%, 100% 99%, 52% 97%, 3% 99%, 0% 51%)",
+  "polygon(0% 1%, 52% 3%, 99% 1%, 97% 49%, 99% 97%, 48% 100%, 2% 96%, 3% 48%)",
+  "polygon(3% 2%, 47% 1%, 100% 2%, 98% 52%, 96% 98%, 51% 98%, 1% 97%, 2% 46%)"
+];
+const CRINKLE = ["rotate(-1.1deg) skewY(0.5deg)", "rotate(0.9deg) skewX(-0.6deg)", "rotate(-0.6deg) skewX(0.7deg)", "rotate(1.3deg) skewY(-0.4deg)", "rotate(-1.4deg) skewX(0.4deg)", "rotate(0.7deg) skewY(0.6deg)"];
+const PORTRAIT = "uploads/me-cursor.png";
+const enc = s => s.replace(/ /g, "%20").replace(/\(/g, "%28").replace(/\)/g, "%29");
+const WEB = "uploads/starise/";
+const GUIDE_NS = [1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,19,20,21];
+const GUIDES = GUIDE_NS.map(n => enc(WEB + "guidelines/Starise 4.0 Logo Guideline (Work in Progress)-" + n + ".webp"));
+const VERSIONS = [6, 3, 5, 2].map((count, vi) =>
+  Array.from({ length: count }, (_, k) => enc(WEB + "versions/V" + (vi + 1) + " (" + (k + 1) + ").webp"))
+);
+const SKETCH = "uploads/starise/sketch.webp";
+const ITER_CAPTIONS = ["V1 — Logo Exploration & Proposal", "V2 — Building the Brand Guide", "V3 — Finding the Right Blue", "V4 — Refining the Star"];
+const WEB2 = "uploads/ai-feature/";
+const WEB3 = "uploads/orion/";
+const preload = src => { const i = new Image(); i.src = src; };
+const BB = n => enc("uploads/beyond-being/Beyond Being - " + n + ".webp");
+const TP = n => enc("uploads/taipei-people/Taipei People - " + n + ".webp");
+const BB_FLOATS = [
+  { f: "floating image 1", l: "62%", tp: "11%", w: "13%", r: "1/1", d: 0 },
+  { f: "floating image 2", l: "65%", tp: "40%", w: "16%", r: "1/1", d: 130 },
+  { f: "floating image 3", l: "79%", tp: "26%", w: "16%", r: "1/1", d: 260 }
+];
+const PH = "Placeholder — replace with your own writing for this project.";
+const CS_RAW = [
+  {
+    id: "ai", cover: enc(WEB2 + "AI Feature - hero.webp"), ai: true, accent: "#6277E4",
+    brand: "Concio + iManager", role: "Sole Designer", year: "2025",
+    deliverables: "UX Flows · UI · Component Library · Design System",
+    intro: [["THE CHALLENGE", PH], ["PROBLEM STATEMENT", PH]],
+    goal: PH,
+    process: [["Ambiguity", PH], ["Investigation", PH], ["Insight", PH], ["Decision & tradeoff", PH], ["Prototype", PH], ["Reflection", PH]],
+    results: [["RESULT", PH, ""]]
+  },
+  {
+    id: "im", cover: enc("uploads/imanager/iManager - hero.webp"), im: true, accent: "#2C71FC",
+    brand: "iManager", role: "UI Designer", year: "2025",
+    deliverables: "Onboarding Flow · UI Design · Prototype · Design System",
+    metaKey: "PRODUCT",
+    intro: [["THE CHALLENGE", PH], ["PROBLEM STATEMENT", PH]],
+    goal: PH,
+    process: [["Ambiguity", PH], ["Investigation", PH], ["Insight", PH], ["Decision & tradeoff", PH], ["Prototype", PH], ["Reflection", PH]],
+    results: [["RESULT", PH, ""]]
+  },
+  {
+    id: "st", cover: enc(WEB + "Starise - Hero.webp"), custom: true, accent: "#2C71FC",
+    brand: "Starise 2.0", role: "Sole Designer", year: "Nov 25",
+    deliverables: "Brand Guidelines, Weekly Project Pitch, UI mockup, Brochure, Website Implementation",
+    intro: [
+      ["PROBLEM STATEMENT", "\"Make it Americanized\" was the only brief I got. So, I treated the vague brief as an invitation to think."],
+      ["PROJECT SUMMARY", "A full brand refresh for Starise — an enterprise communication platform. The result: a stronger philosophy — rice-like star (米) + directional arrow. Fresh, modern, collaborative."]
+    ],
+    goal: "Build an identity that reads as modern, global, and future-proof — aligned with the \"Americanized\" contemporary direction from the brief — and that holds together across product, web, and marketing.",
+    process: [
+      ["Reading the brief", "One line of direction, no reference, no constraints. I mapped what \"Americanized\" could mean for an enterprise communication platform and turned the ambiguity into a set of questions for stakeholders."],
+      ["Sketch exploration", "Dozens of marks on paper before anything went digital — star forms, arrows, monograms, wordmark weights. The direction that survived combined a rice-like star (米) with a directional arrow."],
+      ["Logo construction", "Three official lockups and one standalone symbol, each with a specific purpose: identification, expression, and constrained space. Geometry documented so the mark can be rebuilt, not redrawn."],
+      ["Colour & typography", "A blue and amber pairing carrying innovation and reliability, specified in HEX, RGB, CMYK and HSL for print and screen, with a lowercase wordmark treatment."],
+      ["Iteration with stakeholders", "Four versions and several rounds of review, pitched weekly. Each version narrowed the philosophy rather than restyling the surface."]
+    ],
+    results: [
+      ["RESULT — THE BRAND GUIDELINES", "4 versions and several iterations later, the brand was approved. Logo construction, colour philosophy, typography, and usage guidelines presented to stakeholders, documented in full on Behance.", ""],
+      ["RESULT — NOW LIVE ACROSS PRODUCT ECOSYSTEM", "App, Website, Products, and Marketing Collaterals.", ""]
+    ]
+  },
+  {
+    id: "or", cover: enc(WEB3 + "Orion Suite - hero.webp"), orion: true, accent: "#6277E4",
+    brand: "Orion Suite", role: "Multimedia Designer", year: "2024–2026",
+    deliverables: "Pitch Decks, Brochure, Exhibition Banners, Website, Product Video",
+    intro: [["THE CHALLENGE", PH], ["PROBLEM STATEMENT", PH]],
+    goal: PH,
+    process: [["Direction", PH], ["Visual system", PH], ["Production", PH]],
+    results: [["RESULT", PH, ""]]
+  },
+  {
+    id: "bb", cover: BB("hero"), bb: true, accent: "#48370B",
+    brand: "Beyond Being", role: "Visual & 3D Designer", year: "2024–2025",
+    deliverables: "Visual Identity, Social Media, 3D Environment, Storyboard, Experience Design",
+    metaKey: "STORYTELLING",
+    intro: [["THE CHALLENGE", PH], ["PROBLEM STATEMENT", PH]],
+    goal: PH,
+    process: [["Concept", PH], ["Visual language", PH], ["Build", PH]],
+    results: [["RESULT", PH, ""]]
+  },
+  {
+    id: "tp", cover: TP("hero"), tp: true, accent: "#661B17",
+    brand: "Taipei People", role: "Visual & UI Designer", year: "2023–2024",
+    deliverables: "Projection UI · Visual Design · Storyboard · Animation",
+    metaKey: "STORYTELLING",
+    intro: [["THE CHALLENGE", PH], ["PROBLEM STATEMENT", PH]],
+    goal: PH,
+    process: [["Concept", PH], ["Interaction model", PH], ["Installation", PH]],
+    results: [["RESULT", PH, ""]]
+  }
+];
+const CS = ["st", "ai", "or", "im", "bb", "tp"].map(k => CS_RAW.find(c => c.id === k));
+const LIGHT = { bg: "#F5F1E8", fg: "#221F1A", muted: "#8A8175", rule: "#D8D2C4", card: "#E5E0D4", idle: "#CDC6B7" };
+const DARK = { bg: "#1E1B18", fg: "#EDE7DA", muted: "#9C9384", rule: "#3A352F", card: "#2C2823", idle: "#4C463D" };
+
+class Component extends DCLogic {
+  state = { dark: false, open: null, tab: {}, fill: 0, hov: null, pill: null, seen: {}, word: null, cycle: 0, mx: 0.5, my: 0.4, cx: -200, cy: -200, origin: "50% 50%", navK: 0, navDir: 0, gIdx: 0, iter: [0, 0, 0, 0], slots: [{ a: 0, b: 0 }, { a: 0, b: 0 }, { a: 0, b: 0 }, { a: 0, b: 0 }], pOpen: {}, bbP: 0.5, bbSeen: false, w: typeof window !== "undefined" ? window.innerWidth : 1440 };
+  iterTimer = null;
+  togglePart(k) { this.setState(s => ({ pOpen: { ...s.pOpen, [k]: !s.pOpen[k] } })); }
+
+  reveal(el, i) {
+    el.style.transitionDelay = (i % 6) * 100 + "ms";
+    el.style.opacity = "1";
+    el.style.transform = "none";
+    if (el.hasAttribute("data-bb-overflow") && !this.state.bbSeen) this.setState({ bbSeen: true });
+  }
+
+  revealScan = () => {
+    const col = document.querySelector("[data-cs-col]");
+    if (!col) return;
+    const r = col.getBoundingClientRect();
+    const blocks = [];
+    Array.from(col.children).forEach(ch => {
+      blocks.push(ch);
+      if (!ch.hasAttribute("data-rv-group") && ch.children.length > 1 && ch.children.length < 9) {
+        ch.setAttribute("data-rv-group", "1");
+        Array.from(ch.children).forEach(g => blocks.push(g));
+      }
+    });
+    blocks.forEach(el => {
+      if (el.hasAttribute("data-rv")) return;
+      el.setAttribute("data-rv", "1");
+      el.style.transition = "opacity 300ms ease, transform 300ms ease";
+      if (el.getBoundingClientRect().top > r.bottom - 24) {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(14px)";
+      }
+    });
+    let i = 0;
+    col.querySelectorAll("[data-rv]").forEach(el => {
+      if (el.style.opacity !== "0") return;
+      if (el.getBoundingClientRect().top < r.bottom - 24) this.reveal(el, i++);
+    });
+  };
+
+  componentDidMount() {
+    this.gTimer = setInterval(() => this.setState(s => ({ gIdx: (s.gIdx + 1) % GUIDES.length })), 2000);
+    this.onScroll = () => {
+      const hero = document.querySelector("[data-hero]");
+      if (!hero) return;
+      const r = hero.getBoundingClientRect();
+      const range = r.height - window.innerHeight * 0.56;
+      const passed = Math.max(0, -r.top);
+      const raw = range > 0 ? passed / range : 1;
+      const p = Math.max(0, Math.min(1, 0.14 + raw / 0.75));
+      if (Math.abs(p - this.state.fill) > 0.008) this.setState({ fill: p });
+    };
+    window.addEventListener("scroll", this.onScroll, true);
+    this.onScroll();
+
+    this.onBB = () => {
+      const el = document.querySelector("[data-bb-overflow]");
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const p = Math.max(0, Math.min(1, 1 - (r.top + r.height * 0.2) / window.innerHeight));
+      if (Math.abs(p - this.state.bbP) > 0.006) this.setState({ bbP: p });
+    };
+    window.addEventListener("scroll", this.onBB, true);
+
+    this.onMove = e => {
+      const mx = e.clientX / window.innerWidth, my = e.clientY / window.innerHeight;
+      if (Math.abs(mx - this.state.mx) < 0.006 && Math.abs(my - this.state.my) < 0.006 && this.state.word === null) return;
+      this.setState({ mx, my, cx: e.clientX, cy: e.clientY });
+    };
+    window.addEventListener("mousemove", this.onMove);
+
+    this.cycler = setInterval(() => {
+      if (this.state.word === "work") this.setState(s => ({ cycle: (s.cycle + 1) % 6 }));
+    }, 1000);
+
+    this.io = new IntersectionObserver(entries => {
+      const seen = { ...this.state.seen };
+      let changed = false;
+      entries.forEach(e => {
+        if (e.isIntersecting || e.boundingClientRect.top < 0) {
+          const k = e.target.getAttribute("data-card");
+          if (!seen[k]) { seen[k] = true; changed = true; }
+        }
+      });
+      if (changed) this.setState({ seen });
+    }, { threshold: 0, rootMargin: "0px 0px -8% 0px" });
+    this.scan = () => {
+      const seen = { ...this.state.seen };
+      let changed = false;
+      document.querySelectorAll("[data-card]").forEach(el => {
+        this.io.observe(el);
+        const k = el.getAttribute("data-card");
+        if (!seen[k] && el.getBoundingClientRect().top < window.innerHeight * 0.94) { seen[k] = true; changed = true; }
+      });
+      if (changed) this.setState({ seen });
+    };
+    this.scan();
+    this.scanTimer = setInterval(this.scan, 400);
+
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener("resize", this.onResize);
+
+    this.revealTimer = setInterval(this.revealScan, 200);
+    window.addEventListener("scroll", this.revealScan, true);
+
+    this.onKey = e => { if (e.key === "Escape" && this.state.open !== null) { this.lock(false); this.setState({ open: null }); } };
+    window.addEventListener("keydown", this.onKey);
+  }
+  lock(on) { document.body.style.overflow = on ? "hidden" : ""; document.documentElement.style.overflow = on ? "hidden" : ""; }
+  stepIter(vi) {
+    this.setState(s => {
+      const n = s.iter.slice();
+      n[vi] = (n[vi] + 1) % VERSIONS[vi].length;
+      preload(VERSIONS[vi][(n[vi] + 1) % VERSIONS[vi].length]);
+      const sl = s.slots.map(o => ({ ...o }));
+      if (n[vi] % 2 === 0) sl[vi].a = n[vi]; else sl[vi].b = n[vi];
+      return { iter: n, slots: sl };
+    });
+  }
+  startIter(vi) {
+    this.stopIter();
+    this.iterTimer = setInterval(() => this.stepIter(vi), 900);
+  }
+  stopIter() { if (this.iterTimer) { clearInterval(this.iterTimer); this.iterTimer = null; } }
+  componentWillUnmount() {
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+    if (this.io) this.io.disconnect();
+    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("scroll", this.onScroll, true);
+    window.removeEventListener("scroll", this.onBB, true);
+    window.removeEventListener("mousemove", this.onMove);
+    window.removeEventListener("keydown", this.onKey);
+    clearInterval(this.cycler);
+    clearInterval(this.scanTimer);
+    clearInterval(this.gTimer);
+    clearInterval(this.revealTimer);
+    window.removeEventListener("scroll", this.revealScan, true);
+    this.stopIter();
+  }
+
+  renderVals() {
+    const pr = this.props;
+    const t = this.state.dark ? DARK : LIGHT;
+    const mobile = this.state.w < 820;
+    const colPx = mobile ? Math.min(Math.round(this.state.w * 0.88), 420) : Math.min(960, this.state.w - 192);
+    const cover = mobile ? Math.min(320, Math.round(this.state.w * 0.78)) : Math.round((colPx - 54) / 3) - 20;
+    const peek = Math.round(cover * 0.16);
+    const src = [
+      pr.line1 ?? "I'm Michelle",
+      pr.line2 ?? "a Designer working across",
+      pr.line3 ?? "UI/UX, Brand, and Product"
+    ].map(s => s.split(/\s+/));
+    const total = src.reduce((n, w) => n + w.length, 0);
+    const filled = Math.round(this.state.fill * total);
+    let wi = 0;
+    const lines = src.map(words => ({
+      words: words.map(x => {
+        const bare = x.replace(/[^A-Za-z]/g, "").toLowerCase();
+        const key = bare === "michelle" ? "me" : bare === "designer" ? "work" : null;
+        return {
+          t: x,
+          fs: ITALIC.includes(bare) ? "italic" : "normal",
+          c: wi++ < filled ? t.fg : t.idle,
+          cursor: key ? "none" : "default",
+          enter: key ? () => this.setState({ word: key }) : () => {},
+          leave: key ? () => this.setState({ word: null }) : () => {}
+        };
+      })
+    }));
+    const hov = this.state.hov;
+    const projects = PROJECTS.map(p => {
+      const on = hov === p.i;
+      const seen = !!this.state.seen[String(p.i)];
+      return {
+        ...p,
+        pills: p.tags.map((x, j) => {
+          const id = p.i + "-" + j;
+          const lit = this.state.pill === id || on;
+          return {
+            t: x,
+            bg: lit ? t.fg : "transparent",
+            fg: lit ? t.bg : t.muted,
+            bd: lit ? t.fg : t.rule,
+            enter: () => this.setState({ pill: id }),
+            leave: () => this.setState({ pill: null })
+          };
+        }),
+        plastic: PLASTIC[p.i % 6],
+        plasticSheen: SHEEN[p.i % 6],
+        clip: CLIP[p.i % 6],
+        crinkle: CRINKLE[p.i % 6],
+        holderW: (cover + 20) + "px",
+        holderH: (cover + 14 + peek) + "px",
+        coverW: cover + "px",
+        discSize: Math.round(cover * 0.84) + "px",
+        discLeft: Math.round(7 + (cover - cover * 0.84) / 2) + "px",
+        peek: peek + "px",
+        appear: seen ? 1 : 0,
+        rise: seen ? "translateY(0)" : "translateY(26px)",
+        tilt: on ? "rotateX(-15deg)" : "rotateX(0deg)",
+        discT: on ? "translateY(-" + Math.round(cover * 0.38) + "px)" : "translateY(0)",
+        discA: on ? "vinylSpin 2.6s linear infinite" : "none",
+        glow: on && this.state.dark ? 1 : 0,
+        enter: () => this.setState({ hov: p.i }),
+        leave: () => this.setState({ hov: null }),
+        open: e => {
+          const r = e.currentTarget.getBoundingClientRect();
+          const ox = (r.left + r.width / 2) / window.innerWidth * 100;
+          const oy = (r.top + r.height / 2) / window.innerHeight * 100;
+          this.lock(true);
+          this.setState({ open: p.i, hov: null, word: null, tab: {}, pOpen: {}, bbSeen: false, navK: 0, navDir: 0, origin: ox.toFixed(1) + "% " + oy.toFixed(1) + "%" });
+        }
+      };
+    });
+    const oi = this.state.open;
+    const c = oi === null ? null : CS[oi];
+    const cp = oi === null ? null : PROJECTS[oi];
+    const nextI = oi === null ? 0 : (oi + 1) % PROJECTS.length;
+    const openAt = (i, dir) => e => {
+      if (e && e.stopPropagation) e.stopPropagation();
+      this.setState(s => ({ open: i, tab: {}, navDir: dir, navK: s.navK + 1 }));
+    };
+    const pill = on => on ? { bg: t.fg, fg: t.bg } : { bg: "transparent", fg: t.muted };
+    const onP = pill(!this.state.dark), offP = pill(this.state.dark);
+    return {
+      projects, lines,
+      name: pr.name ?? "Michelle Ivanna",
+      smallPrint: pr.smallPrint ?? "I turn concepts into something structured and presentable. \nProduct designer who thinks deeply and communicates visually",
+      accent: pr.accent ?? "#8A3A21",
+      light: this.state.dark ? (pr.lightIntensity ?? 0.7) * 0.35 : (pr.lightIntensity ?? 0.7),
+      bg: t.bg, fg: t.fg, muted: t.muted, rule: t.rule, card: t.card,
+      cursorOn: this.state.word ? 1 : 0,
+      cursorT: "translate3d(" + this.state.cx + "px," + this.state.cy + "px,0)",
+      cursorImg: this.state.word === "work" ? PROJECTS[this.state.cycle].img : PORTRAIT,
+      leakT: "translate3d(" + ((this.state.mx - 0.5) * 190).toFixed(1) + "px," + ((this.state.my - 0.5) * 90).toFixed(1) + "px,0) rotate(" + ((this.state.mx - 0.5) * 9).toFixed(2) + "deg)",
+      beam1: this.state.dark
+        ? "linear-gradient(98deg, rgba(214,222,230,0.5), rgba(198,208,218,0.12) 58%, rgba(198,208,218,0) 100%)"
+        : "linear-gradient(98deg, rgba(255,244,220,1), rgba(255,235,196,0.28) 58%, rgba(255,235,196,0) 100%)",
+      beam2: this.state.dark
+        ? "linear-gradient(98deg, rgba(226,232,238,0.34), rgba(226,232,238,0) 100%)"
+        : "linear-gradient(98deg, rgba(255,250,235,0.85), rgba(255,250,235,0) 100%)",
+      bloom: this.state.dark
+        ? "radial-gradient(58% 48% at 22% 34%, rgba(210,218,226,0.16), rgba(210,218,226,0) 72%)"
+        : "radial-gradient(58% 48% at 22% 34%, rgba(255,198,120,0.34), rgba(255,198,120,0) 72%)",
+      shadowPool: "radial-gradient(46% 40% at " + ((1 - this.state.mx) * 100).toFixed(1) + "% " + ((1 - this.state.my) * 100).toFixed(1) + "%, " + (this.state.dark ? "rgba(0,0,0,0.42)" : "rgba(150,146,138,0.3)") + ", rgba(150,146,138,0) 70%)",
+      catchLight: "radial-gradient(circle 240px at " + this.state.cx + "px " + this.state.cy + "px, rgba(255,255,255,0.42), rgba(255,255,255,0.06) 45%, rgba(255,255,255,0) 72%)",
+      colW: mobile ? "min(88vw, 420px)" : "min(960px, calc(100vw - 192px))",
+      cols: mobile ? "1fr" : "repeat(3, 1fr)",
+      gridGap: mobile ? "56px 0" : "72px 27px",
+      heroSize: (mobile ? 32 : Math.round(colPx * 0.063)) + "px",
+      onBg: onP.bg, onFg: onP.fg, offBg: offP.bg, offFg: offP.fg,
+      csOpen: oi !== null,
+      csTitle: c ? cp.title : "",
+      csNum: c ? "CATALOGUE " + cp.n : "",
+      csCover: c ? (c.cover || cp.img) : "",
+      csGoal: c ? c.goal : "",
+      csIntro: c ? c.intro.map(([label, body]) => ({ label, body })) : [],
+      csProcess: c ? c.process.map(([tt, body], j) => {
+        const on = !!this.state.tab[oi + "-" + j];
+        return {
+          t: tt, body, on, n: String(j + 1).padStart(2, "0"), mark: on ? "−" : "+",
+          toggle: () => this.setState(s => ({ tab: { ...s.tab, [oi + "-" + j]: !s.tab[oi + "-" + j] } }))
+        };
+      }) : [],
+      csResults: c ? c.results.map(([label, body, img]) => ({ label, body, img: img || "", hasImg: !!img })) : [],
+      csMeta: c ? [
+        { k: c.metaKey || "BRAND", v: c.brand },
+        { k: "ROLE", v: c.role },
+        { k: "YEAR", v: c.year },
+        { k: "DELIVERABLES", v: c.deliverables }
+      ] : [],
+      csNextLabel: c ? "NEXT — " + PROJECTS[nextI].title.toUpperCase() : "",
+      csMobile: mobile,
+      csArrows: !mobile,
+      csPad: mobile ? "12px" : "40px 110px",
+      csCardW: mobile ? "100%" : "min(1100px, 100%)",
+      csCardH: mobile ? "100svh" : "86svh",
+      csCardR: mobile ? "0px" : "16px",
+      csDir: mobile ? "column-reverse" : "row",
+      csColPad: mobile ? "22px 20px 60px" : "32px 38px 76px",
+      csSideW: mobile ? "100%" : (this.state.w < 1180 ? "200px" : "220px"),
+      csSideBorder: mobile ? "none" : "1px solid #E6E1D6",
+      csSideBorderB: mobile ? "1px solid #E6E1D6" : "none",
+      csIntroCols: mobile || (Math.min(1100, this.state.w - 220) - (this.state.w < 1180 ? 236 : 296) - 76) < 560 ? "1fr" : "1fr 1fr",
+      csIntroGap: mobile || (Math.min(1100, this.state.w - 220) - (this.state.w < 1180 ? 236 : 296) - 76) < 560 ? "28px" : "38px",
+      csCustom: !!(c && c.custom),
+      csGeneric: !(c && (c.custom || c.ai || c.orion || c.bb || c.tp || c.im)),
+      csSplitCols: mobile || (Math.min(1100, this.state.w - 220) - (this.state.w < 1180 ? 236 : 296) - 76) < 560 ? "1fr" : "1fr 2fr",
+      csBleed: mobile ? "-20px" : "-38px",
+      csOutline: this.state.w >= 600,
+      csBeforeAfter: enc(WEB + "Starise - before vs after.webp"),
+      csIdentity: enc(WEB + "Starise - brand identity.webp"),
+      csSketch: SKETCH,
+      csFrame: enc(WEB + "Starise - Brand Guidelines p1.webp"),
+      csAccent: (c && c.accent) || "#221F1A",
+      csAI: !!(c && c.ai),
+      csOrion: !!(c && c.orion),
+      csBB: !!(c && c.bb),
+      csTP: !!(c && c.tp),
+      csIM: !!(c && c.im),
+      imOutcomeCols: mobile ? "1fr" : "repeat(3,minmax(0,1fr))",
+      imFlow: ["Sign in", "License Verification", "Module Configuration", "Role Configuration", "Export User Data", "Setup Confirmation", "Done"]
+        .map((t, i, a) => ({ t, arrowC: i === a.length - 1 ? "transparent" : "#8A8175" })),
+      imOutcomes: [
+        { t: "Clearer setup", b: "A structured path from sign-in to completion." },
+        { t: "Reusable foundation", b: "Components created for future onboarding scenarios." },
+        { t: "Developer-ready", b: "Clickable prototype + documented interaction behaviour." }
+      ],
+      m1On: !!this.state.pOpen[41], m1Mark: this.state.pOpen[41] ? "\u2212" : "+", m1Toggle: () => this.togglePart(41),
+      m2On: !!this.state.pOpen[42], m2Mark: this.state.pOpen[42] ? "\u2212" : "+", m2Toggle: () => this.togglePart(42),
+      m3On: !!this.state.pOpen[43], m3Mark: this.state.pOpen[43] ? "\u2212" : "+", m3Toggle: () => this.togglePart(43),
+      m4On: !!this.state.pOpen[44], m4Mark: this.state.pOpen[44] ? "\u2212" : "+", m4Toggle: () => this.togglePart(44),
+      tpProblem: TP("problem statement"),
+      tpPoster: TP("poster full-width"),
+      tpConcept: enc("uploads/taipei-people/concept.webp"),
+      tpTable: TP("design concept"),
+      tpStoryboard: TP("storyboard"),
+      tpUI: TP("UI"),
+      tpExhibition: TP("exhibition"),
+      tpFeatCols: mobile ? "1fr" : "0.85fr 1.15fr",
+      tpVidCols: mobile ? "1fr" : "1.1fr 1fr",
+      tpLineW: mobile ? "70%" : "300px",
+      tpVidSmall: ["ui-1-open", "ui-1-after", "ui-2-open", "ui-2-a"].map(n => ({
+        src: "uploads/taipei-video/" + n + ".mp4",
+        play: e => { const v = e.currentTarget; v.play && v.play().catch(() => {}); },
+        stop: e => { const v = e.currentTarget; v.pause && v.pause(); },
+        toggle: e => { const v = e.currentTarget; if (v.paused) { v.play().catch(() => {}); } else { v.pause(); } }
+      })),
+      tpVidLarge: "uploads/taipei-video/starting-page.mp4",
+      tpVidLargePlay: e => { const v = e.currentTarget; v.play && v.play().catch(() => {}); },
+      tpVidLargeStop: e => { const v = e.currentTarget; v.pause && v.pause(); },
+      tpVidLargeToggle: e => { const v = e.currentTarget; if (v.paused) { v.play().catch(() => {}); } else { v.pause(); } },
+      tpFeatures: [
+        { t: "Projection Mapping", b: "Physical Mahjong tile tracking triggers scenes and narrative moments." },
+        { t: "Multisensory Cues", b: "Audio, motion, and light work together to build the atmosphere." },
+        { t: "User’s POV", b: "Players take on the first-person role of Manager Wu as Yin Xue-Yan’s story unfolds." }
+      ],
+      t1On: !!this.state.pOpen[31], t1Mark: this.state.pOpen[31] ? "\u2212" : "+", t1Toggle: () => this.togglePart(31),
+      t2On: !!this.state.pOpen[32], t2Mark: this.state.pOpen[32] ? "\u2212" : "+", t2Toggle: () => this.togglePart(32),
+      t3On: !!this.state.pOpen[33], t3Mark: this.state.pOpen[33] ? "\u2212" : "+", t3Toggle: () => this.togglePart(33),
+      t4On: !!this.state.pOpen[34], t4Mark: this.state.pOpen[34] ? "\u2212" : "+", t4Toggle: () => this.togglePart(34),
+      bbPoster: BB("section 1 fullwidth poster"),
+      bbProblem: BB("problem statement"),
+      bbStoryboard: BB("storyboarding"),
+      bb3DLarge: BB("3D (3)"),
+      bb3DRow: ["3D (1)", "3D (2)", "3D (4)"].map(n => ({ src: BB(n) })),
+      bbChannels: ["INSTAGRAM", "YOUTUBE", "EXHIBITION", "BRAND BOOK"].map(t => ({ t })),
+      bbSocialCols: mobile ? "repeat(2,minmax(0,1fr))" : "repeat(3,minmax(0,1fr))",
+      bbSocial: [
+        { src: BB("instagram (1)"), ratio: "1010/1200" },
+        { src: BB("instagram (2)"), ratio: "1010/1200" },
+        { src: BB("instagram (3)"), ratio: "1010/1200" }
+      ],
+      bbYoutube: BB("youtube"),
+      bbOverflowBg: BB("overflow background"),
+      bbFloats: BB_FLOATS.map(f => ({
+        src: BB(f.f), left: f.l, top: f.tp, w: f.w, ratio: f.r,
+        anim: this.state.bbSeen ? "bbFloatIn 700ms cubic-bezier(.2,.7,.3,1) " + f.d + "ms both" : "none",
+        op: this.state.bbSeen ? 1 : 0
+      })),
+      b1On: !!this.state.pOpen[21], b1Mark: this.state.pOpen[21] ? "\u2212" : "+", b1Toggle: () => this.togglePart(21),
+      b2On: !!this.state.pOpen[22], b2Mark: this.state.pOpen[22] ? "\u2212" : "+", b2Toggle: () => this.togglePart(22),
+      b3On: !!this.state.pOpen[23], b3Mark: this.state.pOpen[23] ? "\u2212" : "+", b3Toggle: () => this.togglePart(23),
+      csOrionCols: mobile ? "minmax(0,1fr)" : "minmax(0,1fr) minmax(0,1fr)",
+      csOrionBoxRatio: mobile ? "1/1" : "2/1",
+      csOrionVidCols: mobile ? "minmax(0,1fr)" : "minmax(0,1.15fr) minmax(0,0.6fr) minmax(0,1.45fr)",
+      csOrionBleed: mobile ? "0px" : "-92px",
+      csOLogos: enc(WEB3 + "Orion Suite - logos.webp"),
+      csOMockup: enc(WEB3 + "Orion Suite - mockup.webp"),
+      csOBrochure: enc(WEB3 + "Orion Suite - brochure.webp"),
+      csOWebsite: enc(WEB3 + "Orion Suite - website.webp"),
+      csOVideo: enc(WEB3 + "Orion Suite - video.webp"),
+      csOThumb1: enc(WEB3 + "thumb-1.webp"),
+      csOThumb2: enc(WEB3 + "thumb-2.webp"),
+      csAI2Products: enc(WEB2 + "AI Feature - 2 products.webp"),
+      csAudit1: enc(WEB2 + "Design process - Research.webp"),
+      csAudit2: enc(WEB2 + "Design process - Research 2 benchmark analysis.webp"),
+      csFComposite: enc(WEB2 + "Design process - Research  Findings REFERENCE layout.webp"),
+      csSplitCols2: mobile || (Math.min(1100, this.state.w - 220) - (this.state.w < 1180 ? 200 : 220) - 76) < 560 ? "1fr" : "2fr 1fr",
+      csF1: enc(WEB2 + "Design process - Research  Findings 1.webp"),
+      csF2: enc(WEB2 + "Design process - Research  Findings 2.webp"),
+      csF3: enc(WEB2 + "Design process - Research  Findings 3.webp"),
+      csSystem: enc(WEB2 + "Design process - Building the Design system.webp"),
+      csBAApp: enc(WEB2 + "Design process - before vs after app.webp"),
+      csBADesktop: enc(WEB2 + "Design process - desktop before vs after.webp"),
+      csProtoApp: enc(WEB2 + "Prototype - Concio App wireframe + mockup.webp"),
+      csProtoDesktop: enc(WEB2 + "Prototype - Desktop wireframe + mockup.webp"),
+      csPoC: enc(WEB2 + "Result - Succesful PoC.webp"),
+      csReferences: enc(WEB2 + "Design process - Building the Design references.webp"),
+      a1On: !!this.state.pOpen[11], a1Mark: this.state.pOpen[11] ? "\u2212" : "+", a1Toggle: () => this.togglePart(11),
+      a2On: !!this.state.pOpen[12], a2Mark: this.state.pOpen[12] ? "\u2212" : "+", a2Toggle: () => this.togglePart(12),
+      a3On: !!this.state.pOpen[13], a3Mark: this.state.pOpen[13] ? "\u2212" : "+", a3Toggle: () => this.togglePart(13),
+      a4On: !!this.state.pOpen[14], a4Mark: this.state.pOpen[14] ? "\u2212" : "+", a4Toggle: () => this.togglePart(14),
+      a5On: !!this.state.pOpen[15], a5Mark: this.state.pOpen[15] ? "\u2212" : "+", a5Toggle: () => this.togglePart(15),
+      csGuideLayers: GUIDES.map((src, i) => ({ src, op: i === this.state.gIdx % GUIDES.length ? 1 : 0 })),
+      csHalfCols: mobile || (Math.min(1100, this.state.w - 220) - (this.state.w < 1180 ? 236 : 296) - 76) < 560 ? "1fr" : "1fr 1fr",
+      csBleedB: mobile ? "-60px" : "-76px",
+      p1On: !!this.state.pOpen[1], p1Mark: this.state.pOpen[1] ? "\u2212" : "+", p1Toggle: () => this.togglePart(1),
+      p2On: !!this.state.pOpen[2], p2Mark: this.state.pOpen[2] ? "\u2212" : "+", p2Toggle: () => this.togglePart(2),
+      p3On: !!this.state.pOpen[3], p3Mark: this.state.pOpen[3] ? "\u2212" : "+", p3Toggle: () => this.togglePart(3),
+      csIter: VERSIONS.map((list, vi) => {
+        const cur = this.state.iter[vi];
+        const sl = this.state.slots[vi];
+        return {
+          label: "V" + (vi + 1),
+          count: (cur + 1) + "/" + list.length,
+          caption: ITER_CAPTIONS[vi],
+          imgA: list[sl.a % list.length],
+          imgB: list[sl.b % list.length],
+          opA: cur % 2 === 0 ? 1 : 0,
+          opB: cur % 2 === 0 ? 0 : 1,
+          enter: () => { preload(list[(cur + 1) % list.length]); this.startIter(vi); },
+          leave: () => this.stopIter(),
+          step: () => { this.stopIter(); this.stepIter(vi); }
+        };
+      }),
+      csResultBg: enc(WEB + "Starise - Result Background.webp"),
+      csResultFg: enc(WEB + "Starise - Result.png"),
+      csOutlineImg: enc(WEB + "logo-outline-alpha.png"),
+      csOrigin: this.state.origin,
+      csAnim: this.state.navK === 0
+        ? "csIn 400ms cubic-bezier(.2,.7,.3,1) both"
+        : (this.state.navDir > 0 ? "csNext" : "csPrev") + (this.state.navK % 2 ? "A" : "B") + " 380ms cubic-bezier(.2,.7,.3,1) both",
+      csStop: e => e.stopPropagation(),
+      csClose: () => { this.lock(false); this.setState({ open: null }); },
+      csPrev: openAt(oi === null ? 0 : (oi - 1 + PROJECTS.length) % PROJECTS.length, -1),
+      csNext: openAt(nextI, 1),
+      cursorW: "200px",
+      cursorH: "135px",
+      cursorM: "-67px 0 0 -100px",
+      cursorR: this.state.word === "work" ? "46% / 40%" : "0",
+      cursorPos: "center",
+      cursorSize: this.state.word === "work" ? "cover" : "contain",
+      cursorBorder: this.state.word === "work" ? "9px solid #14110C" : "none",
+      cursorBg: this.state.word === "work" ? t.card : "transparent",
+      cursorShadow: this.state.word === "work" ? "0 18px 44px rgba(28,25,23,0.26)" : "none",
+      setLight: () => this.setState({ dark: false }),
+      setDark: () => this.setState({ dark: true })
+    };
+  }
+}
+
+</script>
+</body>
+</html>
