@@ -14,7 +14,7 @@
   <meta property="og:title" content="About — Michelle Ivanna">
   <meta property="og:image" content="uploads/og-card.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Instrument+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     html, body { margin: 0; padding: 0; }
     * { box-sizing: border-box; }
@@ -50,10 +50,10 @@
 <div style="min-height:100svh; background:#F5F1E8; color:#221F1A; display:flex; flex-direction:column">
 
   <div style="position:sticky; top:0; z-index:20; background:#F5F1E8">
-    <div style="width:{{ colW }}; margin:0 auto; padding:22px 0 18px; display:flex; justify-content:space-between; align-items:center; font:400 12px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; text-transform:uppercase">
+    <div style="width:{{ colW }}; margin:0 auto; padding:22px 0 18px; display:flex; justify-content:space-between; align-items:center; font:500 12px/1 'Instrument Sans',sans-serif; letter-spacing:0.16em; text-transform:uppercase">
       <a href="index.html" style="white-space:nowrap">Michelle Ivanna</a>
       <div style="display:{{ navInline }}; align-items:center; gap:20px; color:#8A8175">
-        <a href="about.html" style="border-bottom:1px solid currentColor; padding-bottom:3px; color:#221F1A">ABOUT</a>
+        <a href="about.html" style="padding-bottom:3px; color:#221F1A">ABOUT</a>
         <a href="https://drive.google.com/drive/u/0/folders/1CJvvFFPd7QkCUoXoe0JsUWqQHb4xipkD" target="_blank" rel="noopener" style="color:#221F1A">CV</a>
         <div onClick="{{ openContact }}" onKeyDown="{{ contactKey }}" tabindex="0" style="cursor:pointer; color:#221F1A">CONTACT</div>
       </div>
@@ -66,10 +66,11 @@
 
   <div style="flex:1; width:{{ colW }}; margin:0 auto; padding:{{ padY }} 0 0; display:grid; grid-template-columns:{{ cols }}; grid-template-areas:{{ areas }}; column-gap:{{ gap }}; row-gap:{{ rowGap }}; align-items:end">
 
+    <div style="grid-area:bioblock; display:{{ wrapD }}; flex-direction:column; justify-content:flex-end; gap:{{ leftGap }}">
     <div style="grid-area:bio; align-self:start; animation:fadeUp 700ms ease both">
       <div style="display:flex; flex-direction:column; gap:20px; max-width:52ch">
-        <div style="font:400 {{ leadSize }} 'IBM Plex Mono',monospace; color:#221F1A; text-wrap:pretty">Hi again, here's what the project don't tell you.</div>
-        <div style="display:grid; grid-template-columns:auto 1fr; gap:9px 18px; font:400 {{ paraSize }} 'IBM Plex Mono',monospace">
+        <div style="font:400 {{ leadSize }} 'Instrument Sans',sans-serif; color:#221F1A; text-wrap:pretty">Hi again, here's what the project don't tell you.</div>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:9px 18px; font:400 {{ paraSize }} 'Instrument Sans',sans-serif">
           <span style="color:#8A8175">From:</span><span style="color:#221F1A">Indonesia</span>
           <span style="color:#8A8175">Languages:</span><span style="color:#221F1A">Indonesian, English, Chinese</span>
           <span style="color:#8A8175">Education:</span><span style="color:#221F1A">B.Sc in Interaction Design, top of cohort graduate</span>
@@ -78,13 +79,13 @@
           <span style="color:#8A8175">Coffee or tea:</span><span style="color:#221F1A">Matcha</span>
         </div>
         <sc-if value="{{ bioClosed }}" hint-placeholder-val="{{ true }}">
-          <div style="font:400 {{ paraSize }} 'IBM Plex Mono',monospace; color:#4A443B; text-wrap:pretty">I love Taipei more than I expected to: the orderly queues, the serene riverside, and public facilities that just work.<span onClick="{{ openBio }}" onKeyDown="{{ bioKey }}" tabindex="0" style="cursor:pointer; color:#3D4C80; padding-left:7px; white-space:nowrap">… more</span></div>
+          <div style="font:400 {{ paraSize }} 'Instrument Sans',sans-serif; color:#4A443B; text-wrap:pretty">I love Taipei more than I expected to: the orderly queues, the serene riverside, and public facilities that just work.<span onClick="{{ openBio }}" onKeyDown="{{ bioKey }}" tabindex="0" style="cursor:pointer; color:#3D4C80; padding-left:7px; white-space:nowrap">… more</span></div>
         </sc-if>
         <sc-if value="{{ bioOpen }}" hint-placeholder-val="{{ false }}">
           <div style="display:flex; flex-direction:column; gap:20px; align-items:flex-start">
-            <div style="font:400 {{ paraSize }} 'IBM Plex Mono',monospace; color:#4A443B; text-wrap:pretty">I love Taipei more than I expected to: the orderly queues, the serene riverside, and public facilities that just work. After graduation, I continued my marketing design job and do freelance work on the side; both have given me real-world exposure and taught me how design decisions actually get made.</div>
-            <div style="font:400 {{ paraSize }} 'IBM Plex Mono',monospace; color:#4A443B; text-wrap:pretty">Someone asked me once what I do when nobody's watching. I said I like to make sense of things. Most of what's here is that.</div>
-            <div onClick="{{ closeBio }}" onKeyDown="{{ bioKey }}" tabindex="0" style="cursor:pointer; font:400 9.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">LESS</div>
+            <div style="font:400 {{ paraSize }} 'Instrument Sans',sans-serif; color:#4A443B; text-wrap:pretty">I love Taipei more than I expected to: the orderly queues, the serene riverside, and public facilities that just work. After graduation, I continued my marketing design job and do freelance work on the side; both have given me real-world exposure and taught me how design decisions actually get made.</div>
+            <div style="font:400 {{ paraSize }} 'Instrument Sans',sans-serif; color:#4A443B; text-wrap:pretty">Someone asked me once what I do when nobody's watching. I said I like to make sense of things. Most of what's here is that.</div>
+            <div onClick="{{ closeBio }}" onKeyDown="{{ bioKey }}" tabindex="0" style="cursor:pointer; font:500 9.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175">LESS</div>
           </div>
         </sc-if>
       </div>
@@ -95,11 +96,12 @@
       <div style="animation:fadeUp 900ms cubic-bezier(.2,.7,.3,1) both; animation-delay:130ms">The</div>
       <div style="animation:fadeUp 900ms cubic-bezier(.2,.7,.3,1) both; animation-delay:260ms">Record</div>
     </div>
+    </div>
 
     <div style="grid-area:pola; align-self:end; justify-self:{{ polaJustify }}; position:relative; width:{{ polaW }}; background:#FFFFFF; border:1px solid #DCD2BE; padding:9px 9px 0; box-shadow:3px 5px 12px rgba(34,31,26,0.14); transform:rotate({{ polaTilt }})">
       <div style="position:absolute; top:-8px; left:50%; margin-left:-8px; width:16px; height:16px; border-radius:50%; background:#D9CDB4; box-shadow:0 1px 2px rgba(34,31,26,0.18)"></div>
       <img src="uploads/ph-taipei-tech.jpeg" alt="Michelle at National Taipei University of Technology" style="width:100%; aspect-ratio:1206 / 678; object-fit:cover; display:block; background:#EFE9DA" />
-      <div style="padding:10px 1px 12px; font:400 9.5px/1.4 'IBM Plex Mono',monospace; letter-spacing:0.09em; color:#8A8175; text-align:center">Taipei Tech, 2025</div>
+      <div style="padding:10px 1px 12px; font:500 9.5px/1.4 'Instrument Sans',sans-serif; letter-spacing:0.09em; color:#8A8175; text-align:center">Taipei Tech, 2025</div>
     </div>
 
     <div style="grid-area:shelf; align-self:end; position:relative; padding-bottom:26px; display:flex; flex-direction:column; align-items:center">
@@ -170,12 +172,12 @@
       <svg viewBox="0 0 1000 14" preserveAspectRatio="none" style="position:absolute; left:0; right:0; bottom:19px; width:100%; height:14px; overflow:visible; pointer-events:none; z-index:2">
         <path d="M2 8.4 C 96 6.2, 188 9.1, 286 7.4 C 388 5.6, 470 8.8, 552 7.1 C 640 5.3, 726 8.6, 812 6.9 C 884 5.6, 944 8.2, 998 6.6" fill="none" stroke="#221F1A" stroke-width="1.6" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
       </svg>
-      <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#A9A092; position:absolute; right:2px; bottom:0; white-space:nowrap">CLICK A BOOK TO READ IT</div>
+      <div style="font:500 8.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#A9A092; position:absolute; right:2px; bottom:0; white-space:nowrap">CLICK A BOOK TO READ IT</div>
     </div>
 
   </div>
 
-  <div style="width:{{ colW }}; margin:0 auto; padding:{{ padY }} 0 40px; display:flex; flex-wrap:wrap; gap:12px 20px; justify-content:space-between; border-top:1px solid #E6E1D6; padding-top:14px; font:400 9.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; color:#8A8175">
+  <div style="width:{{ colW }}; margin:0 auto; padding:{{ padY }} 0 40px; display:flex; flex-wrap:wrap; gap:12px 20px; justify-content:space-between; border-top:1px solid #E6E1D6; padding-top:14px; font:500 9.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.16em; color:#8A8175">
     <div>© MICHELLE IVANNA 2026</div>
     <div style="display:flex; align-items:baseline; gap:10px">
       <span>TAIPEI</span>
@@ -185,7 +187,7 @@
 
   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
   <div onClick="{{ closeMenu }}" style="position:fixed; inset:0; z-index:55; background:rgba(28,25,23,0.4); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); animation:csFade 240ms ease both">
-    <div onClick="{{ stop }}" style="background:#F5F1E8; padding:26px 28px 30px; display:flex; flex-direction:column; gap:22px; font:400 12px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; color:#221F1A">
+    <div onClick="{{ stop }}" style="background:#F5F1E8; padding:26px 28px 30px; display:flex; flex-direction:column; gap:22px; font:500 12px/1 'Instrument Sans',sans-serif; letter-spacing:0.16em; color:#221F1A">
       <div style="display:flex; justify-content:space-between; align-items:center">
         <span>MENU</span>
         <span onClick="{{ closeMenu }}" style="cursor:pointer; font-size:15px">✕</span>
@@ -204,8 +206,8 @@
       <div style="flex:1; min-width:0; min-height:0; display:flex; align-items:stretch; background:#FBF8F1; border:1px solid rgba(34,31,26,0.35)">
 
       <div style="flex:1 1 0; min-width:0; min-height:0; position:relative; overflow-y:auto; scrollbar-width:none; -ms-overflow-style:none; mask-image:linear-gradient(to bottom, #000 0, #000 calc(100% - 26px), transparent 100%); padding:{{ bookColPad }}; display:flex; flex-direction:column; gap:{{ pageGap }}; box-shadow:inset -16px 0 26px -20px rgba(34,31,26,0.3)">
-        <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.24em; color:#8A8175; text-align:center">SUMMARY</div>
-        <div style="font:400 {{ bookTitleSize }} 'Instrument Serif',serif; color:#3D4C80; text-align:center; text-wrap:pretty">{{ bookTitle }}</div>
+        <div style="font:500 8.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.24em; color:#8A8175; text-align:center">SUMMARY</div>
+        <div style="font:600 {{ bookTitleSize }} 'Instrument Serif',serif; color:#3D4C80; text-align:center; text-wrap:pretty">{{ bookTitle }}</div>
 
         <sc-if value="{{ b0 }}" hint-placeholder-val="{{ true }}">
         <div style="display:flex; flex-direction:column; gap:16px">
@@ -249,15 +251,15 @@
           <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">She will watch or read almost anything from Alain de Botton and The School of Life.</div>
           <div style="display:flex; flex-direction:column; gap:11px; text-align:center; margin-top:auto; padding-top:14px">
             <div style="display:flex; flex-direction:column; gap:2px">
-              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">LATEST GOOD READ</div>
+              <div style="font:500 8px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175">LATEST GOOD READ</div>
               <div style="font:400 {{ listSize }} Newsreader,serif; color:#221F1A">Anxious People, Fredrik Backman</div>
             </div>
             <div style="display:flex; flex-direction:column; gap:2px">
-              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">FEEL-GOOD FILM</div>
+              <div style="font:500 8px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175">FEEL-GOOD FILM</div>
               <div style="font:400 {{ listSize }} Newsreader,serif; color:#221F1A">Little Miss Sunshine</div>
             </div>
             <div style="display:flex; flex-direction:column; gap:2px">
-              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">CURRENT HOBBY</div>
+              <div style="font:500 8px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175">CURRENT HOBBY</div>
               <div style="font:400 {{ listSize }} Newsreader,serif; color:#221F1A">Documenting life on a secondhand Sony A6500 with a Tamron 18-50</div>
             </div>
           </div>
@@ -279,29 +281,29 @@
             <sc-if value="{{ b0 }}" hint-placeholder-val="{{ true }}">
               <div onPointerDown="{{ ph0.down }}" style="position:absolute; top:0; right:0; width:{{ ph0.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph0.dx }}, {{ ph0.dy }}) rotate({{ ph0.rot }}); transition:{{ ph0.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph0.z }}">
                 <img src="uploads/ph-on-timeline.jpg" alt="Michelle reading on a park bench" draggable="false" style="width:100%; aspect-ratio:1.327; object-fit:cover; display:block; background:#EFE9DA" />
-                <div style="padding:6px 2px 8px; font:400 7.5px/1.4 'IBM Plex Mono',monospace; letter-spacing:0.08em; color:#8A8175; text-align:center">STILL READING</div>
+                <div style="padding:6px 2px 8px; font:500 7.5px/1.4 'Instrument Sans',sans-serif; letter-spacing:0.08em; color:#8A8175; text-align:center">STILL READING</div>
               </div>
             </sc-if>
 
             <sc-if value="{{ b2 }}" hint-placeholder-val="{{ false }}">
               <div onPointerDown="{{ ph0.down }}" style="position:absolute; top:0; right:0; width:{{ ph0.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph0.dx }}, {{ ph0.dy }}) rotate({{ ph0.rot }}); transition:{{ ph0.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph0.z }}">
                 <img src="uploads/ph-piano-mini.jpg" alt="Michelle at three, at the piano" draggable="false" style="width:100%; aspect-ratio:1.334; object-fit:cover; display:block; background:#EFE9DA" />
-                <div style="padding:6px 2px 8px; font:400 7.5px/1.4 'IBM Plex Mono',monospace; letter-spacing:0.08em; color:#8A8175; text-align:center">AGE THREE</div>
+                <div style="padding:6px 2px 8px; font:500 7.5px/1.4 'Instrument Sans',sans-serif; letter-spacing:0.08em; color:#8A8175; text-align:center">AGE THREE</div>
               </div>
               <div onPointerDown="{{ ph1.down }}" style="position:absolute; top:0; right:0; width:{{ ph1.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph1.dx }}, {{ ph1.dy }}) rotate({{ ph1.rot }}); transition:{{ ph1.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph1.z }}">
                 <img src="uploads/ph-piano-old.jpg" alt="Michelle at a piano recital" draggable="false" style="width:100%; aspect-ratio:0.75; object-fit:cover; display:block; background:#EFE9DA" />
-                <div style="padding:6px 2px 8px; font:400 7.5px/1.4 'IBM Plex Mono',monospace; letter-spacing:0.08em; color:#8A8175; text-align:center">RECITAL NIGHT</div>
+                <div style="padding:6px 2px 8px; font:500 7.5px/1.4 'Instrument Sans',sans-serif; letter-spacing:0.08em; color:#8A8175; text-align:center">RECITAL NIGHT</div>
               </div>
             </sc-if>
 
             <sc-if value="{{ b4 }}" hint-placeholder-val="{{ false }}">
               <div onPointerDown="{{ ph0.down }}" style="position:absolute; top:0; right:0; width:{{ ph0.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph0.dx }}, {{ ph0.dy }}) rotate({{ ph0.rot }}); transition:{{ ph0.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph0.z }}">
                 <img src="uploads/ph-things-made-her.jpg" alt="Self-portrait in a mirror" draggable="false" style="width:100%; aspect-ratio:1.333; object-fit:cover; display:block; background:#EFE9DA" />
-                <div style="padding:6px 2px 8px; font:400 7.5px/1.4 'IBM Plex Mono',monospace; letter-spacing:0.08em; color:#8A8175; text-align:center">A6500 + TAMRON 18-50</div>
+                <div style="padding:6px 2px 8px; font:500 7.5px/1.4 'Instrument Sans',sans-serif; letter-spacing:0.08em; color:#8A8175; text-align:center">A6500 + TAMRON 18-50</div>
               </div>
               <div onPointerDown="{{ ph1.down }}" style="position:absolute; top:0; right:0; width:{{ ph1.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph1.dx }}, {{ ph1.dy }}) rotate({{ ph1.rot }}); transition:{{ ph1.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph1.z }}">
                 <img src="uploads/ph-anxious-people.jpg" alt="Anxious People, Fredrik Backman" draggable="false" style="width:100%; aspect-ratio:0.664; object-fit:cover; display:block; background:#EFE9DA" />
-                <div style="padding:6px 2px 8px; font:400 7.5px/1.4 'IBM Plex Mono',monospace; letter-spacing:0.08em; color:#8A8175; text-align:center">LATEST GOOD READ</div>
+                <div style="padding:6px 2px 8px; font:500 7.5px/1.4 'Instrument Sans',sans-serif; letter-spacing:0.08em; color:#8A8175; text-align:center">LATEST GOOD READ</div>
               </div>
             </sc-if>
 
@@ -318,27 +320,27 @@
         <div style="width:100%; max-width:300px; position:relative; margin-top:auto">
 
           <div onPointerDown="{{ cardDown }}" style="position:relative; z-index:{{ cardZ }}; background:#FDFBF4; border:1px solid #C9BFA9; padding:13px 14px 22px; transform:translateY({{ cardY }}); transition:{{ cardTrans }}; cursor:grab; touch-action:none; user-select:none">
-            <div style="display:flex; justify-content:space-between; font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175"><span>812.54</span><span>{{ bookCode }}</span></div>
-            <div style="margin:10px 0 12px; padding:5px 0; border-top:1.5px solid #3D4C80; border-bottom:1.5px solid #3D4C80; font:500 10px/1 'IBM Plex Mono',monospace; letter-spacing:0.2em; color:#3D4C80; text-align:center">OFF THE RECORD</div>
-            <div style="display:grid; grid-template-columns:1fr 1.25fr; font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; border-bottom:1px solid #C9BFA9; padding-bottom:5px">
+            <div style="display:flex; justify-content:space-between; font:500 8px/1 'Instrument Sans',sans-serif; letter-spacing:0.14em; color:#8A8175"><span>812.54</span><span>{{ bookCode }}</span></div>
+            <div style="margin:10px 0 12px; padding:5px 0; border-top:1.5px solid #3D4C80; border-bottom:1.5px solid #3D4C80; font:500 10px/1 'Instrument Sans',sans-serif; letter-spacing:0.2em; color:#3D4C80; text-align:center">OFF THE RECORD</div>
+            <div style="display:grid; grid-template-columns:1fr 1.25fr; font:500 8px/1 'Instrument Sans',sans-serif; letter-spacing:0.14em; color:#8A8175; border-bottom:1px solid #C9BFA9; padding-bottom:5px">
               <span>DATE</span><span style="border-left:1px solid #C9BFA9; padding-left:10px">BORROWER</span>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1.25fr; border-bottom:1px solid #DED5C2; padding:8px 0; font:400 10px/1 'IBM Plex Mono',monospace; color:#221F1A">
+            <div style="display:grid; grid-template-columns:1fr 1.25fr; border-bottom:1px solid #DED5C2; padding:8px 0; font:500 10px/1 'Instrument Sans',sans-serif; color:#221F1A">
               <span>{{ tpeDate }}</span><span style="border-left:1px solid #DED5C2; padding-left:10px; font-family:Newsreader,serif; font-size:13px">you, just now</span>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1.25fr; border-bottom:1px solid #DED5C2; padding:8px 0; font:400 10px/1 'IBM Plex Mono',monospace; color:#8A8175">
+            <div style="display:grid; grid-template-columns:1fr 1.25fr; border-bottom:1px solid #DED5C2; padding:8px 0; font:500 10px/1 'Instrument Sans',sans-serif; color:#8A8175">
               <span>DUE</span><span style="border-left:1px solid #DED5C2; padding-left:10px; font-family:Newsreader,serif; font-size:13px">whenever</span>
             </div>
             <sc-if value="{{ showShelfRow }}" hint-placeholder-val="{{ true }}">
-              <div style="display:grid; grid-template-columns:1fr 1.25fr; border-bottom:1px solid #DED5C2; padding:8px 0; font:400 10px/1 'IBM Plex Mono',monospace; color:#8A8175">
+              <div style="display:grid; grid-template-columns:1fr 1.25fr; border-bottom:1px solid #DED5C2; padding:8px 0; font:500 10px/1 'Instrument Sans',sans-serif; color:#8A8175">
                 <span>SHELF</span><span style="border-left:1px solid #DED5C2; padding-left:10px; font-family:Newsreader,serif; font-size:13px">{{ bookTitle }}</span>
               </div>
             </sc-if>
           </div>
 
           <div style="position:absolute; left:-6px; right:-6px; bottom:0; height:{{ pocketH }}; z-index:2; background:#EFE7D4; border:1px solid #C4B99F; border-radius:2px 2px 3px 3px; box-shadow:inset 0 12px 18px -13px rgba(34,31,26,0.4), 0 3px 8px -6px rgba(34,31,26,0.3); pointer-events:none; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:6px; padding-bottom:16px">
-            <div style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.22em; color:#6E6659">RETURN CARD</div>
-            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#9A9083">DRAG THE CARD UP</div>
+            <div style="font:500 9px/1 'Instrument Sans',sans-serif; letter-spacing:0.22em; color:#6E6659">RETURN CARD</div>
+            <div style="font:500 8.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.14em; color:#9A9083">DRAG THE CARD UP</div>
           </div>
 
         </div>
@@ -346,7 +348,7 @@
       </div>
     </div>
 
-    <div style="padding:9px 16px 8px; background:#221F1A; font:400 10px/1.2 'IBM Plex Mono',monospace; letter-spacing:0.2em; color:#F5F1E8; text-align:center">TAP ANYWHERE OUTSIDE THE BOOK TO RETURN</div>
+    <div style="padding:9px 16px 8px; background:#221F1A; font:500 10px/1.2 'Instrument Sans',sans-serif; letter-spacing:0.2em; color:#F5F1E8; text-align:center">TAP ANYWHERE OUTSIDE THE BOOK TO RETURN</div>
   </div>
   </sc-if>
 
@@ -355,30 +357,30 @@
     <div onClick="{{ stop }}" style="width:min(520px, 100%); background:#FFFFFF; border-radius:18px; box-shadow:0 30px 80px rgba(28,25,23,0.4); padding:34px 32px 30px; display:flex; flex-direction:column; gap:26px; animation:bookIn 340ms cubic-bezier(.2,.7,.3,1) both">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px">
         <div style="font:400 32px/1.12 'Instrument Serif',serif; color:#221F1A; text-wrap:pretty">Building something new? Let's talk.</div>
-        <div onClick="{{ closeContact }}" style="cursor:pointer; font:400 15px/1 'IBM Plex Mono',monospace; color:#8A8175; padding:4px">✕</div>
+        <div onClick="{{ closeContact }}" style="cursor:pointer; font:400 15px/1 'Instrument Sans',sans-serif; color:#8A8175; padding:4px">✕</div>
       </div>
       <div style="display:flex; flex-direction:column; gap:0">
         <div style="display:flex; align-items:baseline; gap:16px; padding-bottom:11px; border-bottom:1px solid #E6E1D6">
-          <div style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">TO</div>
+          <div style="font:500 9px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">TO</div>
           <a href="mailto:michelle.ivanna02@gmail.com" style="flex:1; min-width:0; font:400 15px/1.5 Newsreader,serif; color:#221F1A; word-break:break-all">michelle.ivanna02@gmail.com</a>
-          <div onClick="{{ copyMail }}" onKeyDown="{{ copyKey }}" tabindex="0" style="cursor:pointer; font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:{{ copyFg }}; white-space:nowrap; padding:4px">{{ copyLabel }}</div>
+          <div onClick="{{ copyMail }}" onKeyDown="{{ copyKey }}" tabindex="0" style="cursor:pointer; font:500 9px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:{{ copyFg }}; white-space:nowrap; padding:4px">{{ copyLabel }}</div>
         </div>
         <div style="display:flex; align-items:baseline; gap:16px; padding:11px 0; border-bottom:1px solid #E6E1D6">
-          <div style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">FROM</div>
+          <div style="font:500 9px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">FROM</div>
           <input type="email" value="{{ cFrom }}" onChange="{{ setFrom }}" placeholder="you@example.com" style="flex:1; min-width:0; border:none; outline:none; background:transparent; font:400 15px/1.5 Newsreader,serif; color:#221F1A">
         </div>
         <div style="display:flex; align-items:baseline; gap:16px; padding:11px 0; border-bottom:1px solid #E6E1D6">
-          <div style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">SUBJECT</div>
+          <div style="font:500 9px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">SUBJECT</div>
           <input type="text" value="{{ cSubj }}" onChange="{{ setSubj }}" placeholder="Say hello" style="flex:1; min-width:0; border:none; outline:none; background:transparent; font:400 15px/1.5 Newsreader,serif; color:#221F1A">
         </div>
         <div style="display:flex; align-items:flex-start; gap:16px; padding:11px 0 0">
-          <div style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none; padding-top:5px">MESSAGE</div>
+          <div style="font:500 9px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none; padding-top:5px">MESSAGE</div>
           <textarea value="{{ cMsg }}" onChange="{{ setMsg }}" rows="4" placeholder="A line or two about what you're building." style="flex:1; min-width:0; border:none; outline:none; background:transparent; resize:vertical; font:400 15px/1.6 Newsreader,serif; color:#221F1A"></textarea>
         </div>
       </div>
       <div style="display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap">
-        <div style="font:400 12px/1.7 'IBM Plex Mono',monospace; color:#8A8175">or connect through <a href="https://www.linkedin.com/in/michelle-ivanna/" target="_blank" rel="noopener" style="color:#221F1A; border-bottom:1px solid currentColor">LinkedIn</a></div>
-        <div onClick="{{ sendMail }}" onKeyDown="{{ sendKey }}" tabindex="0" style="cursor:pointer; padding:11px 26px 10px; border:1px solid #221F1A; border-radius:999px; font:400 9.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.2em; color:#221F1A">SEND</div>
+        <div style="font:400 12px/1.7 'Instrument Sans',sans-serif; color:#8A8175">or connect through <a href="https://www.linkedin.com/in/michelle-ivanna/" target="_blank" rel="noopener" style="color:#221F1A; border-bottom:1px solid currentColor">LinkedIn</a></div>
+        <div onClick="{{ sendMail }}" onKeyDown="{{ sendKey }}" tabindex="0" style="cursor:pointer; padding:11px 26px 10px; border:1px solid #221F1A; border-radius:999px; font:500 9.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.2em; color:#221F1A">SEND</div>
       </div>
     </div>
   </div>
@@ -411,11 +413,11 @@ function fontFor(b, w, hpx) {
 const QUILL_AT = 3;
 
 const BOOKS = [
-  { title: "On\u00A0Timeline", bg: "#E4F04B", fg: "#221F1A", wk: 2.6, fam: "700 @/1 Archivo,'Helvetica Neue',sans-serif", sans: true, ls: "-0.015em", charmTop: "", charmFoot: "", charmK: 0.3, charmFont: "400 10px/1 'IBM Plex Mono',monospace", rest: -3 },
-  { title: "On How I Work", bg: "#2E4A7D", fg: "#F2EFE6", wk: 1.25, fam: "400 @/1 Newsreader,serif", ls: "0.01em", charmTop: "", charmFoot: "", charmK: 0.3, charmFont: "400 10px/1 'IBM Plex Mono',monospace", rest: 3 },
-  { title: "The Musical Book", bg: "#F4643A", fg: "#FCF8F0", wk: 1.65, fam: "500 @/1 Newsreader,serif", ls: "0.005em", charmTop: "", piano: true, charmFoot: "", charmK: 0.22, charmFont: "400 12px/1 'IBM Plex Mono',monospace", rest: 0 },
-  { title: "The\u00A0Need\u00A0For\u00A0Order", bg: "#A9BC9C", fg: "#22301F", wk: 1.95, fam: "600 @/1 Archivo,'Helvetica Neue',sans-serif", sans: true, ls: "-0.005em", charmTop: "◆", charmFoot: "", charmK: 0.5, charmFont: "400 11px/1 'IBM Plex Mono',monospace", rest: 0 },
-  { title: "Things That Made Her", bg: "#3E1B27", fg: "#E9A6BE", wk: 2.3, fam: "400 @/1 'Instrument Serif',serif", ls: "0.005em", charmTop: "est.", charmFoot: "2003", charmK: 0.15, charmFont: "400 11px/1 'IBM Plex Mono',monospace", rest: -4 }
+  { title: "On\u00A0Timeline", bg: "#E4F04B", fg: "#221F1A", wk: 2.6, fam: "700 @/1 Archivo,'Helvetica Neue',sans-serif", sans: true, ls: "-0.015em", charmTop: "", charmFoot: "", charmK: 0.3, charmFont: "400 10px/1 'Instrument Sans',sans-serif", rest: -3 },
+  { title: "On How I Work", bg: "#2E4A7D", fg: "#F2EFE6", wk: 1.25, fam: "400 @/1 Newsreader,serif", ls: "0.01em", charmTop: "", charmFoot: "", charmK: 0.3, charmFont: "400 10px/1 'Instrument Sans',sans-serif", rest: 3 },
+  { title: "The Musical Book", bg: "#F4643A", fg: "#FCF8F0", wk: 1.65, fam: "500 @/1 Newsreader,serif", ls: "0.005em", charmTop: "", piano: true, charmFoot: "", charmK: 0.22, charmFont: "400 12px/1 'Instrument Sans',sans-serif", rest: 0 },
+  { title: "The\u00A0Need\u00A0For\u00A0Order", bg: "#A9BC9C", fg: "#22301F", wk: 1.95, fam: "600 @/1 Archivo,'Helvetica Neue',sans-serif", sans: true, ls: "-0.005em", charmTop: "◆", charmFoot: "", charmK: 0.5, charmFont: "400 11px/1 'Instrument Sans',sans-serif", rest: 0 },
+  { title: "Things That Made Her", bg: "#3E1B27", fg: "#E9A6BE", wk: 2.3, fam: "400 @/1 'Instrument Serif',serif", ls: "0.005em", charmTop: "est.", charmFoot: "2003", charmK: 0.15, charmFont: "400 11px/1 'Instrument Sans',sans-serif", rest: -4 }
 ];
 
 class Component extends DCLogic {
@@ -636,16 +638,18 @@ class Component extends DCLogic {
       quillH: quillH + "px",
       colW: colPx + "px",
       cols: stacked ? polaPx + "px 1fr" : leftPx + "px " + shelfPx + "px",
-      areas: stacked ? "'bio bio' 'pola rec' 'shelf shelf'" : "'bio pola' 'rec shelf'",
+      areas: stacked ? "'bio bio' 'pola rec' 'shelf shelf'" : "'bioblock pola' 'bioblock shelf'",
       gap: gridGap + "px",
       rowGap: (mobile ? 40 : 60) + "px",
       polaW: polaPx + "px",
       polaJustify: stacked ? "start" : "center",
       polaTilt: mobile ? "-5.5deg" : "-2.5deg",
       recJustify: "end",
+      wrapD: stacked ? "contents" : "flex",
+      leftGap: (mobile ? 40 : 56) + "px",
       padY: mobile ? "40px" : "60px",
-      leadSize: mobile ? "14px/1.7" : "15px/1.7",
-      paraSize: mobile ? "11.5px/1.95" : "12px/2",
+      leadSize: mobile ? "16px/1.6" : "17px/1.6",
+      paraSize: mobile ? "13px/1.72" : "14px/1.75",
       titleSize: (stacked ? Math.max(38, Math.round((colPx - polaPx - gridGap) * 0.23)) : Math.min(104, Math.round(leftPx * 0.27))) + "px",
       bioOpen: !!this.state.bioOpen,
       bioClosed: !this.state.bioOpen,
