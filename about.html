@@ -14,12 +14,36 @@
   <meta property="og:title" content="About — Michelle Ivanna">
   <meta property="og:image" content="uploads/og-card.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400&family=Newsreader:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; background: #F5F1E8; }
+    html, body { margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
+    body { background: #F5F1E8; -webkit-font-smoothing: antialiased; }
     a { color: #221F1A; text-decoration: none; }
-    a:hover { color: #8A3A21; }
+    a:hover { color: #3D4C80; }
+    a:focus-visible, [tabindex]:focus-visible { outline: 1px solid currentColor; outline-offset: 5px; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    @keyframes csFade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes bookIn { from { opacity: 0; transform: translateY(26px) rotate(-1deg); } to { opacity: 1; transform: none; } }
+    @keyframes pullOut {
+      0%   { transform: rotateZ(var(--rest, 0deg)) rotateX(0deg) translateZ(0); }
+      20%  { transform: rotateZ(calc(var(--rest, 0deg) * 0.6)) rotateX(-9deg) translateZ(10px); }
+      34%  { transform: rotateZ(calc(var(--rest, 0deg) * 0.3)) rotateX(-10deg) translateZ(26px); }
+      62%  { transform: rotateZ(0deg) rotateX(-6deg) translateZ(96px); }
+      82%  { transform: rotateZ(0deg) rotateX(-3deg) translateZ(210px); opacity: 0.72; }
+      100% { transform: rotateZ(0deg) rotateX(0deg) translateZ(400px) scale(1.06); opacity: 0; }
+    }
+    @keyframes putBack {
+      0%   { transform: rotateZ(0deg) rotateX(0deg) translateZ(400px) scale(1.06); opacity: 0; }
+      20%  { transform: rotateZ(0deg) rotateX(-3deg) translateZ(210px); opacity: 0.72; }
+      42%  { transform: rotateZ(0deg) rotateX(-6deg) translateZ(96px); opacity: 1; }
+      70%  { transform: rotateZ(calc(var(--rest, 0deg) * 0.3)) rotateX(-10deg) translateZ(26px); }
+      86%  { transform: rotateZ(calc(var(--rest, 0deg) * 0.6)) rotateX(-9deg) translateZ(10px); }
+      100% { transform: rotateZ(var(--rest, 0deg)) rotateX(0deg) translateZ(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    }
   </style>
 </helmet>
 
@@ -27,77 +51,672 @@
 
   <div style="position:sticky; top:0; z-index:20; background:#F5F1E8">
     <div style="width:{{ colW }}; margin:0 auto; padding:22px 0 18px; display:flex; justify-content:space-between; align-items:center; font:400 12px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; text-transform:uppercase">
-      <div>Michelle Ivanna</div>
-      <div style="display:flex; align-items:center; gap:20px; color:#8A8175">
-        <a href="index.html">WORK</a>
+      <a href="index.html" style="white-space:nowrap">Michelle Ivanna</a>
+      <div style="display:{{ navInline }}; align-items:center; gap:20px; color:#8A8175">
         <a href="about.html" style="border-bottom:1px solid currentColor; padding-bottom:3px; color:#221F1A">ABOUT</a>
+        <a href="https://drive.google.com/drive/u/0/folders/1CJvvFFPd7QkCUoXoe0JsUWqQHb4xipkD" target="_blank" rel="noopener" style="color:#221F1A">CV</a>
+        <div onClick="{{ openContact }}" onKeyDown="{{ contactKey }}" tabindex="0" style="cursor:pointer; color:#221F1A">CONTACT</div>
+      </div>
+      <div onClick="{{ toggleMenu }}" onKeyDown="{{ menuKey }}" tabindex="0" style="display:{{ burgerD }}; cursor:pointer; flex-direction:column; gap:4px; padding:6px 2px">
+        <div style="width:20px; height:1px; background:#221F1A"></div>
+        <div style="width:20px; height:1px; background:#221F1A"></div>
       </div>
     </div>
   </div>
 
-  <div style="flex:1; display:flex; align-items:center">
-    <div style="width:{{ colW }}; margin:0 auto; padding:{{ padY }} 0">
-      <div style="font:400 {{ heroSize }} 'Instrument Serif',serif; line-height:1.2">
-        <sc-for list="{{ lines }}" as="ln" hint-placeholder-count="2">
-          <div style="display:flex; flex-wrap:wrap; gap:0 11px">
-            <sc-for list="{{ ln.words }}" as="w" hint-placeholder-count="4">
-              <span style="opacity:{{ w.o }}; transition:opacity 700ms ease">{{ w.t }}</span>
-            </sc-for>
+  <div style="flex:1; width:{{ colW }}; margin:0 auto; padding:{{ padY }} 0 0; display:grid; grid-template-columns:{{ cols }}; grid-template-areas:{{ areas }}; column-gap:{{ gap }}; row-gap:{{ rowGap }}; align-items:end">
+
+    <div style="grid-area:bio; align-self:start; animation:fadeUp 700ms ease both">
+      <div style="display:flex; flex-direction:column; gap:20px; max-width:52ch">
+        <div style="font:400 {{ leadSize }} 'IBM Plex Mono',monospace; color:#221F1A; text-wrap:pretty">Hi again, here's what the project don't tell you.</div>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:9px 18px; font:400 {{ paraSize }} 'IBM Plex Mono',monospace">
+          <span style="color:#8A8175">From:</span><span style="color:#221F1A">Indonesia</span>
+          <span style="color:#8A8175">Languages:</span><span style="color:#221F1A">Indonesian, English, Chinese</span>
+          <span style="color:#8A8175">Education:</span><span style="color:#221F1A">B.Sc in Interaction Design, top of cohort graduate</span>
+          <span style="color:#8A8175">Currently:</span><span style="color:#221F1A">grappling with AI, figuring out how to make design work more efficiently</span>
+          <span style="color:#8A8175">Go-to tools:</span><span style="color:#221F1A">Figma for UI/UX, Adobe Suite for old times' sake</span>
+          <span style="color:#8A8175">Coffee or tea:</span><span style="color:#221F1A">Matcha</span>
+        </div>
+        <sc-if value="{{ bioClosed }}" hint-placeholder-val="{{ true }}">
+          <div style="font:400 {{ paraSize }} 'IBM Plex Mono',monospace; color:#4A443B; text-wrap:pretty">I love Taipei more than I expected to: the orderly queues, the serene riverside, and public facilities that just work.<span onClick="{{ openBio }}" onKeyDown="{{ bioKey }}" tabindex="0" style="cursor:pointer; color:#3D4C80; padding-left:7px; white-space:nowrap">… more</span></div>
+        </sc-if>
+        <sc-if value="{{ bioOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; gap:20px; align-items:flex-start">
+            <div style="font:400 {{ paraSize }} 'IBM Plex Mono',monospace; color:#4A443B; text-wrap:pretty">I love Taipei more than I expected to: the orderly queues, the serene riverside, and public facilities that just work. After graduation, I continued my marketing design job and do freelance work on the side; both have given me real-world exposure and taught me how design decisions actually get made.</div>
+            <div style="font:400 {{ paraSize }} 'IBM Plex Mono',monospace; color:#4A443B; text-wrap:pretty">Someone asked me once what I do when nobody's watching. I said I like to make sense of things. Most of what's here is that.</div>
+            <div onClick="{{ closeBio }}" onKeyDown="{{ bioKey }}" tabindex="0" style="cursor:pointer; font:400 9.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">LESS</div>
           </div>
-        </sc-for>
+        </sc-if>
       </div>
+    </div>
+
+    <div style="grid-area:rec; align-self:end; justify-self:{{ recJustify }}; font:400 {{ titleSize }}/0.94 'Instrument Serif',serif; color:#3D4C80; letter-spacing:-0.015em; text-align:right">
+      <div style="animation:fadeUp 900ms cubic-bezier(.2,.7,.3,1) both">Off</div>
+      <div style="animation:fadeUp 900ms cubic-bezier(.2,.7,.3,1) both; animation-delay:130ms">The</div>
+      <div style="animation:fadeUp 900ms cubic-bezier(.2,.7,.3,1) both; animation-delay:260ms">Record</div>
+    </div>
+
+    <div style="grid-area:pola; align-self:end; justify-self:{{ polaJustify }}; position:relative; width:{{ polaW }}; background:#FFFFFF; border:1px solid #DCD2BE; padding:9px 9px 0; box-shadow:3px 5px 12px rgba(34,31,26,0.14); transform:rotate({{ polaTilt }})">
+      <div style="position:absolute; top:-8px; left:50%; margin-left:-8px; width:16px; height:16px; border-radius:50%; background:#D9CDB4; box-shadow:0 1px 2px rgba(34,31,26,0.18)"></div>
+      <img src="uploads/ph-taipei-tech.jpeg" alt="Michelle at National Taipei University of Technology" style="width:100%; aspect-ratio:1206 / 678; object-fit:cover; display:block; background:#EFE9DA" />
+      <div style="padding:10px 1px 12px; font:400 9.5px/1.4 'IBM Plex Mono',monospace; letter-spacing:0.09em; color:#8A8175; text-align:center">Taipei Tech, 2025</div>
+    </div>
+
+    <div style="grid-area:shelf; align-self:end; position:relative; padding-bottom:26px; display:flex; flex-direction:column; align-items:center">
+      <div style="width:100%; display:flex; align-items:flex-end; justify-content:{{ shelfJustify }}; gap:{{ shelfGap }}; perspective:1400px; perspective-origin:50% 90%; padding:0 22px 0 14px">
+
+        <div style="flex:none; width:{{ s0.slotW }}; display:flex; align-items:flex-end; justify-content:center">
+          <div id="bk0" onClick="{{ s0.down }}" onMouseEnter="{{ s0.enter }}" onMouseLeave="{{ s0.leave }}" onKeyDown="{{ s0.key }}" tabindex="0" style="width:{{ s0.w }}; height:{{ s0.h }}; background:#E4F04B; color:#221F1A; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:12px 0; cursor:pointer; touch-action:none; user-select:none; position:relative; z-index:{{ s0.z }}; transform:{{ s0.t }}; transform-origin:center bottom; transform-style:preserve-3d; box-shadow:{{ s0.shadow }}; transition:{{ s0.trans }}">
+            <div style="width:100%; height:1px; background:currentColor; opacity:0.55"></div>
+            <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0; padding:6px 0">
+              <span style="writing-mode:vertical-rl; text-orientation:mixed; font:{{ s0.font }}; letter-spacing:-0.015em; white-space:nowrap">On Timeline</span>
+            </div>
+            <div style="width:100%; height:1px; background:currentColor; opacity:0.55"></div>
+          </div>
+        </div>
+
+        <div style="flex:none; width:{{ s1.slotW }}; display:flex; align-items:flex-end; justify-content:center">
+          <div id="bk1" onClick="{{ s1.down }}" onMouseEnter="{{ s1.enter }}" onMouseLeave="{{ s1.leave }}" onKeyDown="{{ s1.key }}" tabindex="0" style="width:{{ s1.w }}; height:{{ s1.h }}; background:#2E4A7D; color:#F2EFE6; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:12px 0; cursor:pointer; touch-action:none; user-select:none; position:relative; z-index:{{ s1.z }}; transform:{{ s1.t }}; transform-origin:center bottom; transform-style:preserve-3d; box-shadow:{{ s1.shadow }}; transition:{{ s1.trans }}">
+            <div style="width:100%; height:1px; background:currentColor; opacity:0.55"></div>
+            <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0; padding:6px 0">
+              <span style="writing-mode:vertical-rl; text-orientation:mixed; font:{{ s1.font }}; letter-spacing:0.01em; white-space:nowrap">On How I Work</span>
+            </div>
+            <div style="width:100%; height:1px; background:currentColor; opacity:0.55"></div>
+          </div>
+        </div>
+
+        <div style="flex:none; width:{{ s2.slotW }}; display:flex; align-items:flex-end; justify-content:center">
+          <div id="bk2" onClick="{{ s2.down }}" onMouseEnter="{{ s2.enter }}" onMouseLeave="{{ s2.leave }}" onKeyDown="{{ s2.key }}" tabindex="0" style="width:{{ s2.w }}; height:{{ s2.h }}; background:#F4643A; color:#FCF8F0; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:12px 0; cursor:pointer; touch-action:none; user-select:none; position:relative; z-index:{{ s2.z }}; transform:{{ s2.t }}; transform-origin:center bottom; transform-style:preserve-3d; box-shadow:{{ s2.shadow }}; transition:{{ s2.trans }}">
+            <div style="min-height:11px; display:flex; align-items:center; justify-content:center">
+              <div style="width:{{ s2.pianoW }}; height:{{ s2.pianoH }}; border:1px solid currentColor; background-image:repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px {{ s2.pianoKey }}); background-position:2px 0; background-size:auto 58%; background-repeat:repeat-x"></div>
+            </div>
+            <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0; padding:6px 0">
+              <span style="writing-mode:vertical-rl; text-orientation:mixed; font:{{ s2.font }}; letter-spacing:0.005em; white-space:nowrap">The Musical Book</span>
+            </div>
+            <div style="min-height:11px"></div>
+          </div>
+        </div>
+
+        <div style="flex:none; width:{{ quillSlotW }}; display:flex; align-items:flex-end; justify-content:center">
+          <img src="uploads/quill-ink-blue.png" alt="Quill and ink, line drawing" style="height:{{ quillH }}; width:auto; display:block; pointer-events:none; position:relative; z-index:6">
+        </div>
+
+        <div style="flex:none; width:{{ s3.slotW }}; display:flex; align-items:flex-end; justify-content:center">
+          <div id="bk3" onClick="{{ s3.down }}" onMouseEnter="{{ s3.enter }}" onMouseLeave="{{ s3.leave }}" onKeyDown="{{ s3.key }}" tabindex="0" style="width:{{ s3.w }}; height:{{ s3.h }}; background:#A9BC9C; color:#22301F; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:12px 0; cursor:pointer; touch-action:none; user-select:none; position:relative; z-index:{{ s3.z }}; transform:{{ s3.t }}; transform-origin:center bottom; transform-style:preserve-3d; box-shadow:{{ s3.shadow }}; transition:{{ s3.trans }}">
+            <div style="min-height:11px; display:flex; align-items:center; justify-content:center">
+              <span style="font:{{ s3.charmFont }}; letter-spacing:0.1em; opacity:0.9">◆</span>
+            </div>
+            <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0; padding:6px 0">
+              <span style="writing-mode:vertical-rl; text-orientation:mixed; font:{{ s3.font }}; letter-spacing:-0.005em; white-space:nowrap">The Need For Order</span>
+            </div>
+            <div style="min-height:11px"></div>
+          </div>
+        </div>
+
+        <div style="flex:none; width:{{ s4.slotW }}; display:flex; align-items:flex-end; justify-content:center">
+          <div id="bk4" onClick="{{ s4.down }}" onMouseEnter="{{ s4.enter }}" onMouseLeave="{{ s4.leave }}" onKeyDown="{{ s4.key }}" tabindex="0" style="width:{{ s4.w }}; height:{{ s4.h }}; background:#3E1B27; color:#E9A6BE; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:12px 0; cursor:pointer; touch-action:none; user-select:none; position:relative; z-index:{{ s4.z }}; transform:{{ s4.t }}; transform-origin:center bottom; transform-style:preserve-3d; box-shadow:{{ s4.shadow }}; transition:{{ s4.trans }}">
+            <div style="min-height:11px; display:flex; align-items:center; justify-content:center">
+              <span style="font:{{ s4.charmFont }}; letter-spacing:0.1em; opacity:0.9">est.</span>
+            </div>
+            <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0; padding:6px 0">
+              <span style="writing-mode:vertical-rl; text-orientation:mixed; font:{{ s4.font }}; letter-spacing:0.005em; white-space:nowrap">Things That Made Her</span>
+            </div>
+            <div style="font:{{ s4.charmFont }}; letter-spacing:0.12em; opacity:0.9; min-height:11px">2003</div>
+          </div>
+        </div>
+
+      </div>
+
+      <svg viewBox="0 0 1000 14" preserveAspectRatio="none" style="position:absolute; left:0; right:0; bottom:19px; width:100%; height:14px; overflow:visible; pointer-events:none; z-index:2">
+        <path d="M2 8.4 C 96 6.2, 188 9.1, 286 7.4 C 388 5.6, 470 8.8, 552 7.1 C 640 5.3, 726 8.6, 812 6.9 C 884 5.6, 944 8.2, 998 6.6" fill="none" stroke="#221F1A" stroke-width="1.6" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+      </svg>
+      <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#A9A092; position:absolute; right:2px; bottom:0; white-space:nowrap">CLICK A BOOK TO READ IT</div>
+    </div>
+
+  </div>
+
+  <div style="width:{{ colW }}; margin:0 auto; padding:{{ padY }} 0 40px; display:flex; flex-wrap:wrap; gap:12px 20px; justify-content:space-between; border-top:1px solid #E6E1D6; padding-top:14px; font:400 9.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; color:#8A8175">
+    <div>© MICHELLE IVANNA 2026</div>
+    <div style="display:flex; align-items:baseline; gap:10px">
+      <span>TAIPEI</span>
+      <span style="color:#221F1A">{{ tpeTime }}</span>
     </div>
   </div>
 
-  <div style="width:{{ colW }}; margin:0 auto; padding:0 0 40px; display:flex; justify-content:space-between; border-top:1px solid #E6E1D6; padding-top:14px; font:400 9.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; color:#8A8175">
-    <div>© MICHELLE IVANNA 2026</div>
-    <div style="display:flex; gap:20px">
-      <a href="mailto:michelle.ivanna02@gmail.com">CONTACT</a>
-      <a href="https://www.linkedin.com/in/michelle-ivanna/" target="_blank" rel="noopener">LINKEDIN</a>
-      <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener">RESUME</a>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeMenu }}" style="position:fixed; inset:0; z-index:55; background:rgba(28,25,23,0.4); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); animation:csFade 240ms ease both">
+    <div onClick="{{ stop }}" style="background:#F5F1E8; padding:26px 28px 30px; display:flex; flex-direction:column; gap:22px; font:400 12px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; color:#221F1A">
+      <div style="display:flex; justify-content:space-between; align-items:center">
+        <span>MENU</span>
+        <span onClick="{{ closeMenu }}" style="cursor:pointer; font-size:15px">✕</span>
+      </div>
+      <a href="index.html">WORK</a>
+      <a href="https://drive.google.com/drive/u/0/folders/1CJvvFFPd7QkCUoXoe0JsUWqQHb4xipkD" target="_blank" rel="noopener">CV</a>
+      <div onClick="{{ openContact }}" style="cursor:pointer">CONTACT</div>
     </div>
   </div>
+  </sc-if>
+
+  <sc-if value="{{ bookOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeBook }}" style="position:fixed; inset:0; z-index:65; background:rgba(28,25,23,0.46); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:{{ bookPad }}; animation:csFade 260ms ease both">
+
+    <div onClick="{{ stop }}" style="width:min(1040px, 92vw, calc(82svh * 1.41)); height:calc(min(1040px, 92vw, 82svh * 1.41) / 1.41); padding:{{ coverPad }}; overflow:hidden; background:{{ bookColor }}; border:1.5px solid #221F1A; box-shadow:0 34px 90px rgba(28,25,23,0.44); animation:bookIn 420ms cubic-bezier(.2,.8,.3,1) both; display:flex">
+      <div style="flex:1; min-width:0; min-height:0; display:flex; align-items:stretch; background:#FBF8F1; border:1px solid rgba(34,31,26,0.35)">
+
+      <div style="flex:1 1 0; min-width:0; min-height:0; position:relative; overflow-y:auto; scrollbar-width:none; -ms-overflow-style:none; mask-image:linear-gradient(to bottom, #000 0, #000 calc(100% - 26px), transparent 100%); padding:{{ bookColPad }}; display:flex; flex-direction:column; gap:{{ pageGap }}; box-shadow:inset -16px 0 26px -20px rgba(34,31,26,0.3)">
+        <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.24em; color:#8A8175; text-align:center">SUMMARY</div>
+        <div style="font:400 {{ bookTitleSize }} 'Instrument Serif',serif; color:#3D4C80; text-align:center; text-wrap:pretty">{{ bookTitle }}</div>
+
+        <sc-if value="{{ b0 }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; flex-direction:column; gap:16px">
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">Michelle is in what she calls a "mild" identity crisis.</div>
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">The symptoms are common enough: a suspicion that everyone else is further along, an internet built to confirm it, and a timeline she never actually agreed to.</div>
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">She is slowly coming round to the idea that the timeline was invented, and that arriving late is mostly a matter of whose clock you were reading.</div>
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">She is not past this. She simply no longer believes the premise.</div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ b1 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; gap:16px">
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">Michelle is suspicious of shortcuts, and equally suspicious of years of experience as a measure of anything.</div>
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">What she trusts instead: how quickly someone grasps a new thing, whether they can explain it back, whether they will wander into business or engineering to understand a problem properly.</div>
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">Most of what she knows, she learned sideways.</div>
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">Given the choice, she takes the harder route. It teaches more, and she is not in a hurry.</div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ b2 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; gap:16px">
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">At three, Michelle's mother packed her bag and walked her into a Yamaha music school, as was the norm.</div>
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">She stayed long enough to earn a diploma and has never known quite what to do with it. She was never the competition-winning kind. She kept going anyway.</div>
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">When she moved to Taipei her Chinese had not caught up yet, so she joined the piano club because she needed somewhere to practice. She was the only foreigner. They listened to what each other was working on, and that turned out to be enough.</div>
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">Somewhere in there the nagging stopped being necessary. Piano became a language of its own, and she could disappear into it.</div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ b3 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; gap:16px">
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">Michelle needs to know the shape of a thing before she is comfortable inside it.</div>
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">She plans. She tidies. She gets twitchy around a messy workflow or a baseless claim.</div>
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">For a long time she thought this was a personality flaw with a useful professional side effect. It isn't. Noticing what is out of place is what caring looks like up close.</div>
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">A former colleague put it as careful planning and complete ownership from start to finish. She owns every word.</div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ b4 }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1; min-height:0; display:flex; flex-direction:column; gap:16px">
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">Michelle's interests are scattered but not random. Philosophy, books, films, whatever the current hobby is. They tend to circle the same thing: how a person grows, and what it takes.</div>
+          <div style="font:400 {{ proseSize }} Newsreader,serif; color:#221F1A; text-wrap:pretty">She will watch or read almost anything from Alain de Botton and The School of Life.</div>
+          <div style="display:flex; flex-direction:column; gap:11px; text-align:center; margin-top:auto; padding-top:14px">
+            <div style="display:flex; flex-direction:column; gap:2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">LATEST GOOD READ</div>
+              <div style="font:400 {{ listSize }} Newsreader,serif; color:#221F1A">Anxious People, Fredrik Backman</div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">FEEL-GOOD FILM</div>
+              <div style="font:400 {{ listSize }} Newsreader,serif; color:#221F1A">Little Miss Sunshine</div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:2px">
+              <div style="font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175">CURRENT HOBBY</div>
+              <div style="font:400 {{ listSize }} Newsreader,serif; color:#221F1A">Documenting life on a secondhand Sony A6500 with a Tamron 18-50</div>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+      </div>
+
+      <div style="flex:none; width:1.5px; background:#221F1A; opacity:0.55"></div>
+
+      <div style="flex:1 1 0; min-width:0; min-height:0; overflow:hidden; padding:{{ bookColPad }}; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; box-shadow:inset 16px 0 26px -20px rgba(34,31,26,0.3); position:relative">
+        <sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}">
+          <div style="position:relative; width:100%; height:{{ stackH }}">
+            <svg viewBox="0 0 22 54" style="position:absolute; top:-16px; right:10px; width:20px; height:49px; z-index:40; pointer-events:none; filter:drop-shadow(0 2px 2px rgba(34,31,26,0.32))">
+              <rect x="2.6" y="2.6" width="16.8" height="48.8" rx="8.4" fill="none" stroke="#9BA2AE" stroke-width="2.6"></rect>
+              <rect x="7.7" y="9.4" width="6.6" height="34" rx="3.3" fill="none" stroke="#A8AFBA" stroke-width="2.1"></rect>
+            </svg>
+
+            <sc-if value="{{ b0 }}" hint-placeholder-val="{{ true }}">
+              <div onPointerDown="{{ ph0.down }}" style="position:absolute; top:0; right:0; width:{{ ph0.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph0.dx }}, {{ ph0.dy }}) rotate({{ ph0.rot }}); transition:{{ ph0.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph0.z }}">
+                <img src="uploads/ph-on-timeline.jpg" alt="Michelle reading on a park bench" draggable="false" style="width:100%; aspect-ratio:1.327; object-fit:cover; display:block; background:#EFE9DA" />
+                <div style="padding:6px 2px 8px; font:400 7.5px/1.4 'IBM Plex Mono',monospace; letter-spacing:0.08em; color:#8A8175; text-align:center">STILL READING</div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ b2 }}" hint-placeholder-val="{{ false }}">
+              <div onPointerDown="{{ ph0.down }}" style="position:absolute; top:0; right:0; width:{{ ph0.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph0.dx }}, {{ ph0.dy }}) rotate({{ ph0.rot }}); transition:{{ ph0.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph0.z }}">
+                <img src="uploads/ph-piano-mini.jpg" alt="Michelle at three, at the piano" draggable="false" style="width:100%; aspect-ratio:1.334; object-fit:cover; display:block; background:#EFE9DA" />
+                <div style="padding:6px 2px 8px; font:400 7.5px/1.4 'IBM Plex Mono',monospace; letter-spacing:0.08em; color:#8A8175; text-align:center">AGE THREE</div>
+              </div>
+              <div onPointerDown="{{ ph1.down }}" style="position:absolute; top:0; right:0; width:{{ ph1.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph1.dx }}, {{ ph1.dy }}) rotate({{ ph1.rot }}); transition:{{ ph1.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph1.z }}">
+                <img src="uploads/ph-piano-old.jpg" alt="Michelle at a piano recital" draggable="false" style="width:100%; aspect-ratio:0.75; object-fit:cover; display:block; background:#EFE9DA" />
+                <div style="padding:6px 2px 8px; font:400 7.5px/1.4 'IBM Plex Mono',monospace; letter-spacing:0.08em; color:#8A8175; text-align:center">RECITAL NIGHT</div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ b4 }}" hint-placeholder-val="{{ false }}">
+              <div onPointerDown="{{ ph0.down }}" style="position:absolute; top:0; right:0; width:{{ ph0.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph0.dx }}, {{ ph0.dy }}) rotate({{ ph0.rot }}); transition:{{ ph0.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph0.z }}">
+                <img src="uploads/ph-things-made-her.jpg" alt="Self-portrait in a mirror" draggable="false" style="width:100%; aspect-ratio:1.333; object-fit:cover; display:block; background:#EFE9DA" />
+                <div style="padding:6px 2px 8px; font:400 7.5px/1.4 'IBM Plex Mono',monospace; letter-spacing:0.08em; color:#8A8175; text-align:center">A6500 + TAMRON 18-50</div>
+              </div>
+              <div onPointerDown="{{ ph1.down }}" style="position:absolute; top:0; right:0; width:{{ ph1.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph1.dx }}, {{ ph1.dy }}) rotate({{ ph1.rot }}); transition:{{ ph1.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph1.z }}">
+                <img src="uploads/ph-anxious-people.jpg" alt="Anxious People, Fredrik Backman" draggable="false" style="width:100%; aspect-ratio:0.664; object-fit:cover; display:block; background:#EFE9DA" />
+                <div style="padding:6px 2px 8px; font:400 7.5px/1.4 'IBM Plex Mono',monospace; letter-spacing:0.08em; color:#8A8175; text-align:center">LATEST GOOD READ</div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ pianoSticker }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute; left:0; bottom:-6px; width:46px; padding:5px; background:#FFFFFF; border-radius:4px; box-shadow:2px 5px 12px rgba(34,31,26,0.26); transform:rotate(-7deg); z-index:12">
+                <div style="height:36px; background:#221F1A; border-radius:2px; position:relative; overflow:hidden">
+                  <div style="position:absolute; inset:0; background-image:repeating-linear-gradient(90deg, #FBF8F1 0 5px, #221F1A 5px 6px)"></div>
+                  <div style="position:absolute; top:0; left:0; right:0; height:58%; background-image:repeating-linear-gradient(90deg, transparent 0 3px, #221F1A 3px 6.4px, transparent 6.4px 12px)"></div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+        <div style="width:100%; max-width:300px; position:relative; margin-top:auto">
+
+          <div onPointerDown="{{ cardDown }}" style="position:relative; z-index:{{ cardZ }}; background:#FDFBF4; border:1px solid #C9BFA9; padding:13px 14px 22px; transform:translateY({{ cardY }}); transition:{{ cardTrans }}; cursor:grab; touch-action:none; user-select:none">
+            <div style="display:flex; justify-content:space-between; font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175"><span>812.54</span><span>{{ bookCode }}</span></div>
+            <div style="margin:10px 0 12px; padding:5px 0; border-top:1.5px solid #3D4C80; border-bottom:1.5px solid #3D4C80; font:500 10px/1 'IBM Plex Mono',monospace; letter-spacing:0.2em; color:#3D4C80; text-align:center">OFF THE RECORD</div>
+            <div style="display:grid; grid-template-columns:1fr 1.25fr; font:400 8px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#8A8175; border-bottom:1px solid #C9BFA9; padding-bottom:5px">
+              <span>DATE</span><span style="border-left:1px solid #C9BFA9; padding-left:10px">BORROWER</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1.25fr; border-bottom:1px solid #DED5C2; padding:8px 0; font:400 10px/1 'IBM Plex Mono',monospace; color:#221F1A">
+              <span>{{ tpeDate }}</span><span style="border-left:1px solid #DED5C2; padding-left:10px; font-family:Newsreader,serif; font-size:13px">you, just now</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1.25fr; border-bottom:1px solid #DED5C2; padding:8px 0; font:400 10px/1 'IBM Plex Mono',monospace; color:#8A8175">
+              <span>DUE</span><span style="border-left:1px solid #DED5C2; padding-left:10px; font-family:Newsreader,serif; font-size:13px">whenever</span>
+            </div>
+            <sc-if value="{{ showShelfRow }}" hint-placeholder-val="{{ true }}">
+              <div style="display:grid; grid-template-columns:1fr 1.25fr; border-bottom:1px solid #DED5C2; padding:8px 0; font:400 10px/1 'IBM Plex Mono',monospace; color:#8A8175">
+                <span>SHELF</span><span style="border-left:1px solid #DED5C2; padding-left:10px; font-family:Newsreader,serif; font-size:13px">{{ bookTitle }}</span>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="position:absolute; left:-6px; right:-6px; bottom:0; height:{{ pocketH }}; z-index:2; background:#EFE7D4; border:1px solid #C4B99F; border-radius:2px 2px 3px 3px; box-shadow:inset 0 12px 18px -13px rgba(34,31,26,0.4), 0 3px 8px -6px rgba(34,31,26,0.3); pointer-events:none; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:6px; padding-bottom:16px">
+            <div style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.22em; color:#6E6659">RETURN CARD</div>
+            <div style="font:400 8.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; color:#9A9083">DRAG THE CARD UP</div>
+          </div>
+
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div style="padding:9px 16px 8px; background:#221F1A; font:400 10px/1.2 'IBM Plex Mono',monospace; letter-spacing:0.2em; color:#F5F1E8; text-align:center">TAP ANYWHERE OUTSIDE THE BOOK TO RETURN</div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ contactOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeContact }}" style="position:fixed; inset:0; z-index:70; background:rgba(28,25,23,0.42); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px); display:flex; align-items:center; justify-content:center; padding:24px; animation:csFade 260ms ease both">
+    <div onClick="{{ stop }}" style="width:min(520px, 100%); background:#FFFFFF; border-radius:18px; box-shadow:0 30px 80px rgba(28,25,23,0.4); padding:34px 32px 30px; display:flex; flex-direction:column; gap:26px; animation:bookIn 340ms cubic-bezier(.2,.7,.3,1) both">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px">
+        <div style="font:400 32px/1.12 'Instrument Serif',serif; color:#221F1A; text-wrap:pretty">Building something new? Let's talk.</div>
+        <div onClick="{{ closeContact }}" style="cursor:pointer; font:400 15px/1 'IBM Plex Mono',monospace; color:#8A8175; padding:4px">✕</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0">
+        <div style="display:flex; align-items:baseline; gap:16px; padding-bottom:11px; border-bottom:1px solid #E6E1D6">
+          <div style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">TO</div>
+          <a href="mailto:michelle.ivanna02@gmail.com" style="flex:1; min-width:0; font:400 15px/1.5 Newsreader,serif; color:#221F1A; word-break:break-all">michelle.ivanna02@gmail.com</a>
+          <div onClick="{{ copyMail }}" onKeyDown="{{ copyKey }}" tabindex="0" style="cursor:pointer; font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:{{ copyFg }}; white-space:nowrap; padding:4px">{{ copyLabel }}</div>
+        </div>
+        <div style="display:flex; align-items:baseline; gap:16px; padding:11px 0; border-bottom:1px solid #E6E1D6">
+          <div style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">FROM</div>
+          <input type="email" value="{{ cFrom }}" onChange="{{ setFrom }}" placeholder="you@example.com" style="flex:1; min-width:0; border:none; outline:none; background:transparent; font:400 15px/1.5 Newsreader,serif; color:#221F1A">
+        </div>
+        <div style="display:flex; align-items:baseline; gap:16px; padding:11px 0; border-bottom:1px solid #E6E1D6">
+          <div style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">SUBJECT</div>
+          <input type="text" value="{{ cSubj }}" onChange="{{ setSubj }}" placeholder="Say hello" style="flex:1; min-width:0; border:none; outline:none; background:transparent; font:400 15px/1.5 Newsreader,serif; color:#221F1A">
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:16px; padding:11px 0 0">
+          <div style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none; padding-top:5px">MESSAGE</div>
+          <textarea value="{{ cMsg }}" onChange="{{ setMsg }}" rows="4" placeholder="A line or two about what you're building." style="flex:1; min-width:0; border:none; outline:none; background:transparent; resize:vertical; font:400 15px/1.6 Newsreader,serif; color:#221F1A"></textarea>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap">
+        <div style="font:400 12px/1.7 'IBM Plex Mono',monospace; color:#8A8175">or connect through <a href="https://www.linkedin.com/in/michelle-ivanna/" target="_blank" rel="noopener" style="color:#221F1A; border-bottom:1px solid currentColor">LinkedIn</a></div>
+        <div onClick="{{ sendMail }}" onKeyDown="{{ sendKey }}" tabindex="0" style="cursor:pointer; padding:11px 26px 10px; border:1px solid #221F1A; border-radius:999px; font:400 9.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.2em; color:#221F1A">SEND</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
 
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;h1&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:455,&quot;min&quot;:140,&quot;max&quot;:560,&quot;step&quot;:5,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Book heights&quot;},&quot;h2&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:370,&quot;min&quot;:140,&quot;max&quot;:560,&quot;step&quot;:5,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Book heights&quot;},&quot;h3&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:330,&quot;min&quot;:140,&quot;max&quot;:560,&quot;step&quot;:5,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Book heights&quot;},&quot;h4&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:415,&quot;min&quot;:140,&quot;max&quot;:560,&quot;step&quot;:5,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Book heights&quot;},&quot;h5&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:500,&quot;min&quot;:140,&quot;max&quot;:560,&quot;step&quot;:5,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Book heights&quot;},&quot;hoverLift&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:16,&quot;min&quot;:0,&quot;max&quot;:48,&quot;step&quot;:2,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Shelf&quot;}}">
+const ANGLES = [-6, -3, 0, 3, 6];
+const CARD_TRAVEL = 118;
+const POCKET_H = { photos: 104, plain: 150 };
+const PHOTOS = {
+  0: [{ src: "uploads/ph-on-timeline.jpg", alt: "Michelle reading on a park bench", caption: "STILL READING", ratio: "1.327", w: 190, rot: -2.4 }],
+  2: [
+    { src: "uploads/ph-piano-old.jpg", alt: "Michelle at a piano recital", caption: "RECITAL NIGHT", ratio: "0.75", w: 148, rot: 2.2 },
+    { src: "uploads/ph-piano-mini.jpg", alt: "Michelle at three, at the piano", caption: "AGE THREE", ratio: "1.334", w: 176, rot: -3.2 }
+  ],
+  4: [
+    { src: "uploads/ph-things-made-her.jpg", alt: "Self-portrait in a mirror", caption: "A6500 + TAMRON 18-50", ratio: "1.333", w: 186, rot: -2.6 },
+    { src: "uploads/ph-anxious-people.jpg", alt: "Anxious People, Fredrik Backman", caption: "LATEST GOOD READ", ratio: "0.664", w: 122, rot: 3.4 }
+  ]
+};
+function fontFor(b, w, hpx) {
+  const chars = b.title.length;
+  const usable = (hpx - 64) * 0.82;
+  const byLength = usable / (chars * (b.sans ? 0.58 : 0.52));
+  return Math.max(11, Math.min(Math.round(w * 0.58), Math.round(byLength)));
+}
+const QUILL_AT = 3;
+
+const BOOKS = [
+  { title: "On\u00A0Timeline", bg: "#E4F04B", fg: "#221F1A", wk: 2.6, fam: "700 @/1 Archivo,'Helvetica Neue',sans-serif", sans: true, ls: "-0.015em", charmTop: "", charmFoot: "", charmK: 0.3, charmFont: "400 10px/1 'IBM Plex Mono',monospace", rest: -3 },
+  { title: "On How I Work", bg: "#2E4A7D", fg: "#F2EFE6", wk: 1.25, fam: "400 @/1 Newsreader,serif", ls: "0.01em", charmTop: "", charmFoot: "", charmK: 0.3, charmFont: "400 10px/1 'IBM Plex Mono',monospace", rest: 3 },
+  { title: "The Musical Book", bg: "#F4643A", fg: "#FCF8F0", wk: 1.65, fam: "500 @/1 Newsreader,serif", ls: "0.005em", charmTop: "", piano: true, charmFoot: "", charmK: 0.22, charmFont: "400 12px/1 'IBM Plex Mono',monospace", rest: 0 },
+  { title: "The\u00A0Need\u00A0For\u00A0Order", bg: "#A9BC9C", fg: "#22301F", wk: 1.95, fam: "600 @/1 Archivo,'Helvetica Neue',sans-serif", sans: true, ls: "-0.005em", charmTop: "◆", charmFoot: "", charmK: 0.5, charmFont: "400 11px/1 'IBM Plex Mono',monospace", rest: 0 },
+  { title: "Things That Made Her", bg: "#3E1B27", fg: "#E9A6BE", wk: 2.3, fam: "400 @/1 'Instrument Serif',serif", ls: "0.005em", charmTop: "est.", charmFoot: "2003", charmK: 0.15, charmFont: "400 11px/1 'IBM Plex Mono',monospace", rest: -4 }
+];
+
 class Component extends DCLogic {
-  state = { w: typeof window !== "undefined" ? window.innerWidth : 1440, fill: 0 };
+  state = {
+    w: typeof window !== "undefined" ? window.innerWidth : 1440,
+    h: typeof window !== "undefined" ? window.innerHeight : 900,
+    order: [0, 1, 2, 3, 4],
+    rests: BOOKS.map(b => b.rest),
+    hov: null, book: null, gone: null, tick: 0, card: 0, cardDragging: false, pd: {}, pdrag: null, fit: {},
+    contactOpen: false, menuOpen: false, copied: false, bioOpen: false, cFrom: "", cSubj: "", cMsg: ""
+  };
+
+  componentDidUpdate() { this.fitTitles(); }
+
+  fitTitles() {
+    if (this.state.gone !== null) return;
+    const sig = this.state.w + "|" + JSON.stringify(this.state.order);
+    if (this.fitSig === sig) return;
+    this.fitPass = (this.fitPass || 0) + 1;
+    if (this.fitPass > 8) { this.fitSig = sig; return; }
+    const next = {};
+    let changed = false;
+    for (let i = 0; i < 5; i++) {
+      const box = document.getElementById("bk" + i);
+      const span = box && box.querySelector("span[style*='vertical-rl']");
+      if (!span) return;
+      const run = span.offsetHeight;
+      const room = span.parentElement.offsetHeight;
+      if (!run || !room) return;
+      const k = (this.state.fit[i] || 1) * ((room * 0.6) / run);
+      next[i] = Math.max(0.5, Math.min(3.4, k));
+      if (Math.abs(next[i] - (this.state.fit[i] || 1)) > 0.012) changed = true;
+    }
+    if (!changed) { this.fitSig = sig; return; }
+    this.setState({ fit: next });
+  }
 
   componentDidMount() {
-    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onResize = () => { this.fitSig = null; this.fitPass = 0; this.setState({ w: window.innerWidth, h: window.innerHeight, fit: {} }); };
     window.addEventListener("resize", this.onResize);
-    const t0 = performance.now();
-    const step = now => {
-      const k = Math.min(1, (now - t0) / 1400);
-      this.setState({ fill: k });
-      if (k < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
+    this.tTimer = setInterval(() => this.setState(s => ({ tick: s.tick + 1 })), 20000);
+    requestAnimationFrame(() => this.fitTitles());
   }
 
-  componentWillUnmount() { window.removeEventListener("resize", this.onResize); }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.onResize);
+    if (this.tTimer) clearInterval(this.tTimer);
+    if (this.copyTimer) clearTimeout(this.copyTimer);
+    if (this.fallTimer) clearTimeout(this.fallTimer);
+    this.endDrag();
+  }
+
+  bookDown(i, e) {
+    if (this.state.gone !== null) return;
+    this.pull(i, e && e.currentTarget);
+  }
+
+  endDrag() {
+    if (this.onMove) window.removeEventListener("pointermove", this.onMove);
+    if (this.onUp) window.removeEventListener("pointerup", this.onUp);
+    this.onMove = null;
+    this.onUp = null;
+  }
+
+  pull(i, el) {
+    this.fallenEl = el || document.getElementById("bk" + i);
+    if (this.fallenEl) {
+      this.fallenEl.style.setProperty("--rest", this.state.rests[i] + "deg");
+      this.fallenEl.style.animation = "pullOut 880ms cubic-bezier(.4,.02,.3,1) forwards";
+    }
+    this.setState({ gone: i, hov: null, card: 0, pd: {}, pdrag: null });
+    if (this.fallTimer) clearTimeout(this.fallTimer);
+    this.fallTimer = setTimeout(() => this.setState({ book: i }), 760);
+  }
+
+  closeBook() {
+    const i = this.state.book;
+    this.setState({ book: null });
+    if (this.fallenEl) {
+      const el = this.fallenEl;
+      el.style.animation = "putBack 880ms cubic-bezier(.4,.02,.3,1) 60ms forwards";
+      if (this.fallTimer) clearTimeout(this.fallTimer);
+      this.fallTimer = setTimeout(() => {
+        el.style.animation = "";
+        this.fallenEl = null;
+        this.setState({ gone: null });
+      }, 1280);
+    } else {
+      this.setState({ gone: null });
+    }
+    return i;
+  }
+
+  photoDown(j, e) {
+    e.preventDefault();
+    const start = { x: e.clientX, y: e.clientY };
+    const base = (this.state.pd && this.state.pd[j]) || { x: 0, y: 0 };
+    this.setState({ pdrag: j });
+    this.onMove = ev => this.setState(s => ({ pd: Object.assign({}, s.pd, { [j]: { x: base.x + (ev.clientX - start.x), y: base.y + (ev.clientY - start.y) } }) }));
+    this.onUp = () => { this.endDrag(); this.setState({ pdrag: null }); };
+    window.addEventListener("pointermove", this.onMove);
+    window.addEventListener("pointerup", this.onUp);
+  }
+
+  cardTravel() {
+    return (PHOTOS[this.state.book] ? POCKET_H.photos : POCKET_H.plain) - 12;
+  }
+
+  cardDown(e) {
+    e.preventDefault();
+    const startY = e.clientY;
+    const from = this.state.card || 0;
+    this.onMove = ev => {
+      const travel = this.cardTravel();
+      const y = Math.max(-travel, Math.min(0, from + (ev.clientY - startY)));
+      this.setState({ card: y, cardDragging: true });
+    };
+    this.onUp = () => {
+      this.endDrag();
+      const travel = this.cardTravel();
+      this.setState(s => ({ card: s.card < -travel * 0.34 ? -travel : 0, cardDragging: false }));
+    };
+    window.addEventListener("pointermove", this.onMove);
+    window.addEventListener("pointerup", this.onUp);
+  }
+
+  send() {
+    const s = this.state;
+    const body = (s.cMsg || "") + (s.cFrom ? "\n\n— " + s.cFrom : "");
+    window.location.href = "mailto:michelle.ivanna02@gmail.com?subject=" + encodeURIComponent(s.cSubj || "Hello") + "&body=" + encodeURIComponent(body);
+  }
 
   renderVals() {
-    const mobile = this.state.w < 820;
-    const colPx = mobile ? Math.min(Math.round(this.state.w * 0.88), 420) : Math.min(960, this.state.w - 192);
-    const src = ["Draft in progress —", "I take this part seriously."].map(s => s.split(/\s+/));
-    const total = src.reduce((n, w) => n + w.length, 0);
-    const filled = Math.round(this.state.fill * total);
-    let wi = 0;
-    const lines = src.map(words => ({
-      words: words.map(t => ({ t, o: wi++ < filled ? 1 : 0.12 }))
-    }));
-    return {
-      lines,
-      colW: colPx + "px",
-      heroSize: (mobile ? 40 : Math.round(colPx * 0.063)) + "px",
-      padY: mobile ? "40px" : "56px"
+    const pr = this.props;
+    const mobile = this.state.w < 640;
+    const stacked = this.state.w < 1120;
+    const colPx = mobile ? Math.min(Math.round(this.state.w * 0.88), 430) : Math.min(1180, this.state.w - 150);
+    const gridGap = mobile ? 26 : 56;
+    const polaPx = mobile ? Math.min(200, Math.round(colPx * 0.46)) : stacked ? 230 : 248;
+    const shelfPx = stacked ? colPx : Math.round((colPx - gridGap) * 0.62);
+    const leftPx = stacked ? colPx : colPx - gridGap - shelfPx;
+    const lift = pr.hoverLift ?? 16;
+    const hs = [pr.h1 ?? 455, pr.h2 ?? 370, pr.h3 ?? 330, pr.h4 ?? 415, pr.h5 ?? 500];
+    const gapPx = mobile ? 8 : 14;
+    const vScale0 = mobile ? 0.58 : stacked ? 0.74 : Math.max(0.72, Math.min(1.06, shelfPx / 560));
+    const minSpines = 5 * 40;
+    const roomForQuill = Math.max(90, shelfPx - gapPx * 6 - 42 - minSpines);
+    const quillH = Math.min(Math.round(Math.max.apply(null, hs) * vScale0 * 0.6), Math.round(roomForQuill / 0.975));
+    const quillW = Math.round(quillH * 0.975);
+    const quillK = 0;
+    const unitSum = BOOKS.reduce((n, b) => n + b.wk, 0) + quillK;
+    const slots = this.state.order.length + 1;
+    const unit = Math.min(42, (shelfPx - gapPx * slots - 34 - quillW) / unitSum);
+    const vScale = vScale0;
+
+    const mk = key => {
+      const b = BOOKS[key];
+      const on = this.state.hov === key;
+      const rest = this.state.rests[key];
+      const w = Math.max(20, Math.round(unit * b.wk));
+      let t = "rotateZ(" + rest + "deg)";
+      if (on) t = "rotateZ(" + (rest * 0.65) + "deg) rotateX(-5deg) translateZ(10px)";
+      return {
+        slotW: Math.max(26, w) + "px",
+        w: Math.max(26, w) + "px",
+        h: Math.round(hs[key] * vScale) + "px",
+        font: b.fam.replace("@", String(Math.round(fontFor(b, w, Math.round(hs[key] * vScale)) * (this.state.fit[key] || 1))) + "px"),
+        charmFont: "400 " + Math.round(Math.max(8, Math.min(15, w * (b.charmK || 0.18)))) + "px/1 'IBM Plex Mono',monospace",
+        pianoW: Math.round(Math.max(22, w * 0.68)) + "px",
+        pianoH: Math.round(Math.max(15, w * 0.46)) + "px",
+        pianoKey: Math.max(3.4, w * 0.09).toFixed(1) + "px",
+        t,
+        z: on ? 12 : 4,
+        shadow: on ? "0 14px 26px -14px rgba(34,31,26,0.42)" : "0 6px 14px -12px rgba(34,31,26,0.34)",
+        trans: "transform 520ms cubic-bezier(.22,.86,.28,1), box-shadow 380ms ease",
+        down: e => this.bookDown(key, e),
+        enter: () => this.setState({ hov: key }),
+        leave: () => this.setState(s => (s.hov === key ? { hov: null } : null)),
+        key: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.pull(key, document.getElementById("bk" + key)); } }
+      };
     };
+    const spines = {};
+    for (let k = 0; k < 5; k++) spines["s" + k] = mk(k);
+
+    const fmt = o => new Intl.DateTimeFormat("en-US", Object.assign({ timeZone: "Asia/Taipei" }, o)).format(new Date());
+    const bi = this.state.book;
+
+    const bookWpx = Math.min(1040, this.state.w * 0.92, this.state.h * 0.82 * 1.41);
+    const pageHpx = bookWpx / 1.41 - (mobile ? 46 : 70);
+    const prosePx = Math.max(11, Math.min(18, Math.round(pageHpx * 0.026)));
+
+    const pscale = mobile ? 0.72 : 0.9;
+    const capH = mobile ? 104 : 138;
+    const FAN = [-5, 4.5];
+    let stackHeight = 60;
+    const stackPhotos = (PHOTOS[bi] || []).slice().sort((a, b) => b.w - a.w).map((p, j) => {
+      const off = (this.state.pd && this.state.pd[j]) || { x: 0, y: 0 };
+      const ratio = parseFloat(p.ratio);
+      const wpx = Math.round(Math.min(p.w * pscale, capH * ratio));
+      const xo = j * -12, yo = j * 14;
+      stackHeight = Math.max(stackHeight, Math.round(wpx / ratio) + 40 + yo);
+      return {
+        w: wpx + "px",
+        rot: (FAN[j] || 0) + "deg",
+        dx: (xo + off.x) + "px", dy: (yo + off.y) + "px",
+        z: this.state.pdrag === j ? 30 : 6 + j,
+        trans: this.state.pdrag === j ? "none" : "transform 380ms cubic-bezier(.2,.8,.28,1)",
+        down: e => this.photoDown(j, e)
+      };
+    });
+    const blankPh = { w: "0px", rot: "0deg", dx: "0px", dy: "0px", z: 1, trans: "none", down: () => {} };
+
+    const out = {};
+    for (let i = 0; i < 5; i++) out["b" + i] = bi === i;
+
+    return Object.assign(out, spines, {
+      quillSlotW: quillW + "px",
+      quillH: quillH + "px",
+      colW: colPx + "px",
+      cols: stacked ? polaPx + "px 1fr" : leftPx + "px " + shelfPx + "px",
+      areas: stacked ? "'bio bio' 'pola rec' 'shelf shelf'" : "'bio pola' 'rec shelf'",
+      gap: gridGap + "px",
+      rowGap: (mobile ? 40 : 60) + "px",
+      polaW: polaPx + "px",
+      polaJustify: stacked ? "start" : "center",
+      polaTilt: mobile ? "-5.5deg" : "-2.5deg",
+      recJustify: "end",
+      padY: mobile ? "40px" : "60px",
+      leadSize: mobile ? "14px/1.7" : "15px/1.7",
+      paraSize: mobile ? "11.5px/1.95" : "12px/2",
+      titleSize: (stacked ? Math.max(38, Math.round((colPx - polaPx - gridGap) * 0.23)) : Math.min(104, Math.round(leftPx * 0.27))) + "px",
+      bioOpen: !!this.state.bioOpen,
+      bioClosed: !this.state.bioOpen,
+      openBio: () => this.setState({ bioOpen: true }),
+      closeBio: () => this.setState({ bioOpen: false }),
+      bioKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.setState(s => ({ bioOpen: !s.bioOpen })); } },
+      shelfJustify: stacked ? "center" : "space-between",
+      shelfGap: gapPx + "px",
+      tpeTime: fmt({ hour: "numeric", minute: "2-digit" }),
+      tpeDate: fmt({ day: "2-digit", month: "short", year: "numeric" }).toUpperCase(),
+      bookOpen: bi !== null,
+      bookNum: bi === null ? "01" : "0" + (bi + 1),
+      bookTitle: (bi === null ? BOOKS[0].title : BOOKS[bi].title).replace(/\s*\u266A\s*$/, "").replace(/\u00A0/g, " "),
+      bookColor: bi === null ? BOOKS[0].bg : BOOKS[bi].bg,
+      bookSpineFg: bi === null ? BOOKS[0].fg : BOOKS[bi].fg,
+      spineW: mobile ? "26px" : "34px",
+      bookPad: mobile ? "16px" : "32px",
+      bookColPad: mobile ? "16px 18px" : "clamp(18px, 2.6vw, 30px) clamp(24px, 4.2vw, 48px)",
+      coverPad: mobile ? "9px" : "13px",
+      bookTitleSize: mobile ? "26px/1.06" : "32px/1.03",
+      holderH: (PHOTOS[bi] ? 186 : 330) + "px",
+      showShelfRow: !PHOTOS[bi],
+      pocketH: (PHOTOS[bi] ? POCKET_H.photos : POCKET_H.plain) + "px",
+      cardZ: (this.state.card || 0) < -4 ? 25 : 1,
+      cardTop: (PHOTOS[bi] ? POCKET_H.photos : POCKET_H.plain) + "px",
+      proseSize: (PHOTOS[bi] ? prosePx - 1 : prosePx) + "px/1.6",
+      listSize: Math.max(10, prosePx - 2) + "px/1.5",
+      stackH: stackHeight + "px",
+      pageGap: mobile ? "8px" : "9px",
+      hasPhoto: PHOTOS[bi] ? true : false,
+      photos: stackPhotos,
+      ph0: stackPhotos[0] || blankPh,
+      ph1: stackPhotos[1] || blankPh,
+      pianoSticker: bi === 2,
+      bookCode: bi === null ? "M001" : "M00" + (bi + 1),
+      cardY: (this.state.card || 0) + "px",
+      cardTrans: this.state.cardDragging ? "transform 60ms linear" : "transform 460ms cubic-bezier(.2,.8,.28,1)",
+      cardDown: e => this.cardDown(e),
+      closeBook: () => this.closeBook(),
+      closeBookKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.closeBook(); } },
+      navInline: mobile ? "none" : "flex",
+      burgerD: mobile ? "flex" : "none",
+      menuOpen: !!this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      menuKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.setState(s => ({ menuOpen: !s.menuOpen })); } },
+      contactOpen: !!this.state.contactOpen,
+      openContact: () => this.setState({ contactOpen: true, menuOpen: false, copied: false }),
+      closeContact: () => this.setState({ contactOpen: false }),
+      contactKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.setState({ contactOpen: true, menuOpen: false, copied: false }); } },
+      stop: e => { if (e && e.stopPropagation) e.stopPropagation(); },
+      copyLabel: this.state.copied ? "COPIED" : "COPY",
+      copyFg: this.state.copied ? "#221F1A" : "#8A8175",
+      cFrom: this.state.cFrom,
+      cSubj: this.state.cSubj,
+      cMsg: this.state.cMsg,
+      setFrom: e => this.setState({ cFrom: e.target.value }),
+      setSubj: e => this.setState({ cSubj: e.target.value }),
+      setMsg: e => this.setState({ cMsg: e.target.value }),
+      sendMail: () => this.send(),
+      sendKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.send(); } },
+      copyMail: () => {
+        if (navigator.clipboard) navigator.clipboard.writeText("michelle.ivanna02@gmail.com").catch(() => {});
+        this.setState({ copied: true });
+        if (this.copyTimer) clearTimeout(this.copyTimer);
+        this.copyTimer = setTimeout(() => this.setState({ copied: false }), 1800);
+      },
+      copyKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (navigator.clipboard) navigator.clipboard.writeText("michelle.ivanna02@gmail.com").catch(() => {}); this.setState({ copied: true }); } }
+    });
   }
 }
-
 </script>
 </body>
 </html>

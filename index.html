@@ -45,6 +45,10 @@
   @keyframes csNextB { from { opacity: 0; transform: translateX(72px); } to { opacity: 1; transform: translateX(0); } }
   @keyframes csPrevA { from { opacity: 0; transform: translateX(-72px); } to { opacity: 1; transform: translateX(0); } }
   @keyframes csPrevB { from { opacity: 0; transform: translateX(-72px); } to { opacity: 1; transform: translateX(0); } }
+  a:focus-visible, [tabindex]:focus-visible, [data-card]:focus-visible { outline: 1px solid currentColor; outline-offset: 5px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
 </style>
 </helmet>
 
@@ -59,12 +63,15 @@
 
   <div style="position:sticky; top:0; z-index:20; background:{{ bg }}; transition:background 500ms ease">
     <div style="width:{{ colW }}; margin:0 auto; padding:22px 0 18px; display:flex; justify-content:space-between; align-items:center; font:400 12px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; text-transform:uppercase">
-      <div>{{ name }}</div>
-      <div style="display:flex; align-items:center; gap:20px; color:{{ muted }}">
-        <a href="#work" style="border-bottom:1px solid currentColor; padding-bottom:3px; color:{{ fg }}">WORK</a>
-        <a href="about.html" onMouseEnter="{{ aboutIn }}" onMouseLeave="{{ aboutOut }}" style="position:relative; color:{{ fg }}">ABOUT
-          <span style="position:absolute; top:calc(100% + 11px); right:-6px; padding:7px 11px 6px; border-radius:8px; background:{{ fg }}; color:{{ bg }}; font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.14em; white-space:nowrap; opacity:{{ aboutTipO }}; transform:{{ aboutTipT }}; transition:opacity 200ms ease, transform 200ms ease; pointer-events:none">COMING SOON</span>
-        </a>
+      <a href="index.html" style="color:{{ fg }}; white-space:nowrap">{{ name }}</a>
+      <div style="display:{{ navInline }}; align-items:center; gap:20px; color:{{ muted }}">
+        <a href="about.html" style="color:{{ fg }}">ABOUT</a>
+        <a href="https://drive.google.com/drive/u/0/folders/1CJvvFFPd7QkCUoXoe0JsUWqQHb4xipkD" target="_blank" rel="noopener" style="color:{{ fg }}">CV</a>
+        <div onClick="{{ openContact }}" onKeyDown="{{ contactKey }}" tabindex="0" style="cursor:pointer; color:{{ fg }}">CONTACT</div>
+      </div>
+      <div onClick="{{ toggleMenu }}" onKeyDown="{{ menuKey }}" tabindex="0" style="display:{{ burgerD }}; cursor:pointer; flex-direction:column; gap:4px; padding:6px 2px">
+        <div style="width:20px; height:1px; background:{{ fg }}"></div>
+        <div style="width:20px; height:1px; background:{{ fg }}"></div>
       </div>
     </div>
   </div>
@@ -81,18 +88,25 @@
         </div>
       </sc-for>
     </div>
-    <div style="font:400 {{ subSize }} 'IBM Plex Mono',monospace; color:{{ subColor }}; max-width:480px; width:100%; white-space:pre-line">{{ smallPrint }}</div>
+    <div style="display:flex; flex-direction:column; gap:14px; max-width:520px; width:100%">
+      <div style="font:400 {{ subSize }} 'IBM Plex Mono',monospace; color:{{ subColor }}; white-space:pre-line">{{ smallPrint }}</div>
+      <div style="display:inline-flex; align-self:flex-start; align-items:baseline; gap:9px; padding:7px 12px 6px; border-radius:7px; background:{{ chipBg }}">
+        <span style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:{{ muted }}">BASED IN</span>
+        <span style="font:400 12.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.04em; color:{{ fg }}">{{ metaLine }}</span>
+      </div>
+    </div>
     </div>
    </div>
   </div>
 
   <div id="work" style="position:relative; z-index:1; width:{{ colW }}; margin:0 auto; padding-bottom:96px">
-    <div style="display:flex; align-items:center; gap:12px; padding-bottom:2px">
-      <div style="font:400 11.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.2em; white-space:nowrap">RECORD CATALOGUE</div>
-      <div style="flex:1"></div>
-      <div style="display:flex; align-items:center; gap:3px; padding:3px; flex:none; border:1px solid {{ rule }}; border-radius:999px; font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.2em; white-space:nowrap">
-        <div onClick="{{ setLight }}" style="padding:7px 13px 6px; border-radius:999px; cursor:pointer; white-space:nowrap; transition:background 300ms ease, color 300ms ease; background:{{ onBg }}; color:{{ onFg }}">REMASTERED</div>
-        <div onClick="{{ setDark }}" style="padding:7px 13px 6px; border-radius:999px; cursor:pointer; white-space:nowrap; transition:background 300ms ease, color 300ms ease; background:{{ offBg }}; color:{{ offFg }}">DEMO TRACK</div>
+    <div style="display:flex; align-items:baseline; flex-wrap:wrap; gap:16px 12px; padding-bottom:2px">
+      <div style="font:400 11.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.2em; white-space:nowrap">WORK ARCHIVE</div>
+      <div style="flex:1 0 40px"></div>
+      <div style="display:flex; align-items:stretch; gap:0; font:400 10px/1 'IBM Plex Mono',monospace; letter-spacing:0.2em; border-bottom:1px solid {{ rule }}">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="3">
+          <div onClick="{{ f.pick }}" onKeyDown="{{ f.key }}" tabindex="0" style="cursor:pointer; white-space:nowrap; padding:9px 16px 10px; margin-bottom:-1px; border-bottom:2px solid {{ f.bd }}; opacity:{{ f.o }}; background:{{ f.bg }}; transition:opacity 280ms ease, background 280ms ease, border-color 280ms ease">{{ f.t }}</div>
+        </sc-for>
       </div>
     </div>
 
@@ -131,6 +145,8 @@
     </div>
   </div>
 
+  <div style="height:104px"></div>
+
   <div style="position:fixed; left:0; top:0; z-index:40; pointer-events:none; transform:{{ cursorT }}; opacity:{{ cursorOn }}; transition:opacity 240ms ease">
     <div style="width:{{ cursorW }}; height:{{ cursorH }}; margin:{{ cursorM }}; border:{{ cursorBorder }}; border-radius:{{ cursorR }}; background-color:{{ cursorBg }}; background-image:url({{ cursorImg }}); background-size:{{ cursorSize }}; background-repeat:no-repeat; background-position:{{ cursorPos }}; box-shadow:{{ cursorShadow }}"></div>
   </div>
@@ -139,6 +155,58 @@
     <div>© MICHELLE IVANNA 2026</div>
     <div style="display:flex; gap:20px"><a href="mailto:michelle.ivanna02@gmail.com">CONTACT</a><a href="https://www.linkedin.com/in/michelle-ivanna/" target="_blank" rel="noopener">LINKEDIN</a><a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener">RESUME</a></div>
   </div>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed; inset:0; z-index:55; background:rgba(28,25,23,0.4); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); animation:csFade 240ms ease both" onClick="{{ closeMenu }}">
+    <div onClick="{{ csStop }}" style="margin:0; background:{{ bg }}; padding:26px 28px 30px; display:flex; flex-direction:column; gap:22px; font:400 12px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; color:{{ fg }}">
+      <div style="display:flex; justify-content:space-between; align-items:center">
+        <span>MENU</span>
+        <span onClick="{{ closeMenu }}" style="cursor:pointer; font-size:15px">✕</span>
+      </div>
+      <a href="about.html" style="color:{{ fg }}">ABOUT</a>
+      <a href="https://drive.google.com/drive/u/0/folders/1CJvvFFPd7QkCUoXoe0JsUWqQHb4xipkD" target="_blank" rel="noopener" style="color:{{ fg }}">CV</a>
+      <div onClick="{{ openContact }}" style="cursor:pointer">CONTACT</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ contactOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeContact }}" style="position:fixed; inset:0; z-index:70; background:rgba(28,25,23,0.42); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px); display:flex; align-items:center; justify-content:center; padding:24px; animation:csFade 260ms ease both">
+    <div onClick="{{ csStop }}" style="width:min(520px, 100%); background:#FFFFFF; border-radius:18px; box-shadow:0 30px 80px rgba(28,25,23,0.4); padding:34px 32px 30px; display:flex; flex-direction:column; gap:26px; animation:bbFloatIn 340ms cubic-bezier(.2,.7,.3,1) both">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px">
+        <div style="font:400 32px/1.12 'Instrument Serif',serif; color:#221F1A; text-wrap:pretty">Building something new? Let's talk.</div>
+        <div onClick="{{ closeContact }}" style="cursor:pointer; font:400 15px/1 'IBM Plex Mono',monospace; color:#8A8175; padding:4px">✕</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0">
+        <div style="display:flex; align-items:baseline; gap:16px; padding-bottom:11px; border-bottom:1px solid #E6E1D6">
+          <div style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">TO</div>
+          <a href="mailto:michelle.ivanna02@gmail.com" style="flex:1; min-width:0; font:400 15px/1.5 Newsreader,serif; color:#221F1A; word-break:break-all">michelle.ivanna02@gmail.com</a>
+          <div onClick="{{ copyMail }}" onKeyDown="{{ copyKey }}" tabindex="0" style="cursor:pointer; font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:{{ copyFg }}; white-space:nowrap; padding:4px">{{ copyLabel }}</div>
+        </div>
+        <div style="display:flex; align-items:baseline; gap:16px; padding:11px 0; border-bottom:1px solid #E6E1D6">
+          <div style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">FROM</div>
+          <input type="email" value="{{ cFrom }}" onChange="{{ setFrom }}" placeholder="you@example.com" style="flex:1; min-width:0; border:none; outline:none; background:transparent; font:400 15px/1.5 Newsreader,serif; color:#221F1A">
+        </div>
+        <div style="display:flex; align-items:baseline; gap:16px; padding:11px 0; border-bottom:1px solid #E6E1D6">
+          <div style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">SUBJECT</div>
+          <input type="text" value="{{ cSubj }}" onChange="{{ setSubj }}" placeholder="Say hello" style="flex:1; min-width:0; border:none; outline:none; background:transparent; font:400 15px/1.5 Newsreader,serif; color:#221F1A">
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:16px; padding:11px 0 0">
+          <div style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none; padding-top:5px">MESSAGE</div>
+          <textarea value="{{ cMsg }}" onChange="{{ setMsg }}" rows="4" placeholder="A line or two about what you're building." style="flex:1; min-width:0; border:none; outline:none; background:transparent; resize:vertical; font:400 15px/1.6 Newsreader,serif; color:#221F1A"></textarea>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap">
+        <div onClick="{{ sendMail }}" onKeyDown="{{ sendKey }}" tabindex="0" style="cursor:pointer; padding:11px 26px 10px; border:1px solid #221F1A; border-radius:999px; font:400 9.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.2em; color:#221F1A">SEND</div>
+        <div style="font:400 9px/1.6 'IBM Plex Mono',monospace; letter-spacing:0.1em; color:#8A8175">Opens in your mail app</div>
+      </div>
+      <div style="display:flex; gap:22px; font:400 9.5px/1 'IBM Plex Mono',monospace; letter-spacing:0.16em; color:#8A8175">
+        <a href="https://www.linkedin.com/in/michelle-ivanna/" target="_blank" rel="noopener" style="color:#221F1A">LINKEDIN</a>
+        <a href="https://drive.google.com/drive/u/0/folders/1CJvvFFPd7QkCUoXoe0JsUWqQHb4xipkD" target="_blank" rel="noopener" style="color:#221F1A">CV</a>
+      </div>
+    </div>
+  </div>
+  </sc-if>
 
   <sc-if value="{{ csOpen }}" hint-placeholder-val="{{ false }}">
   <div onClick="{{ csClose }}" style="position:fixed; inset:0; z-index:60; background:rgba(28,25,23,0.55); display:flex; align-items:center; justify-content:center; padding:{{ csPad }}; animation:csFade 300ms ease both">
@@ -889,8 +957,18 @@
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;name&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Michelle Ivanna&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;line1&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Hi! I'm Michelle&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;line2&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;a Designer working across&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;line3&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;UI/UX, Brand, and Product&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;smallPrint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;I am good at turning concepts into something structured and presentable. Product designer who thinks deeply and communicates visually&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#8A3A21&quot;,&quot;options&quot;:[&quot;#8A3A21&quot;,&quot;#3F5A52&quot;,&quot;#7A6A3F&quot;,&quot;#221F1A&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Art direction&quot;},&quot;lightIntensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.7,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Art direction&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;name&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Michelle Ivanna&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;line1&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Hi! I'm Michelle&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;line2&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;a Designer working across&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;line3&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;UI/UX, Brand, and Product&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;smallPrint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Previously: multimedia marketing at a B2B SaaS company.\nNow looking for the next problem to obsess over.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#8A3A21&quot;,&quot;options&quot;:[&quot;#8A3A21&quot;,&quot;#3F5A52&quot;,&quot;#7A6A3F&quot;,&quot;#221F1A&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Art direction&quot;},&quot;lightIntensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.7,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Art direction&quot;}}">
 const DIR = "uploads/thumbnails/";
+const FILT = ["Brand", "Product", "Brand", "Product", "Brand", "Product"];
+const FILTERS = ["All", "Brand", "Product"];
+const REDUCE = typeof window !== "undefined" && window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)").matches : false;
+const SPINES = [
+  { t2: "Film photography", h: "104px", pad: "10px", w: "26px", bg: "#EDE7DA" },
+  { t2: "Bouldering", h: "88px", pad: "22px", w: "22px", bg: "#E2DACA" },
+  { t2: "Taipei coffee", h: "116px", pad: "30px", w: "30px", bg: "#F2EFE8" },
+  { t2: "Type specimens", h: "96px", pad: "14px", w: "24px", bg: "#DCD3C2" },
+  { t2: "Long walks", h: "110px", pad: "38px", w: "27px", bg: "#E8E1D2" }
+];
 const RAW = [
   ["01", "Starise", "Visual System / Brand / Product", "thumbnail%20-%203%20starise%20rebranding.png"],
   ["02", "AI Feature", "Product / UX / Design System", "thumbnail%20-%201%20AI%20Feature.png"],
@@ -901,6 +979,7 @@ const RAW = [
 ];
 const PROJECTS = RAW.map(([n, title, cat, file], i) => ({
   i, n, title,
+  filt: FILT[i],
   tags: cat.split("/").map(s => s.trim().toUpperCase()),
   img: DIR + file
 }));
@@ -1027,9 +1106,14 @@ const LIGHT = { bg: "#F5F1E8", fg: "#221F1A", muted: "#8A8175", rule: "#D8D2C4",
 const DARK = { bg: "#1E1B18", fg: "#EDE7DA", muted: "#9C9384", rule: "#3A352F", card: "#2C2823", idle: "#4C463D" };
 
 class Component extends DCLogic {
-  state = { dark: false, open: null, tab: {}, fill: 0, hov: null, pill: null, seen: {}, word: null, cycle: 0, mx: 0.5, my: 0.4, cx: -200, cy: -200, origin: "50% 50%", navK: 0, navDir: 0, gIdx: 0, iter: [0, 0, 0, 0], slots: [{ a: 0, b: 0 }, { a: 0, b: 0 }, { a: 0, b: 0 }, { a: 0, b: 0 }], pOpen: {}, bbP: 0.5, bbSeen: false, w: typeof window !== "undefined" ? window.innerWidth : 1440 };
+  state = { dark: false, cFrom: "", cSubj: "", cMsg: "", filt: "All", filtTouched: false, contactOpen: false, menuOpen: false, copied: false, shelfOn: false, tick: 0, open: null, tab: {}, fill: 0, hov: null, pill: null, seen: {}, word: null, cycle: 0, mx: 0.5, my: 0.4, cx: -200, cy: -200, origin: "50% 50%", navK: 0, navDir: 0, gIdx: 0, iter: [0, 0, 0, 0], slots: [{ a: 0, b: 0 }, { a: 0, b: 0 }, { a: 0, b: 0 }, { a: 0, b: 0 }], pOpen: {}, bbP: 0.5, bbSeen: false, w: typeof window !== "undefined" ? window.innerWidth : 1440 };
   iterTimer = null;
   togglePart(k) { this.setState(s => ({ pOpen: { ...s.pOpen, [k]: !s.pOpen[k] } })); }
+  sendMail() {
+    const s = this.state;
+    const body = (s.cMsg || "") + (s.cFrom ? "\n\n\u2014 " + s.cFrom : "");
+    window.location.href = "mailto:michelle.ivanna02@gmail.com?subject=" + encodeURIComponent(s.cSubj || "Hello") + "&body=" + encodeURIComponent(body);
+  }
 
   glideTop(el) {
     if (!el || el.scrollTop <= 0) return;
@@ -1101,6 +1185,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.gTimer = setInterval(() => this.setState(s => ({ gIdx: (s.gIdx + 1) % GUIDES.length })), 2000);
+    this.tTimer = setInterval(() => this.setState(s => ({ tick: s.tick + 1 })), 20000);
     this.onScroll = () => {
       const hero = document.querySelector("[data-hero]");
       if (!hero) return;
@@ -1184,6 +1269,9 @@ class Component extends DCLogic {
   }
   stopIter() { if (this.iterTimer) { clearInterval(this.iterTimer); this.iterTimer = null; } }
   componentWillUnmount() {
+    if (this.tTimer) clearInterval(this.tTimer);
+    if (this.copyTimer) clearTimeout(this.copyTimer);
+    if (this.copyTimer) clearTimeout(this.copyTimer);
     document.body.style.overflow = "";
     document.documentElement.style.overflow = "";
     if (this.io) this.io.disconnect();
@@ -1213,7 +1301,7 @@ class Component extends DCLogic {
       pr.line3 ?? "UI/UX, Brand, and Product"
     ].map(s => s.split(/\s+/));
     const total = src.reduce((n, w) => n + w.length, 0);
-    const filled = Math.round(this.state.fill * total);
+    const filled = REDUCE ? total : Math.round(this.state.fill * total);
     let wi = 0;
     const lines = src.map(words => ({
       words: words.map(x => {
@@ -1230,9 +1318,10 @@ class Component extends DCLogic {
       })
     }));
     const hov = this.state.hov;
-    const projects = PROJECTS.map(p => {
+    const flt = this.state.filt || "All";
+    const projects = PROJECTS.filter(p => flt === "All" || p.filt === flt).map(p => {
       const on = hov === p.i;
-      const seen = !!this.state.seen[String(p.i)];
+      const seen = !!this.state.seen[String(p.i)] || !!this.state.filtTouched;
       return {
         ...p,
         pills: p.tags.map((x, j) => {
@@ -1287,12 +1376,52 @@ class Component extends DCLogic {
     const onP = pill(!this.state.dark), offP = pill(this.state.dark);
     return {
       projects, lines,
+      filters: FILTERS.map(x => {
+        const pick = () => this.setState({ filt: x, filtTouched: true, hov: null });
+        const active = flt === x;
+        return { t: x.toUpperCase(), o: active ? 1 : 0.42, bd: active ? t.fg : "transparent", bg: active ? (this.state.dark ? "rgba(255,255,255,0.05)" : "rgba(34,31,26,0.04)") : "transparent", pick, key: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } } };
+      }),
+      chipBg: this.state.dark ? "rgba(255,255,255,0.07)" : "rgba(34,31,26,0.055)",
+      metaLine: "Taipei, " + new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Taipei", hour: "numeric", minute: "2-digit" }).format(new Date()),
+      shelfSize: mobile ? "19px/1.5" : "22px/1.45",
+      shelfO: this.state.shelfOn ? 1 : 0.82,
+      shelfIn: () => this.setState({ shelfOn: true }),
+      shelfOut: () => this.setState({ shelfOn: false }),
+      spines: SPINES.map((s, j) => ({ ...s, fg: "#221F1A", t: this.state.shelfOn ? "translateY(-" + (4 + (j % 2) * 3) + "px)" : "translateY(0)" })),
+      navInline: mobile ? "none" : "flex",
+      burgerD: mobile ? "flex" : "none",
+      menuOpen: !!this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      menuKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.setState(s => ({ menuOpen: !s.menuOpen })); } },
+      contactOpen: !!this.state.contactOpen,
+      openContact: () => this.setState({ contactOpen: true, menuOpen: false, copied: false }),
+      closeContact: () => this.setState({ contactOpen: false }),
+      contactKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.setState({ contactOpen: true, menuOpen: false, copied: false }); } },
+      copyLabel: this.state.copied ? "COPIED" : "COPY",
+      cFrom: this.state.cFrom,
+      cSubj: this.state.cSubj,
+      cMsg: this.state.cMsg,
+      setFrom: e => this.setState({ cFrom: e.target.value }),
+      setSubj: e => this.setState({ cSubj: e.target.value }),
+      setMsg: e => this.setState({ cMsg: e.target.value }),
+      sendMail: () => this.sendMail(),
+      sendKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.sendMail(); } },
+      copyFg: this.state.copied ? "#221F1A" : "#8A8175",
+      copyMail: () => {
+        const addr = "michelle.ivanna02@gmail.com";
+        if (navigator.clipboard) navigator.clipboard.writeText(addr).catch(() => {});
+        this.setState({ copied: true });
+        if (this.copyTimer) clearTimeout(this.copyTimer);
+        this.copyTimer = setTimeout(() => this.setState({ copied: false }), 1800);
+      },
+      copyKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (navigator.clipboard) navigator.clipboard.writeText("michelle.ivanna02@gmail.com").catch(() => {}); this.setState({ copied: true }); } },
       name: pr.name ?? "Michelle Ivanna",
       aboutTipO: this.state.aboutOn ? 1 : 0,
       aboutTipT: this.state.aboutOn ? "translateY(0)" : "translateY(4px)",
       aboutIn: () => this.setState({ aboutOn: true }),
       aboutOut: () => this.setState({ aboutOn: false }),
-      smallPrint: pr.smallPrint ?? "I turn concepts into something structured and presentable. \nProduct designer who thinks deeply and communicates visually",
+      smallPrint: pr.smallPrint ?? "Previously: multimedia marketing at a B2B SaaS company.\nNow looking for the next problem to obsess over.",
       accent: pr.accent ?? "#8A3A21",
       light: this.state.dark ? (pr.lightIntensity ?? 0.7) * 0.35 : (pr.lightIntensity ?? 0.7),
       bg: t.bg, fg: t.fg, muted: t.muted, rule: t.rule, card: t.card,
