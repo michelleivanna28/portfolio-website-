@@ -66,7 +66,7 @@
       <a href="index.html" style="color:{{ fg }}; white-space:nowrap">{{ name }}</a>
       <div style="display:{{ navInline }}; align-items:center; gap:20px; color:{{ muted }}">
         <a href="about.html" style="color:{{ fg }}">ABOUT</a>
-        <a href="https://drive.google.com/drive/u/0/folders/1CJvvFFPd7QkCUoXoe0JsUWqQHb4xipkD" target="_blank" rel="noopener" style="color:{{ fg }}">CV</a>
+        <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener" style="color:{{ fg }}">CV</a>
         <div onClick="{{ openContact }}" onKeyDown="{{ contactKey }}" tabindex="0" style="cursor:pointer; color:{{ fg }}">CONTACT</div>
       </div>
       <div onClick="{{ toggleMenu }}" onKeyDown="{{ menuKey }}" tabindex="0" style="display:{{ burgerD }}; cursor:pointer; flex-direction:column; gap:4px; padding:6px 2px">
@@ -167,7 +167,7 @@
         <span onClick="{{ closeMenu }}" style="cursor:pointer; font-size:15px">✕</span>
       </div>
       <a href="about.html" style="color:{{ fg }}">ABOUT</a>
-      <a href="https://drive.google.com/drive/u/0/folders/1CJvvFFPd7QkCUoXoe0JsUWqQHb4xipkD" target="_blank" rel="noopener" style="color:{{ fg }}">CV</a>
+      <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener" style="color:{{ fg }}">CV</a>
       <div onClick="{{ openContact }}" style="cursor:pointer">CONTACT</div>
     </div>
   </div>
@@ -205,7 +205,7 @@
       </div>
       <div style="display:flex; gap:22px; font:500 9.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.16em; color:#8A8175">
         <a href="https://www.linkedin.com/in/michelle-ivanna/" target="_blank" rel="noopener" style="color:#221F1A">LINKEDIN</a>
-        <a href="https://drive.google.com/drive/u/0/folders/1CJvvFFPd7QkCUoXoe0JsUWqQHb4xipkD" target="_blank" rel="noopener" style="color:#221F1A">CV</a>
+        <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener" style="color:#221F1A">CV</a>
       </div>
     </div>
   </div>
@@ -405,6 +405,9 @@
             <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">I needed to make the setup process clear without adding unnecessary complexity to an already technical product.</div>
           </div>
 
+          <div style="{{ lockWrap }}">
+          <div style="{{ lockClip }}">
+
           <div style="margin-top:64px; font:500 8.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175">THE PROCESS</div>
 
           <div style="margin-top:20px; border-top:1px solid #E6E1D6; display:flex; flex-direction:column">
@@ -474,6 +477,24 @@
                 </div>
               </sc-for>
             </div>
+          </div>
+          </div>
+          <sc-if value="{{ csLocked }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; left:0; right:0; bottom:8px; display:flex; justify-content:center">
+              <div style="width:100%; max-width:460px; display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center">
+                <div style="font:500 8.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175">PROTECTED</div>
+                <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">This project holds sensitive client information, so the rest of the case study is password-protected.</div>
+                <div style="font:400 15px/1.6 Newsreader,serif; color:#8A8175; text-wrap:pretty">If you’re a recruiter, the password is in my cover letter. Otherwise, get in touch and I’ll pass it along.</div>
+                <div style="margin-top:8px; width:100%; max-width:340px; display:flex; gap:10px; align-items:stretch">
+                  <input type="password" placeholder="Password" value="{{ pwVal }}" onChange="{{ pwChange }}" onKeyDown="{{ pwKey }}" style="flex:1; min-width:0; background:#FBF9F4; border:1px solid #E6E1D6; border-radius:4px; padding:11px 12px; font:400 13px/1 'Instrument Sans',sans-serif; letter-spacing:0.04em; color:#221F1A; outline:none; text-align:center" />
+                  <div onClick="{{ pwSubmit }}" style="cursor:pointer; display:flex; align-items:center; padding:0 18px; border-radius:4px; background:#221F1A; color:#FBF9F4; font:500 9.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.16em">UNLOCK</div>
+                </div>
+                <sc-if value="{{ pwErr }}" hint-placeholder-val="{{ false }}">
+                  <div style="font:400 11px/1.5 'Instrument Sans',sans-serif; letter-spacing:0.06em; color:#B4553C">That’s not it. Try again.</div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
           </div>
 
         </sc-if>
@@ -701,7 +722,8 @@
 
           <div style="margin-top:64px; display:flex; flex-direction:column; gap:12px">
             <div style="font:500 8.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175">PROJECT SUMMARY</div>
-            <div style="font:400 19px/1.45 Newsreader,serif; color:#221F1A; text-wrap:pretty">I was asked to ship an AI feature for a banking-sector PoC. but, the product had no design system, no documentation, and years of inconsistent patterns baked into it.</div>
+            <div style="font:400 19px/1.45 Newsreader,serif; color:#221F1A; text-wrap:pretty">A project that shows how I take ownership when there’s no structure to lean on.</div>
+            <div style="font:400 19px/1.45 Newsreader,serif; color:#221F1A; text-wrap:pretty">When the team’s sole designer went on leave mid platform transition, I was asked to ship an AI feature for a banking sector PoC, with no design system, no documentation, and years of inconsistent patterns to work around.</div>
           </div>
 
           <div style="margin-top:38px; display:grid; grid-template-columns:{{ csSplitCols2 }}; gap:30px; align-items:start">
@@ -717,6 +739,9 @@
               </div>
             </div>
           </div>
+
+          <div style="{{ lockWrap }}">
+          <div style="{{ lockClip }}">
 
           <div style="margin-top:64px; font:500 8.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175">THE PROCESS</div>
 
@@ -878,6 +903,24 @@
               <div style="font:700 40px/1.1 'Instrument Serif',serif; color:{{ csAccent }}">A foundation that outlived the PoC</div>
               <div style="font:400 13px/1.7 'Instrument Sans',sans-serif; color:#221F1A">The component library and foundation I built from scratch became the team’s Figma design-system baseline — and is still in use today.</div>
             </div>
+          </div>
+          </div>
+          <sc-if value="{{ csLocked }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; left:0; right:0; bottom:8px; display:flex; justify-content:center">
+              <div style="width:100%; max-width:460px; display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center">
+                <div style="font:500 8.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175">PROTECTED</div>
+                <div style="font:400 15px/1.6 Newsreader,serif; color:#221F1A; text-wrap:pretty">This project holds sensitive client information, so the rest of the case study is password-protected.</div>
+                <div style="font:400 15px/1.6 Newsreader,serif; color:#8A8175; text-wrap:pretty">If you’re a recruiter, the password is in my cover letter. Otherwise, get in touch and I’ll pass it along.</div>
+                <div style="margin-top:8px; width:100%; max-width:340px; display:flex; gap:10px; align-items:stretch">
+                  <input type="password" placeholder="Password" value="{{ pwVal }}" onChange="{{ pwChange }}" onKeyDown="{{ pwKey }}" style="flex:1; min-width:0; background:#FBF9F4; border:1px solid #E6E1D6; border-radius:4px; padding:11px 12px; font:400 13px/1 'Instrument Sans',sans-serif; letter-spacing:0.04em; color:#221F1A; outline:none; text-align:center" />
+                  <div onClick="{{ pwSubmit }}" style="cursor:pointer; display:flex; align-items:center; padding:0 18px; border-radius:4px; background:#221F1A; color:#FBF9F4; font:500 9.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.16em">UNLOCK</div>
+                </div>
+                <sc-if value="{{ pwErr }}" hint-placeholder-val="{{ false }}">
+                  <div style="font:400 11px/1.5 'Instrument Sans',sans-serif; letter-spacing:0.06em; color:#B4553C">That’s not it. Try again.</div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
           </div>
 
         </sc-if>
@@ -1112,6 +1155,11 @@ class Component extends DCLogic {
   state = { dark: false, cFrom: "", cSubj: "", cMsg: "", filt: "All", filtTouched: false, contactOpen: false, menuOpen: false, copied: false, shelfOn: false, tick: 0, open: null, tab: {}, fill: 0, hov: null, pill: null, seen: {}, word: null, cycle: 0, mx: 0.5, my: 0.4, cx: -200, cy: -200, origin: "50% 50%", navK: 0, navDir: 0, gIdx: 0, iter: [0, 0, 0, 0], slots: [{ a: 0, b: 0 }, { a: 0, b: 0 }, { a: 0, b: 0 }, { a: 0, b: 0 }], pOpen: {}, bbP: 0.5, bbSeen: false, w: typeof window !== "undefined" ? window.innerWidth : 1440 };
   iterTimer = null;
   togglePart(k) { this.setState(s => ({ pOpen: { ...s.pOpen, [k]: !s.pOpen[k] } })); }
+  tryUnlock() {
+    const v = (this.state.pwVal || "").trim();
+    if (v === "ProjectiManager" || v === "ProjectAI") this.setState({ unlocked: true, pwVal: "", pwErr: false });
+    else this.setState({ pwErr: true });
+  }
   sendMail() {
     const s = this.state;
     const body = (s.cMsg || "") + (s.cFrom ? "\n\n\u2014 " + s.cFrom : "");
@@ -1498,6 +1546,17 @@ class Component extends DCLogic {
       csFrame: enc(WEB + "Starise - Brand Guidelines p1.webp"),
       csAccent: (c && c.accent) || "#221F1A",
       csAI: !!(c && c.ai),
+      lockWrap: "position:relative",
+      lockClip: (c && (c.ai || c.im)) && !this.state.unlocked
+        ? "max-height:520px; overflow:hidden; pointer-events:none; user-select:none; -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 16%,rgba(0,0,0,0.12) 72%,transparent 96%); mask-image:linear-gradient(to bottom,#000 0%,#000 16%,rgba(0,0,0,0.12) 72%,transparent 96%)"
+        : "",
+      csLocked: !!(c && (c.ai || c.im)) && !this.state.unlocked,
+      csUnlocked: !(c && (c.ai || c.im)) || !!this.state.unlocked,
+      pwVal: this.state.pwVal || "",
+      pwErr: !!this.state.pwErr,
+      pwChange: e => this.setState({ pwVal: e.target.value, pwErr: false }),
+      pwKey: e => { if (e.key === "Enter") this.tryUnlock(); },
+      pwSubmit: () => this.tryUnlock(),
       csOrion: !!(c && c.orion),
       csBB: !!(c && c.bb),
       csTP: !!(c && c.tp),
