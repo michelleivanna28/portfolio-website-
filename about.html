@@ -10,9 +10,9 @@
 <helmet>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About — Michelle Ivanna</title>
-  <link rel="icon" type="image/png" href="uploads/favicon.png">
+  <link rel="icon" type="image/png" href="uploads/site/favicon.png">
   <meta property="og:title" content="About — Michelle Ivanna">
-  <meta property="og:image" content="uploads/og-card.png">
+  <meta property="og:image" content="uploads/site/og-card.png">
   <meta name="twitter:card" content="summary_large_image">
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Instrument+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
@@ -54,8 +54,8 @@
     <div style="width:{{ colW }}; margin:0 auto; padding:22px 0 18px; display:flex; justify-content:space-between; align-items:center; font:500 12px/1 'Instrument Sans',sans-serif; letter-spacing:0.16em; text-transform:uppercase">
       <a href="index.html" style="white-space:nowrap">Michelle Ivanna</a>
       <div style="display:{{ navInline }}; align-items:center; gap:20px; color:#8A8175">
-        <a href="about.html" style="padding-bottom:3px; color:#221F1A">ABOUT</a>
-        <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener" style="color:#221F1A">CV</a>
+        <a href="about.html" style="padding-bottom:3px; border-bottom:1px solid #221F1A; color:#221F1A">ABOUT</a>
+        <a href="voice.html" style="color:#221F1A">VOICE</a>
         <div onClick="{{ openContact }}" onKeyDown="{{ contactKey }}" tabindex="0" style="cursor:pointer; color:#221F1A">CONTACT</div>
       </div>
       <div onClick="{{ toggleMenu }}" onKeyDown="{{ menuKey }}" tabindex="0" style="display:{{ burgerD }}; cursor:pointer; flex-direction:column; gap:4px; padding:6px 2px">
@@ -101,7 +101,7 @@
 
     <div onClick="{{ openPola }}" onKeyDown="{{ polaKey }}" tabindex="0" style="cursor:zoom-in; grid-area:pola; align-self:end; justify-self:{{ polaJustify }}; position:relative; width:{{ polaW }}; background:#FFFFFF; border:1px solid #DCD2BE; padding:9px 9px 0; box-shadow:3px 5px 12px rgba(34,31,26,0.14); transform:rotate({{ polaTilt }})">
       <div style="position:absolute; top:-8px; left:50%; margin-left:-8px; width:16px; height:16px; border-radius:50%; background:#D9CDB4; box-shadow:0 1px 2px rgba(34,31,26,0.18)"></div>
-      <img src="uploads/ph-taipei-tech.jpeg" alt="Michelle at National Taipei University of Technology" style="width:100%; aspect-ratio:1206 / 678; object-fit:cover; display:block; background:#EFE9DA" />
+      <img src="uploads/about/ph-taipei-tech.jpeg" alt="Michelle at National Taipei University of Technology" style="width:100%; aspect-ratio:1206 / 678; object-fit:cover; display:block; background:#EFE9DA" />
       <div style="padding:10px 1px 12px; font:500 9.5px/1.4 'Instrument Sans',sans-serif; letter-spacing:0.09em; color:#8A8175; text-align:center">Taipei Tech, 2025</div>
     </div>
 
@@ -146,7 +146,7 @@
         </div>
 
         <div style="flex:none; width:{{ quillSlotW }}; display:flex; align-items:flex-end; justify-content:center">
-          <img src="uploads/quill-ink-blue.png" alt="Quill and ink, line drawing" style="height:{{ quillH }}; width:auto; display:block; pointer-events:none; position:relative; z-index:6">
+          <img src="uploads/site/quill-ink-blue.png" alt="Quill and ink, line drawing" style="height:{{ quillH }}; width:auto; display:block; pointer-events:none; position:relative; z-index:6">
         </div>
 
         <div style="flex:none; width:{{ s3.slotW }}; display:flex; align-items:flex-end; justify-content:center">
@@ -185,9 +185,12 @@
 
   <div style="width:{{ colW }}; margin:0 auto; padding:{{ padY }} 0 40px; display:flex; flex-wrap:wrap; gap:12px 20px; justify-content:space-between; border-top:1px solid #E6E1D6; padding-top:14px; font:500 9.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.16em; color:#8A8175">
     <div>© MICHELLE IVANNA 2026</div>
-    <div style="display:flex; align-items:baseline; gap:10px">
-      <span>TAIPEI</span>
-      <span style="color:#221F1A">{{ tpeTime }}</span>
+    <div style="display:flex; align-items:baseline; gap:20px">
+      <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener" style="color:#8A8175">CV</a>
+      <div style="display:flex; align-items:baseline; gap:10px">
+        <span>TAIPEI</span>
+        <span style="color:#221F1A">{{ tpeTime }}</span>
+      </div>
     </div>
   </div>
 
@@ -199,8 +202,9 @@
         <span onClick="{{ closeMenu }}" style="cursor:pointer; font-size:15px">✕</span>
       </div>
       <a href="index.html">WORK</a>
-      <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener">CV</a>
+      <a href="voice.html">VOICE</a>
       <div onClick="{{ openContact }}" style="cursor:pointer">CONTACT</div>
+      <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener" style="color:#8A8175">CV</a>
     </div>
   </div>
   </sc-if>
@@ -208,7 +212,7 @@
   <sc-if value="{{ polaOpen }}" hint-placeholder-val="{{ false }}">
   <div onClick="{{ closePola }}" style="position:fixed; inset:0; z-index:70; background:rgba(28,25,23,0.52); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px); display:flex; align-items:center; justify-content:center; padding:{{ bookPad }}; cursor:zoom-out; animation:csFade 240ms ease both">
     <div style="width:{{ polaBigW }}; background:#FFFFFF; border:1px solid #DCD2BE; padding:{{ polaBigPad }}; box-shadow:0 34px 90px rgba(28,25,23,0.46); transform:rotate(-1.4deg); animation:bookIn 420ms cubic-bezier(.2,.8,.3,1) both">
-      <img src="uploads/ph-taipei-tech.jpeg" alt="Michelle at National Taipei University of Technology" style="width:100%; aspect-ratio:1206 / 678; object-fit:cover; display:block; background:#EFE9DA" />
+      <img src="uploads/about/ph-taipei-tech.jpeg" alt="Michelle at National Taipei University of Technology" style="width:100%; aspect-ratio:1206 / 678; object-fit:cover; display:block; background:#EFE9DA" />
       <div style="padding:{{ polaBigCapPad }}; font:500 {{ polaBigCap }} 'Instrument Sans',sans-serif; letter-spacing:0.09em; color:#8A8175; text-align:center">Taipei Tech, 2025</div>
     </div>
   </div>
@@ -296,29 +300,29 @@
 
             <sc-if value="{{ b0 }}" hint-placeholder-val="{{ true }}">
               <div onPointerDown="{{ ph0.down }}" style="position:absolute; top:0; right:0; width:{{ ph0.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph0.dx }}, {{ ph0.dy }}) rotate({{ ph0.rot }}); transition:{{ ph0.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph0.z }}">
-                <img src="uploads/ph-on-timeline.jpg" alt="Michelle reading on a park bench" draggable="false" style="width:100%; aspect-ratio:1.327; object-fit:cover; display:block; background:#EFE9DA" />
+                <img src="uploads/about/ph-on-timeline.jpg" alt="Michelle reading on a park bench" draggable="false" style="width:100%; aspect-ratio:1.327; object-fit:cover; display:block; background:#EFE9DA" />
                 <div style="padding:6px 2px 8px; font:500 7.5px/1.4 'Instrument Sans',sans-serif; letter-spacing:0.08em; color:#8A8175; text-align:center">STILL READING</div>
               </div>
             </sc-if>
 
             <sc-if value="{{ b2 }}" hint-placeholder-val="{{ false }}">
               <div onPointerDown="{{ ph0.down }}" style="position:absolute; top:0; right:0; width:{{ ph0.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph0.dx }}, {{ ph0.dy }}) rotate({{ ph0.rot }}); transition:{{ ph0.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph0.z }}">
-                <img src="uploads/ph-piano-mini.jpg" alt="Michelle at three, at the piano" draggable="false" style="width:100%; aspect-ratio:1.334; object-fit:cover; display:block; background:#EFE9DA" />
+                <img src="uploads/about/ph-piano-mini.jpg" alt="Michelle at three, at the piano" draggable="false" style="width:100%; aspect-ratio:1.334; object-fit:cover; display:block; background:#EFE9DA" />
                 <div style="padding:6px 2px 8px; font:500 7.5px/1.4 'Instrument Sans',sans-serif; letter-spacing:0.08em; color:#8A8175; text-align:center">AGE THREE</div>
               </div>
               <div onPointerDown="{{ ph1.down }}" style="position:absolute; top:0; right:0; width:{{ ph1.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph1.dx }}, {{ ph1.dy }}) rotate({{ ph1.rot }}); transition:{{ ph1.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph1.z }}">
-                <img src="uploads/ph-piano-old.jpg" alt="Michelle at a piano recital" draggable="false" style="width:100%; aspect-ratio:0.75; object-fit:cover; display:block; background:#EFE9DA" />
+                <img src="uploads/about/ph-piano-old.jpg" alt="Michelle at a piano recital" draggable="false" style="width:100%; aspect-ratio:0.75; object-fit:cover; display:block; background:#EFE9DA" />
                 <div style="padding:6px 2px 8px; font:500 7.5px/1.4 'Instrument Sans',sans-serif; letter-spacing:0.08em; color:#8A8175; text-align:center">RECITAL NIGHT</div>
               </div>
             </sc-if>
 
             <sc-if value="{{ b4 }}" hint-placeholder-val="{{ false }}">
               <div onPointerDown="{{ ph0.down }}" style="position:absolute; top:0; right:0; width:{{ ph0.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph0.dx }}, {{ ph0.dy }}) rotate({{ ph0.rot }}); transition:{{ ph0.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph0.z }}">
-                <img src="uploads/ph-things-made-her.jpg" alt="Self-portrait in a mirror" draggable="false" style="width:100%; aspect-ratio:1.333; object-fit:cover; display:block; background:#EFE9DA" />
+                <img src="uploads/about/ph-things-made-her.jpg" alt="Self-portrait in a mirror" draggable="false" style="width:100%; aspect-ratio:1.333; object-fit:cover; display:block; background:#EFE9DA" />
                 <div style="padding:6px 2px 8px; font:500 7.5px/1.4 'Instrument Sans',sans-serif; letter-spacing:0.08em; color:#8A8175; text-align:center">A6500 + TAMRON 18-50</div>
               </div>
               <div onPointerDown="{{ ph1.down }}" style="position:absolute; top:0; right:0; width:{{ ph1.w }}; background:#FFFFFF; padding:7px 7px 0; box-shadow:3px 6px 16px rgba(34,31,26,0.2); transform:translate({{ ph1.dx }}, {{ ph1.dy }}) rotate({{ ph1.rot }}); transition:{{ ph1.trans }}; cursor:grab; touch-action:none; user-select:none; z-index:{{ ph1.z }}">
-                <img src="uploads/ph-anxious-people.jpg" alt="Anxious People, Fredrik Backman" draggable="false" style="width:100%; aspect-ratio:0.664; object-fit:cover; display:block; background:#EFE9DA" />
+                <img src="uploads/about/ph-anxious-people.jpg" alt="Anxious People, Fredrik Backman" draggable="false" style="width:100%; aspect-ratio:0.664; object-fit:cover; display:block; background:#EFE9DA" />
                 <div style="padding:6px 2px 8px; font:500 7.5px/1.4 'Instrument Sans',sans-serif; letter-spacing:0.08em; color:#8A8175; text-align:center">LATEST GOOD READ</div>
               </div>
             </sc-if>
@@ -410,14 +414,14 @@ const ANGLES = [-6, -3, 0, 3, 6];
 const CARD_TRAVEL = 118;
 const POCKET_H = { photos: 104, plain: 150 };
 const PHOTOS = {
-  0: [{ src: "uploads/ph-on-timeline.jpg", alt: "Michelle reading on a park bench", caption: "STILL READING", ratio: "1.327", w: 190, rot: -2.4 }],
+  0: [{ src: "uploads/about/ph-on-timeline.jpg", alt: "Michelle reading on a park bench", caption: "STILL READING", ratio: "1.327", w: 190, rot: -2.4 }],
   2: [
-    { src: "uploads/ph-piano-old.jpg", alt: "Michelle at a piano recital", caption: "RECITAL NIGHT", ratio: "0.75", w: 148, rot: 2.2 },
-    { src: "uploads/ph-piano-mini.jpg", alt: "Michelle at three, at the piano", caption: "AGE THREE", ratio: "1.334", w: 176, rot: -3.2 }
+    { src: "uploads/about/ph-piano-old.jpg", alt: "Michelle at a piano recital", caption: "RECITAL NIGHT", ratio: "0.75", w: 148, rot: 2.2 },
+    { src: "uploads/about/ph-piano-mini.jpg", alt: "Michelle at three, at the piano", caption: "AGE THREE", ratio: "1.334", w: 176, rot: -3.2 }
   ],
   4: [
-    { src: "uploads/ph-things-made-her.jpg", alt: "Self-portrait in a mirror", caption: "A6500 + TAMRON 18-50", ratio: "1.333", w: 186, rot: -2.6 },
-    { src: "uploads/ph-anxious-people.jpg", alt: "Anxious People, Fredrik Backman", caption: "LATEST GOOD READ", ratio: "0.664", w: 122, rot: 3.4 }
+    { src: "uploads/about/ph-things-made-her.jpg", alt: "Self-portrait in a mirror", caption: "A6500 + TAMRON 18-50", ratio: "1.333", w: 186, rot: -2.6 },
+    { src: "uploads/about/ph-anxious-people.jpg", alt: "Anxious People, Fredrik Backman", caption: "LATEST GOOD READ", ratio: "0.664", w: 122, rot: 3.4 }
   ]
 };
 function fontFor(b, w, hpx) {

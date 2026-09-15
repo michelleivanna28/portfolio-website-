@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc><helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design Discernment — Michelle Ivanna</title>
+  <link rel="icon" type="image/png" href="uploads/site/favicon.png">
+  <meta property="og:title" content="Design Discernment — Michelle Ivanna">
+  <meta property="og:image" content="uploads/site/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Instrument+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
+    body { background: #F5F1E8; -webkit-font-smoothing: antialiased; }
+    a { color: #221F1A; text-decoration: none; }
+    a:hover { color: #3D4C80; }
+    a:focus-visible, [tabindex]:focus-visible { outline: 1px solid currentColor; outline-offset: 5px; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    @keyframes csFade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes bookIn { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  </style>
+</helmet>
+
+<div style="min-height:100svh; background:#F5F1E8; color:#221F1A; display:flex; flex-direction:column">
+
+  <div style="position:sticky; top:0; z-index:20; background:#F5F1E8">
+    <div style="width:{{ colW }}; margin:0 auto; padding:22px 0 18px; display:flex; justify-content:space-between; align-items:center; font:500 12px/1 'Instrument Sans',sans-serif; letter-spacing:0.16em; text-transform:uppercase">
+      <a href="index.html" style="white-space:nowrap">Michelle Ivanna</a>
+      <div style="display:{{ navInline }}; align-items:center; gap:20px; color:#8A8175">
+        <a href="about.html" style="color:#221F1A">ABOUT</a>
+        <a href="voice.html" style="padding-bottom:3px; border-bottom:1px solid #221F1A; color:#221F1A">VOICE</a>
+        <div onClick="{{ openContact }}" onKeyDown="{{ contactKey }}" tabindex="0" style="cursor:pointer; color:#221F1A">CONTACT</div>
+      </div>
+      <div onClick="{{ toggleMenu }}" onKeyDown="{{ menuKey }}" tabindex="0" style="display:{{ burgerD }}; cursor:pointer; flex-direction:column; gap:4px; padding:6px 2px">
+        <div style="width:20px; height:1px; background:#221F1A"></div>
+        <div style="width:20px; height:1px; background:#221F1A"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1; width:{{ colW }}; margin:0 auto; padding:{{ heroPadT }} 0 0; display:flex; flex-direction:column">
+
+    <img src="uploads/voice/voice-banner.jpg" alt="Design Discernment — when AI is given free reign over front-end choices" style="animation:fadeUp 700ms ease both; width:100%; aspect-ratio:3005 / 1030; object-fit:cover; display:block; background:#EFE9DA" />
+
+    <div style="margin-top:{{ titlePadT }}; max-width:{{ titleMax }}">
+      <div style="font:600 {{ h1 }} 'Instrument Sans',sans-serif; letter-spacing:-0.015em; color:#221F1A; text-wrap:pretty; max-width:22em">Have you ever opened a screen and thought, ‘this looks perfectly fine, that is.. until you actually use it.’</div>
+    </div>
+
+    <div style="margin-top:{{ bodyPadT }}; display:grid; grid-template-columns:{{ cols }}; column-gap:{{ colGap }}; row-gap:{{ rowGap }}; align-items:start; border-top:1px solid #E6E1D6; padding-top:{{ bodyPadT }}">
+
+      <div style="display:flex; flex-direction:column; gap:{{ metaGap }}; position:{{ metaPos }}; top:96px; min-width:0">
+        <div style="display:flex; flex-direction:column; gap:5px">
+          <div style="font:500 8.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175">CATEGORY</div>
+          <div style="font:400 {{ metaVal }} 'Instrument Sans',sans-serif; color:#221F1A">Observation</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:5px">
+          <div style="font:500 8.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175">DATE</div>
+          <div style="font:400 {{ metaVal }} 'Instrument Sans',sans-serif; color:#221F1A">31 July 2026</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:5px">
+          <div style="font:500 8.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175">READ</div>
+          <div style="font:400 {{ metaVal }} 'Instrument Sans',sans-serif; color:#221F1A">5 mins read</div>
+        </div>
+        <a href="voice.html" style="display:flex; align-items:center; gap:7px; padding-top:{{ metaGap }}; border-top:1px solid #E6E1D6; font:500 11.5px/1 'Instrument Sans',sans-serif; color:#8A8175">
+          <svg width="7" height="11" viewBox="0 0 7 11" fill="none" style="flex:none; display:block">
+            <path d="M5.6 1L1.4 5.5L5.6 10" stroke="#8A8175" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          All Notes
+        </a>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:{{ proseGap }}; min-width:0; max-width:{{ proseMax }}">
+
+        <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty"><span onClick="{{ openPola }}" onKeyDown="{{ polaKey }}" tabindex="0" style="cursor:zoom-in; color:#221F1A; border-bottom:1px solid #221F1A">Last month, I joined a hackathon with a couple of engineers</span>.</div>
+
+        <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty">What came out of it was a prototype, and somewhere between the first build and the version we actually submitted, I ended up <span style="background:#FFE9A8; box-shadow:0 0 0 2px #FFE9A8">turning an engineer's first product into a designer's first one</span>.</div>
+
+        <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty">The screenshots from that process taught me more than the hackathon itself did.</div>
+
+        <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty">Because once I started looking closely at what the AI had generated on its own, I noticed the same handful of habits showing up again and again. So here they are, the tells I've picked up from working across Gamma, PPT generators, Firefly, GPT, Gemini, and now Claude Design, using our hackathon prototype as examples.</div>
+
+        <video src="uploads/voice/voice-hook.mp4" ref="{{ videoRef }}" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsinline="{{ true }}" controls="{{ false }}" style="width:100%; display:block; background:#EFE9DA; border:1px solid #E6E1D6; margin-top:{{ mediaGap }}"></video>
+
+        <div style="display:flex; flex-direction:column; gap:{{ itemGap }}; margin-top:{{ mediaGap }}">
+          <div style="display:flex; align-items:baseline; gap:8px">
+            <div style="flex:none; font:600 {{ h3 }} 'Instrument Sans',sans-serif; color:#221F1A">1.</div>
+            <div style="font:600 {{ h3 }} 'Instrument Sans',sans-serif; letter-spacing:-0.01em; color:#221F1A; text-wrap:pretty; min-width:0">Emoji everywhere</div>
+          </div>
+          <div style="position:relative; width:100%; aspect-ratio:16 / 9; background:#EFE9DA">
+            <div style="position:absolute; inset:0"><img id="dd-01" src="uploads/voice/voice-01-emoji.jpg" alt="Emoji usage across the prototype screens" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block" /></div>
+              <div onClick="{{ zoom.s1 }}" title="Enlarge" style="position:absolute; bottom:8px; right:8px; width:26px; height:26px; border-radius:6px; background:rgba(245,241,232,0.94); border:1px solid #DCD2BE; display:flex; align-items:center; justify-content:center; cursor:zoom-in; font:500 12px/1 'Instrument Sans',sans-serif; color:#221F1A">⤢</div>
+          </div>
+          <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty">Icons and symbols take time to make well. Emojis don't. They give a screen some visual texture without anyone having to draw anything, which honestly makes sense as a shortcut. It's also one of the fastest ways to spot AI made work.</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:{{ itemGap }}; margin-top:{{ mediaGap }}">
+          <div style="display:flex; align-items:baseline; gap:8px">
+            <div style="flex:none; font:600 {{ h3 }} 'Instrument Sans',sans-serif; color:#221F1A">2.</div>
+            <div style="font:600 {{ h3 }} 'Instrument Sans',sans-serif; letter-spacing:-0.01em; color:#221F1A; text-wrap:pretty; min-width:0">Everything gets a card</div>
+          </div>
+          <div style="position:relative; width:100%; aspect-ratio:16 / 9; background:#EFE9DA">
+            <div style="position:absolute; inset:0"><img id="dd-02" src="uploads/voice/voice-02-cards.jpg" alt="Bento style card layouts" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block" /></div>
+              <div onClick="{{ zoom.s2 }}" title="Enlarge" style="position:absolute; bottom:8px; right:8px; width:26px; height:26px; border-radius:6px; background:rgba(245,241,232,0.94); border:1px solid #DCD2BE; display:flex; align-items:center; justify-content:center; cursor:zoom-in; font:500 12px/1 'Instrument Sans',sans-serif; color:#221F1A">⤢</div>
+          </div>
+          <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty">Bento style, boxes around boxes, every piece of content wrapped in its own little container whether it needed one or not.</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:{{ itemGap }}; margin-top:{{ mediaGap }}">
+          <div style="display:flex; align-items:baseline; gap:8px">
+            <div style="flex:none; font:600 {{ h3 }} 'Instrument Sans',sans-serif; color:#221F1A">3.</div>
+            <div style="font:600 {{ h3 }} 'Instrument Sans',sans-serif; letter-spacing:-0.01em; color:#221F1A; text-wrap:pretty; min-width:0">The copy has a formula</div>
+          </div>
+          <div style="position:relative; width:100%; aspect-ratio:16 / 9; background:#EFE9DA">
+            <div style="position:absolute; inset:0; opacity:{{ s3a }}; pointer-events:{{ s3aPE }}">
+              <img id="dd-03a" src="uploads/voice/voice-03-copy-1.jpg" alt="Annotated copy details" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block" />
+              <div onClick="{{ prev3 }}" style="position:absolute; left:0; top:16%; bottom:16%; width:26%; display:flex; align-items:center; justify-content:flex-start; padding-left:14px; cursor:w-resize; opacity:0.3; transition:opacity 170ms ease" style-hover="opacity:1"><div style="font:400 40px/1 'Instrument Sans',sans-serif; color:#221F1A; text-shadow:0 1px 10px rgba(245,241,232,0.95), 0 0 24px rgba(245,241,232,0.8); padding-bottom:5px">‹</div></div>
+              <div onClick="{{ next3 }}" style="position:absolute; right:0; top:16%; bottom:16%; width:26%; display:flex; align-items:center; justify-content:flex-end; padding-right:14px; cursor:e-resize; opacity:0.3; transition:opacity 170ms ease" style-hover="opacity:1"><div style="font:400 40px/1 'Instrument Sans',sans-serif; color:#221F1A; text-shadow:0 1px 10px rgba(245,241,232,0.95), 0 0 24px rgba(245,241,232,0.8); padding-bottom:5px">›</div></div>
+              <div onClick="{{ zoom.s3a }}" title="Enlarge" style="position:absolute; left:26%; right:26%; top:16%; bottom:16%; cursor:zoom-in"></div>
+            </div>
+            <div style="position:absolute; inset:0; opacity:{{ s3b }}; pointer-events:{{ s3bPE }}">
+              <img id="dd-03b" src="uploads/voice/voice-03-copy-2.jpg" alt="Annotated copy details, second screen" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block" />
+              <div onClick="{{ prev3 }}" style="position:absolute; left:0; top:16%; bottom:16%; width:26%; display:flex; align-items:center; justify-content:flex-start; padding-left:14px; cursor:w-resize; opacity:0.3; transition:opacity 170ms ease" style-hover="opacity:1"><div style="font:400 40px/1 'Instrument Sans',sans-serif; color:#221F1A; text-shadow:0 1px 10px rgba(245,241,232,0.95), 0 0 24px rgba(245,241,232,0.8); padding-bottom:5px">‹</div></div>
+              <div onClick="{{ next3 }}" style="position:absolute; right:0; top:16%; bottom:16%; width:26%; display:flex; align-items:center; justify-content:flex-end; padding-right:14px; cursor:e-resize; opacity:0.3; transition:opacity 170ms ease" style-hover="opacity:1"><div style="font:400 40px/1 'Instrument Sans',sans-serif; color:#221F1A; text-shadow:0 1px 10px rgba(245,241,232,0.95), 0 0 24px rgba(245,241,232,0.8); padding-bottom:5px">›</div></div>
+              <div onClick="{{ zoom.s3b }}" title="Enlarge" style="position:absolute; left:26%; right:26%; top:16%; bottom:16%; cursor:zoom-in"></div>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:center; gap:6px">
+            <div onClick="{{ go3a }}" style="width:6px; height:6px; border-radius:999px; cursor:pointer; background:{{ d3a }}"></div>
+            <div onClick="{{ go3b }}" style="width:6px; height:6px; border-radius:999px; cursor:pointer; background:{{ d3b }}"></div>
+          </div>
+          <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty">This one took me longest to name but it's the most consistent. Once you actually read the words instead of scanning the layout, you start noticing the same pattern. Small caps eyebrow text sitting above almost everything. A header sized topic underneath it. Then a description that is mostly redundant.</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:{{ itemGap }}; margin-top:{{ mediaGap }}">
+          <div style="display:flex; align-items:baseline; gap:8px">
+            <div style="flex:none; font:600 {{ h3 }} 'Instrument Sans',sans-serif; color:#221F1A">4.</div>
+            <div style="font:600 {{ h3 }} 'Instrument Sans',sans-serif; letter-spacing:-0.01em; color:#221F1A; text-wrap:pretty; min-width:0">Category bubbles</div>
+          </div>
+          <div style="position:relative; width:100%; aspect-ratio:16 / 9; background:#EFE9DA">
+            <div style="position:absolute; inset:0"><img id="dd-04" src="uploads/voice/voice-04-pills.jpg" alt="Category pill tags" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block" /></div>
+              <div onClick="{{ zoom.s4 }}" title="Enlarge" style="position:absolute; bottom:8px; right:8px; width:26px; height:26px; border-radius:6px; background:rgba(245,241,232,0.94); border:1px solid #DCD2BE; display:flex; align-items:center; justify-content:center; cursor:zoom-in; font:500 12px/1 'Instrument Sans',sans-serif; color:#221F1A">⤢</div>
+          </div>
+          <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty">Little pill shaped tags labeling things that didn't necessarily need labeling.</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:{{ itemGap }}; margin-top:{{ mediaGap }}">
+          <div style="display:flex; align-items:baseline; gap:8px">
+            <div style="flex:none; font:600 {{ h3 }} 'Instrument Sans',sans-serif; color:#221F1A">5.</div>
+            <div style="font:600 {{ h3 }} 'Instrument Sans',sans-serif; letter-spacing:-0.01em; color:#221F1A; text-wrap:pretty; min-width:0">The layout quietly breaks somewhere</div>
+          </div>
+          <div style="position:relative; width:100%; aspect-ratio:16 / 9; background:#EFE9DA">
+            <div style="position:absolute; inset:0"><img id="dd-05" src="uploads/voice/voice-05-details.jpg" alt="Micro imperfections marked up" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block" /></div>
+              <div onClick="{{ zoom.s5 }}" title="Enlarge" style="position:absolute; bottom:8px; right:8px; width:26px; height:26px; border-radius:6px; background:rgba(245,241,232,0.94); border:1px solid #DCD2BE; display:flex; align-items:center; justify-content:center; cursor:zoom-in; font:500 12px/1 'Instrument Sans',sans-serif; color:#221F1A">⤢</div>
+          </div>
+          <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty">Text that's too small in one spot, an element floating a little off, spacing that's almost right but not quite. Small things, but you feel them even when you can't name them.</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:{{ itemGap }}; margin-top:{{ mediaGap }}">
+          <div style="display:flex; align-items:baseline; gap:8px">
+            <div style="flex:none; font:600 {{ h3 }} 'Instrument Sans',sans-serif; color:#221F1A">6.</div>
+            <div style="font:600 {{ h3 }} 'Instrument Sans',sans-serif; letter-spacing:-0.01em; color:#221F1A; text-wrap:pretty; min-width:0">Last but not least, it looks perfect until you use it</div>
+          </div>
+          <div style="position:relative; width:100%; aspect-ratio:16 / 9; background:#EFE9DA">
+            <div style="position:absolute; inset:0; opacity:{{ s6a }}; pointer-events:{{ s6aPE }}">
+              <img id="dd-06a" src="uploads/voice/voice-06-before.jpg" alt="Information hierarchy, before" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block" />
+              <div onClick="{{ prev6 }}" style="position:absolute; left:0; top:16%; bottom:16%; width:26%; display:flex; align-items:center; justify-content:flex-start; padding-left:14px; cursor:w-resize; opacity:0.3; transition:opacity 170ms ease" style-hover="opacity:1"><div style="font:400 40px/1 'Instrument Sans',sans-serif; color:#221F1A; text-shadow:0 1px 10px rgba(245,241,232,0.95), 0 0 24px rgba(245,241,232,0.8); padding-bottom:5px">‹</div></div>
+              <div onClick="{{ next6 }}" style="position:absolute; right:0; top:16%; bottom:16%; width:26%; display:flex; align-items:center; justify-content:flex-end; padding-right:14px; cursor:e-resize; opacity:0.3; transition:opacity 170ms ease" style-hover="opacity:1"><div style="font:400 40px/1 'Instrument Sans',sans-serif; color:#221F1A; text-shadow:0 1px 10px rgba(245,241,232,0.95), 0 0 24px rgba(245,241,232,0.8); padding-bottom:5px">›</div></div>
+              <div onClick="{{ zoom.s6a }}" title="Enlarge" style="position:absolute; left:26%; right:26%; top:16%; bottom:16%; cursor:zoom-in"></div>
+            </div>
+            <div style="position:absolute; inset:0; opacity:{{ s6b }}; pointer-events:{{ s6bPE }}">
+              <img id="dd-06b" src="uploads/voice/voice-06-after.jpg" alt="Information hierarchy, after" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block" />
+              <div onClick="{{ prev6 }}" style="position:absolute; left:0; top:16%; bottom:16%; width:26%; display:flex; align-items:center; justify-content:flex-start; padding-left:14px; cursor:w-resize; opacity:0.3; transition:opacity 170ms ease" style-hover="opacity:1"><div style="font:400 40px/1 'Instrument Sans',sans-serif; color:#221F1A; text-shadow:0 1px 10px rgba(245,241,232,0.95), 0 0 24px rgba(245,241,232,0.8); padding-bottom:5px">‹</div></div>
+              <div onClick="{{ next6 }}" style="position:absolute; right:0; top:16%; bottom:16%; width:26%; display:flex; align-items:center; justify-content:flex-end; padding-right:14px; cursor:e-resize; opacity:0.3; transition:opacity 170ms ease" style-hover="opacity:1"><div style="font:400 40px/1 'Instrument Sans',sans-serif; color:#221F1A; text-shadow:0 1px 10px rgba(245,241,232,0.95), 0 0 24px rgba(245,241,232,0.8); padding-bottom:5px">›</div></div>
+              <div onClick="{{ zoom.s6b }}" title="Enlarge" style="position:absolute; left:26%; right:26%; top:16%; bottom:16%; cursor:zoom-in"></div>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:center; gap:6px">
+            <div onClick="{{ go6a }}" style="width:6px; height:6px; border-radius:999px; cursor:pointer; background:{{ d6a }}"></div>
+            <div onClick="{{ go6b }}" style="width:6px; height:6px; border-radius:999px; cursor:pointer; background:{{ d6b }}"></div>
+          </div>
+          <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty">This one actually mattered for our project. Hierarchy is something I think about instinctively now, what should someone notice first, what should they feel the second they land on a screen. Hackathon timelines don't leave room to nitpick, so this ended up being the biggest change I made, going back and fixing what people would actually feel when they opened it.</div>
+        </div>
+
+        <div style="margin-top:{{ notesGap }}; border-top:1px solid #E6E1D6; padding-top:{{ mediaGap }}; display:flex; flex-direction:column; gap:{{ proseGap }}">
+          <div style="font:600 {{ h2 }} 'Instrument Sans',sans-serif; letter-spacing:-0.012em; color:#221F1A">Field notes:</div>
+          <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty">I can understand why all of this happens, though.</div>
+          <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty">If not specified, the model is pulling from the most common examples of ‘good design’ it has seen, which makes it genuinely fast for getting a proof of concept out the door. What it doesn't have yet is a reason to make something feel like it belongs to one specific product instead of every product.</div>
+          <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty">I also haven't come across an AI that writes exactly what I meant on the first try, it usually takes a few rounds of pushing back before the wording sounds like something a person would actually say.</div>
+          <div style="font:400 {{ proseSize }} 'Instrument Sans',sans-serif; color:#3A342C; text-wrap:pretty">That's the part a designer still does. AI can attempt it, and quickly. But someone still has to decide what this specific screen should feel like to this specific person, and right now that decision is still ours to make.</div>
+        </div>
+        <div style="height:{{ notesGap }}"></div>
+
+      </div>
+    </div>
+
+  </div>
+  <div style="width:{{ colW }}; margin:0 auto; padding:{{ padY }} 0 40px; display:flex; flex-wrap:wrap; gap:12px 20px; justify-content:space-between; border-top:1px solid #E6E1D6; padding-top:14px; font:500 9.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.16em; color:#8A8175">
+    <div>© MICHELLE IVANNA 2026</div>
+    <div style="display:flex; align-items:baseline; gap:20px">
+      <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener" style="color:#8A8175">CV</a>
+      <div style="display:flex; align-items:baseline; gap:10px">
+        <span>TAIPEI</span>
+        <span style="color:#221F1A">{{ tpeTime }}</span>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ lightOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeLight }}" style="position:fixed; inset:0; z-index:80; background:rgba(28,25,23,0.9); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:28px; cursor:zoom-out; animation:csFade 200ms ease both">
+    <div onClick="{{ stop }}" style="position:relative; display:inline-block; line-height:0; cursor:default">
+      <img ref="{{ lightImgRef }}" alt="" style="max-width:min(1280px, 94vw); max-height:80svh; object-fit:contain; display:block; background:#EFE9DA" />
+      <div onClick="{{ lightPrev }}" style="position:absolute; left:0; top:0; bottom:0; width:50%; display:flex; align-items:center; justify-content:flex-start; padding-left:18px; cursor:w-resize">
+        <div style="width:44px; height:44px; border-radius:999px; background:rgba(28,25,23,0.55); border:1px solid rgba(245,241,232,0.45); display:flex; align-items:center; justify-content:center; font:400 24px/1 'Instrument Sans',sans-serif; color:#F5F1E8; padding-bottom:3px">‹</div>
+      </div>
+      <div onClick="{{ lightNext }}" style="position:absolute; right:0; top:0; bottom:0; width:50%; display:flex; align-items:center; justify-content:flex-end; padding-right:18px; cursor:e-resize">
+        <div style="width:44px; height:44px; border-radius:999px; background:rgba(28,25,23,0.55); border:1px solid rgba(245,241,232,0.45); display:flex; align-items:center; justify-content:center; font:400 24px/1 'Instrument Sans',sans-serif; color:#F5F1E8; padding-bottom:3px">›</div>
+      </div>
+    </div>
+    <div onClick="{{ stop }}" style="display:flex; align-items:center; gap:16px; cursor:default">
+      <div style="display:flex; gap:7px">
+        <sc-for list="{{ lightDots }}" as="d" hint-placeholder-count="8">
+          <div onClick="{{ d.pick }}" style="width:6px; height:6px; border-radius:999px; cursor:pointer; background:{{ d.bg }}"></div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="font:500 9.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:rgba(245,241,232,0.7)">{{ lightLabel }}</div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ polaOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closePola }}" style="position:fixed; inset:0; z-index:70; background:rgba(28,25,23,0.52); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px); display:flex; align-items:center; justify-content:center; padding:24px; cursor:zoom-out; animation:csFade 240ms ease both">
+    <div style="width:{{ polaBigW }}; background:#FFFFFF; border:1px solid #DCD2BE; padding:{{ polaBigPad }}; box-shadow:0 34px 90px rgba(28,25,23,0.46); transform:rotate(-1.4deg); animation:bookIn 420ms cubic-bezier(.2,.8,.3,1) both">
+      <img src="uploads/voice/voice-hackathon.jpeg" alt="The hackathon team at work" style="width:100%; aspect-ratio:1280 / 726; object-fit:cover; display:block; background:#EFE9DA" />
+      <div style="padding:{{ polaBigCapPad }}; font:500 {{ polaBigCap }} 'Instrument Sans',sans-serif; letter-spacing:0.09em; color:#8A8175; text-align:center">Hackathon, 2026</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeMenu }}" style="position:fixed; inset:0; z-index:55; background:rgba(28,25,23,0.4); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); animation:csFade 240ms ease both">
+    <div onClick="{{ stop }}" style="background:#F5F1E8; padding:26px 28px 30px; display:flex; flex-direction:column; gap:22px; font:500 12px/1 'Instrument Sans',sans-serif; letter-spacing:0.16em; color:#221F1A">
+      <div style="display:flex; justify-content:space-between; align-items:center">
+        <span>MENU</span>
+        <span onClick="{{ closeMenu }}" style="cursor:pointer; font-size:15px">✕</span>
+      </div>
+      <a href="index.html">WORK</a>
+      <a href="about.html">ABOUT</a>
+      <a href="voice.html">VOICE</a>
+      <div onClick="{{ openContact }}" style="cursor:pointer">CONTACT</div>
+      <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener" style="color:#8A8175">CV</a>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ contactOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeContact }}" style="position:fixed; inset:0; z-index:70; background:rgba(28,25,23,0.42); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px); display:flex; align-items:center; justify-content:center; padding:24px; animation:csFade 260ms ease both">
+    <div onClick="{{ stop }}" style="width:min(520px, 100%); background:#FFFFFF; border-radius:18px; box-shadow:0 30px 80px rgba(28,25,23,0.4); padding:34px 32px 30px; display:flex; flex-direction:column; gap:26px; animation:bookIn 340ms cubic-bezier(.2,.7,.3,1) both">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px">
+        <div style="font:400 32px/1.12 'Instrument Serif',serif; color:#221F1A; text-wrap:pretty">Building something new? Let's talk.</div>
+        <div onClick="{{ closeContact }}" style="cursor:pointer; font:400 15px/1 'Instrument Sans',sans-serif; color:#8A8175; padding:4px">✕</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0">
+        <div style="display:flex; align-items:baseline; gap:16px; padding-bottom:11px; border-bottom:1px solid #E6E1D6">
+          <div style="font:500 9px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">TO</div>
+          <a href="mailto:michelle.ivanna02@gmail.com" style="flex:1; min-width:0; font:400 15px/1.5 'Instrument Sans',sans-serif; color:#221F1A; word-break:break-all">michelle.ivanna02@gmail.com</a>
+          <div onClick="{{ copyMail }}" onKeyDown="{{ copyKey }}" tabindex="0" style="cursor:pointer; font:500 9px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:{{ copyFg }}; white-space:nowrap; padding:4px">{{ copyLabel }}</div>
+        </div>
+        <div style="display:flex; align-items:baseline; gap:16px; padding:11px 0; border-bottom:1px solid #E6E1D6">
+          <div style="font:500 9px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">FROM</div>
+          <input type="email" value="{{ cFrom }}" onChange="{{ setFrom }}" placeholder="you@example.com" style="flex:1; min-width:0; border:none; outline:none; background:transparent; font:400 15px/1.5 'Instrument Sans',sans-serif; color:#221F1A">
+        </div>
+        <div style="display:flex; align-items:baseline; gap:16px; padding:11px 0; border-bottom:1px solid #E6E1D6">
+          <div style="font:500 9px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none">SUBJECT</div>
+          <input type="text" value="{{ cSubj }}" onChange="{{ setSubj }}" placeholder="Say hello" style="flex:1; min-width:0; border:none; outline:none; background:transparent; font:400 15px/1.5 'Instrument Sans',sans-serif; color:#221F1A">
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:16px; padding:11px 0 0">
+          <div style="font:500 9px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175; width:62px; flex:none; padding-top:5px">MESSAGE</div>
+          <textarea value="{{ cMsg }}" onChange="{{ setMsg }}" rows="4" placeholder="A line or two about what you're building." style="flex:1; min-width:0; border:none; outline:none; background:transparent; resize:vertical; font:400 15px/1.6 'Instrument Sans',sans-serif; color:#221F1A"></textarea>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap">
+        <div style="font:400 12px/1.7 'Instrument Sans',sans-serif; color:#8A8175">or connect through <a href="https://www.linkedin.com/in/michelle-ivanna/" target="_blank" rel="noopener" style="color:#221F1A; border-bottom:1px solid currentColor">LinkedIn</a></div>
+        <div onClick="{{ sendMail }}" onKeyDown="{{ sendKey }}" tabindex="0" style="cursor:pointer; padding:11px 26px 10px; border:1px solid #221F1A; border-radius:999px; font:500 9.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.2em; color:#221F1A">SEND</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const _UNUSED_ITEMS = [{"n":"1","t":"Emoji everywhere","b":"Icons and symbols take time to make well. Emojis don't. They give a screen some visual texture without anyone having to draw anything, which honestly makes sense as a shortcut. It's also one of the fastest ways to spot AI made work."},{"n":"2","t":"Everything gets a card","b":"Bento style, boxes around boxes, every piece of content wrapped in its own little container whether it needed one or not."},{"n":"3","t":"The copy has a formula","b":"This one took me longest to name but it's the most consistent. Once you actually read the words instead of scanning the layout, you start noticing the same pattern. Small caps eyebrow text sitting above almost everything. A header sized topic underneath it. Then a description that is mostly redundant."},{"n":"4","t":"Category bubbles","b":"Little pill shaped tags labeling things that didn't necessarily need labeling."},{"n":"5","t":"The layout quietly breaks somewhere","b":"Text that's too small in one spot, an element floating a little off, spacing that's almost right but not quite. Small things, but you feel them even when you can't name them."},{"n":"6","t":"Last but not least, it looks perfect until you use it","b":"This one actually mattered for our project. Hierarchy is something I think about instinctively now, what should someone notice first, what should they feel the second they land on a screen. Hackathon timelines don't leave room to nitpick, so this ended up being the biggest change I made, going back and fixing what people would actually feel when they opened it."}];
+
+class Component extends DCLogic {
+  state = { light: -1, lightSrcs: [], s3: 0, s6: 0, w: typeof window !== "undefined" ? window.innerWidth : 1280, tick: 0, menuOpen: false, contactOpen: false, polaOpen: false, copied: false, cFrom: "", cSubj: "", cMsg: "" };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener("resize", this.onResize);
+    this.timer = setInterval(() => this.setState(s => ({ tick: s.tick + 1 })), 20000);
+    this.onKey = e => {
+      if (e.key === "Escape") this.setState({ contactOpen: false, menuOpen: false, polaOpen: false, light: -1 });
+      if (this.state.light >= 0) {
+        if (e.key === "ArrowRight") this.step(1);
+        if (e.key === "ArrowLeft") this.step(-1);
+      }
+    };
+    window.addEventListener("keydown", this.onKey);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("keydown", this.onKey);
+    clearInterval(this.timer);
+  }
+  mail() {
+    const s = encodeURIComponent(this.state.cSubj || "Hello");
+    const b = encodeURIComponent((this.state.cMsg || "") + (this.state.cFrom ? "\n\n— " + this.state.cFrom : ""));
+    window.location.href = "mailto:michelle.ivanna02@gmail.com?subject=" + s + "&body=" + b;
+  }
+  copy() {
+    if (navigator.clipboard) navigator.clipboard.writeText("michelle.ivanna02@gmail.com").catch(() => {});
+    this.setState({ copied: true });
+    setTimeout(() => this.setState({ copied: false }), 1600);
+  }
+  componentDidUpdate() {
+    if (this._lightImg && this.state.light >= 0) {
+      const u = this.state.lightSrcs[this.state.light];
+      if (u && this._lightImg.getAttribute("src") !== u) this._lightImg.setAttribute("src", u);
+    }
+  }
+  gallery() {
+    const ids = ["dd-01", "dd-02", "dd-03a", "dd-03b", "dd-04", "dd-05", "dd-06a", "dd-06b"];
+    const out = [];
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      const src = el && el.getAttribute("src");
+      if (src) out.push({ id: id, src: src });
+    });
+    return out;
+  }
+  openLight(id) {
+    const g = this.gallery();
+    const i = g.findIndex(x => x.id === id);
+    if (i < 0) return;
+    this.setState({ lightSrcs: g.map(x => x.src), light: i });
+  }
+  step(d) {
+    const n = this.state.lightSrcs.length;
+    if (!n) return;
+    this.setState(s => ({ light: (s.light + d + n) % n }));
+  }
+  renderVals() {
+    const w = this.state.w;
+    const mobile = w < 640;
+    const stacked = w < 900;
+    const colPx = mobile ? Math.min(Math.round(w * 0.88), 430) : Math.min(1180, w - 150);
+    return {
+      lightImgRef: el => { this._lightImg = el; if (el) { const u = this.state.lightSrcs[this.state.light]; if (u && el.getAttribute("src") !== u) el.setAttribute("src", u); } },
+      lightOpen: this.state.light >= 0,
+      lightSrc: this.state.lightSrcs[this.state.light] || "",
+      lightLabel: this.state.light >= 0 ? (this.state.light + 1) + " / " + this.state.lightSrcs.length : "",
+      lightDots: this.state.lightSrcs.map((_, i) => ({
+        bg: i === this.state.light ? "#F5F1E8" : "rgba(245,241,232,0.35)",
+        pick: () => this.setState({ light: i })
+      })),
+      closeLight: () => this.setState({ light: -1 }),
+      lightPrev: () => this.step(-1),
+      lightNext: () => this.step(1),
+      zoom: {
+        s1: () => this.openLight("dd-01"),
+        s2: () => this.openLight("dd-02"),
+        s3a: () => this.openLight("dd-03a"),
+        s3b: () => this.openLight("dd-03b"),
+        s4: () => this.openLight("dd-04"),
+        s5: () => this.openLight("dd-05"),
+        s6a: () => this.openLight("dd-06a"),
+        s6b: () => this.openLight("dd-06b")
+      },
+      s3a: this.state.s3 === 0 ? 1 : 0,
+      s3b: this.state.s3 === 1 ? 1 : 0,
+      s3aPE: this.state.s3 === 0 ? "auto" : "none",
+      s3bPE: this.state.s3 === 1 ? "auto" : "none",
+      d3a: this.state.s3 === 0 ? "#221F1A" : "#CFC5B1",
+      d3b: this.state.s3 === 1 ? "#221F1A" : "#CFC5B1",
+      go3a: () => this.setState({ s3: 0 }),
+      go3b: () => this.setState({ s3: 1 }),
+      prev3: () => this.setState(s => ({ s3: s.s3 === 0 ? 1 : 0 })),
+      next3: () => this.setState(s => ({ s3: s.s3 === 0 ? 1 : 0 })),
+      prev3Key: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.setState(s => ({ s3: s.s3 === 0 ? 1 : 0 })); } },
+      next3Key: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.setState(s => ({ s3: s.s3 === 0 ? 1 : 0 })); } },
+      s6a: this.state.s6 === 0 ? 1 : 0,
+      s6b: this.state.s6 === 1 ? 1 : 0,
+      s6aPE: this.state.s6 === 0 ? "auto" : "none",
+      s6bPE: this.state.s6 === 1 ? "auto" : "none",
+      d6a: this.state.s6 === 0 ? "#221F1A" : "#CFC5B1",
+      d6b: this.state.s6 === 1 ? "#221F1A" : "#CFC5B1",
+      go6a: () => this.setState({ s6: 0 }),
+      go6b: () => this.setState({ s6: 1 }),
+      prev6: () => this.setState(s => ({ s6: s.s6 === 0 ? 1 : 0 })),
+      next6: () => this.setState(s => ({ s6: s.s6 === 0 ? 1 : 0 })),
+      prev6Key: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.setState(s => ({ s6: s.s6 === 0 ? 1 : 0 })); } },
+      next6Key: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.setState(s => ({ s6: s.s6 === 0 ? 1 : 0 })); } },
+      polaOpen: !!this.state.polaOpen,
+      openPola: () => this.setState({ polaOpen: true }),
+      closePola: () => this.setState({ polaOpen: false }),
+      polaKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.setState({ polaOpen: true }); } },
+      polaBigW: mobile ? "min(92vw, 420px)" : "min(1000px, 88vw, calc(74svh * 1.52))",
+      polaBigPad: mobile ? "12px 12px 0" : "20px 20px 0",
+      polaBigCap: mobile ? "11px/1.4" : "15px/1.4",
+      polaBigCapPad: mobile ? "13px 2px 15px" : "22px 2px 26px",
+      videoRef: el => {
+        if (!el || this._vid === el) return;
+        this._vid = el;
+        el.muted = true; el.loop = true; el.playsInline = true;
+        const go = () => el.play().catch(() => {});
+        if (el.readyState >= 2) go(); else el.addEventListener("loadeddata", go, { once: true });
+      },
+      colW: colPx + "px",
+      padY: mobile ? "40px" : "60px",
+      heroPadT: mobile ? "12px" : "22px",
+      titleMax: mobile ? "100%" : "min(100%, 760px)",
+      proseMax: mobile ? "100%" : "min(100%, 620px)",
+      titlePadT: mobile ? "30px" : "48px",
+      titleGap: mobile ? "12px" : "16px",
+      h1: mobile ? "25px/1.28" : "30px/1.26",
+      h2: mobile ? "19px/1.35" : "21px/1.34",
+      h3: mobile ? "17px/1.4" : "19px/1.38",
+      bodyPadT: mobile ? "34px" : "52px",
+      cols: stacked ? "minmax(0, 1fr)" : "minmax(0, 1fr) minmax(0, 2.7fr)",
+      colGap: stacked ? "0px" : "clamp(52px, 7.5vw, 128px)",
+      rowGap: mobile ? "30px" : "40px",
+      metaGap: mobile ? "18px" : "22px",
+      metaPos: stacked ? "static" : "sticky",
+      metaVal: mobile ? "13px/1.5" : "13.5px/1.5",
+      leadSize: mobile ? "16px/1.62" : "17px/1.62",
+      proseSize: mobile ? "15px/1.66" : "16px/1.68",
+      proseGap: mobile ? "20px" : "24px",
+      mediaGap: mobile ? "20px" : "30px",
+      notesGap: mobile ? "22px" : "34px",
+      itemGap: mobile ? "16px" : "20px",
+      numGap: "8px",
+      numSize: mobile ? "26px/1" : "clamp(28px, 2.6vw, 36px)/1",
+      numW: mobile ? "24px" : "38px",      tpeTime: new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Taipei", hour: "numeric", minute: "2-digit" }).format(new Date()),
+      navInline: mobile ? "none" : "flex",
+      burgerD: mobile ? "flex" : "none",
+      menuOpen: !!this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      menuKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.setState(s => ({ menuOpen: !s.menuOpen })); } },
+      contactOpen: !!this.state.contactOpen,
+      openContact: () => this.setState({ contactOpen: true, menuOpen: false, copied: false }),
+      closeContact: () => this.setState({ contactOpen: false }),
+      contactKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.setState({ contactOpen: true, menuOpen: false, copied: false }); } },
+      stop: e => { if (e && e.stopPropagation) e.stopPropagation(); },
+      cFrom: this.state.cFrom, cSubj: this.state.cSubj, cMsg: this.state.cMsg,
+      setFrom: e => this.setState({ cFrom: e.target.value }),
+      setSubj: e => this.setState({ cSubj: e.target.value }),
+      setMsg: e => this.setState({ cMsg: e.target.value }),
+      sendMail: () => this.mail(),
+      sendKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.mail(); } },
+      copyMail: () => this.copy(),
+      copyKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.copy(); } },
+      copyLabel: this.state.copied ? "COPIED" : "COPY",
+      copyFg: this.state.copied ? "#3D4C80" : "#8A8175"
+    };
+  }
+}
+</script>
+</body>
+</html>

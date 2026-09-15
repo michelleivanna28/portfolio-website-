@@ -7,10 +7,10 @@
 <meta name="description" content="Portfolio of Michelle Ivanna — product, brand and visual design across UI/UX, identity systems and immersive storytelling.">
 <meta property="og:title" content="Michelle Ivanna — Product &amp; Visual Designer">
 <meta property="og:description" content="Selected work across product design, brand systems and immersive storytelling.">
-<meta property="og:image" content="uploads/og-card.png">
+<meta property="og:image" content="uploads/site/og-card.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="uploads/favicon.png">
-<link rel="apple-touch-icon" href="uploads/favicon.png">
+<link rel="icon" type="image/png" href="uploads/site/favicon.png">
+<link rel="apple-touch-icon" href="uploads/site/favicon.png">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -66,7 +66,7 @@
       <a href="index.html" style="color:{{ fg }}; white-space:nowrap">{{ name }}</a>
       <div style="display:{{ navInline }}; align-items:center; gap:20px; color:{{ muted }}">
         <a href="about.html" style="color:{{ fg }}">ABOUT</a>
-        <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener" style="color:{{ fg }}">CV</a>
+        <a href="voice.html" style="color:{{ fg }}">VOICE</a>
         <div onClick="{{ openContact }}" onKeyDown="{{ contactKey }}" tabindex="0" style="cursor:pointer; color:{{ fg }}">CONTACT</div>
       </div>
       <div onClick="{{ toggleMenu }}" onKeyDown="{{ menuKey }}" tabindex="0" style="display:{{ burgerD }}; cursor:pointer; flex-direction:column; gap:4px; padding:6px 2px">
@@ -153,9 +153,12 @@
 
   <div style="position:relative; z-index:1; width:{{ colW }}; margin:0 auto; padding:0 0 40px; display:flex; flex-wrap:wrap; gap:12px 20px; justify-content:space-between; border-top:1px solid {{ rule }}; padding-top:14px; font:500 9.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.16em; color:{{ muted }}">
     <div>© MICHELLE IVANNA 2026</div>
-    <div style="display:flex; align-items:baseline; gap:10px">
-      <span>TAIPEI</span>
-      <span style="color:{{ fg }}">{{ tpeTime }}</span>
+    <div style="display:flex; align-items:baseline; gap:20px">
+      <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener" style="color:#8A8175">CV</a>
+      <div style="display:flex; align-items:baseline; gap:10px">
+        <span>TAIPEI</span>
+        <span style="color:{{ fg }}">{{ tpeTime }}</span>
+      </div>
     </div>
   </div>
 
@@ -167,8 +170,9 @@
         <span onClick="{{ closeMenu }}" style="cursor:pointer; font-size:15px">✕</span>
       </div>
       <a href="about.html" style="color:{{ fg }}">ABOUT</a>
-      <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener" style="color:{{ fg }}">CV</a>
+      <a href="voice.html" style="color:{{ fg }}">VOICE</a>
       <div onClick="{{ openContact }}" style="cursor:pointer">CONTACT</div>
+      <a href="https://drive.google.com/file/d/1Gu8cdf-e1HprOoQMmW3SvZAuJx-Fzw-W/view?usp=sharing" target="_blank" rel="noopener" style="color:#8A8175">CV</a>
     </div>
   </div>
   </sc-if>
@@ -1055,7 +1059,7 @@ const CLIP = [
   "polygon(3% 2%, 47% 1%, 100% 2%, 98% 52%, 96% 98%, 51% 98%, 1% 97%, 2% 46%)"
 ];
 const CRINKLE = ["rotate(-1.1deg) skewY(0.5deg)", "rotate(0.9deg) skewX(-0.6deg)", "rotate(-0.6deg) skewX(0.7deg)", "rotate(1.3deg) skewY(-0.4deg)", "rotate(-1.4deg) skewX(0.4deg)", "rotate(0.7deg) skewY(0.6deg)"];
-const PORTRAIT = "uploads/me-cursor.png";
+const PORTRAIT = "uploads/site/me-cursor.png";
 const enc = s => s.replace(/ /g, "%20").replace(/\(/g, "%28").replace(/\)/g, "%29");
 const WEB = "uploads/starise/";
 const GUIDE_NS = [1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,19,20,21];
