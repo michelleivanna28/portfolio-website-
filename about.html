@@ -22,7 +22,8 @@
     a { color: #221F1A; text-decoration: none; }
     a:hover { color: #3D4C80; }
     a:focus-visible, [tabindex]:focus-visible { outline: 1px solid currentColor; outline-offset: 5px; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    @keyframes bioIn { from { opacity: 0; transform: translateY(-7px); } 62% { opacity: 1; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
     @keyframes csFade { from { opacity: 0; } to { opacity: 1; } }
     @keyframes bookIn { from { opacity: 0; transform: translateY(26px) rotate(-1deg); } to { opacity: 1; transform: none; } }
     @keyframes pullOut {
@@ -79,10 +80,10 @@
           <span style="color:#8A8175">Coffee or tea:</span><span style="color:#221F1A">Matcha</span>
         </div>
         <sc-if value="{{ bioClosed }}" hint-placeholder-val="{{ true }}">
-          <div style="font:400 {{ paraSize }} 'Instrument Sans',sans-serif; color:#4A443B; text-wrap:pretty">I love Taipei more than I expected to: the orderly queues, the serene riverside, and public facilities that just work.<span onClick="{{ openBio }}" onKeyDown="{{ bioKey }}" tabindex="0" style="cursor:pointer; color:#3D4C80; padding-left:7px; white-space:nowrap">… more</span></div>
+          <div style="animation:bioIn 220ms cubic-bezier(.34,1.42,.62,1) both; font:400 {{ paraSize }} 'Instrument Sans',sans-serif; color:#4A443B; text-wrap:pretty">I love Taipei more than I expected to: the orderly queues, the serene riverside, and public facilities that just work.<span onClick="{{ openBio }}" onKeyDown="{{ bioKey }}" tabindex="0" style="cursor:pointer; color:#3D4C80; padding-left:7px; white-space:nowrap">… more</span></div>
         </sc-if>
         <sc-if value="{{ bioOpen }}" hint-placeholder-val="{{ false }}">
-          <div style="display:flex; flex-direction:column; gap:20px; align-items:flex-start">
+          <div style="animation:bioIn 230ms cubic-bezier(.34,1.42,.62,1) both; display:flex; flex-direction:column; gap:20px; align-items:flex-start">
             <div style="font:400 {{ paraSize }} 'Instrument Sans',sans-serif; color:#4A443B; text-wrap:pretty">I love Taipei more than I expected to: the orderly queues, the serene riverside, and public facilities that just work. After graduation, I continued my marketing design job and do freelance work on the side; both have given me real-world exposure and taught me how design decisions actually get made.</div>
             <div style="font:400 {{ paraSize }} 'Instrument Sans',sans-serif; color:#4A443B; text-wrap:pretty">Someone asked me once what I do when nobody's watching. I said I like to make sense of things. Most of what's here is that.</div>
             <div onClick="{{ closeBio }}" onKeyDown="{{ bioKey }}" tabindex="0" style="cursor:pointer; font:500 9.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.18em; color:#8A8175">LESS</div>
@@ -98,7 +99,7 @@
     </div>
     </div>
 
-    <div style="grid-area:pola; align-self:end; justify-self:{{ polaJustify }}; position:relative; width:{{ polaW }}; background:#FFFFFF; border:1px solid #DCD2BE; padding:9px 9px 0; box-shadow:3px 5px 12px rgba(34,31,26,0.14); transform:rotate({{ polaTilt }})">
+    <div onClick="{{ openPola }}" onKeyDown="{{ polaKey }}" tabindex="0" style="cursor:zoom-in; grid-area:pola; align-self:end; justify-self:{{ polaJustify }}; position:relative; width:{{ polaW }}; background:#FFFFFF; border:1px solid #DCD2BE; padding:9px 9px 0; box-shadow:3px 5px 12px rgba(34,31,26,0.14); transform:rotate({{ polaTilt }})">
       <div style="position:absolute; top:-8px; left:50%; margin-left:-8px; width:16px; height:16px; border-radius:50%; background:#D9CDB4; box-shadow:0 1px 2px rgba(34,31,26,0.18)"></div>
       <img src="uploads/ph-taipei-tech.jpeg" alt="Michelle at National Taipei University of Technology" style="width:100%; aspect-ratio:1206 / 678; object-fit:cover; display:block; background:#EFE9DA" />
       <div style="padding:10px 1px 12px; font:500 9.5px/1.4 'Instrument Sans',sans-serif; letter-spacing:0.09em; color:#8A8175; text-align:center">Taipei Tech, 2025</div>
@@ -130,12 +131,17 @@
         <div style="flex:none; width:{{ s2.slotW }}; display:flex; align-items:flex-end; justify-content:center">
           <div id="bk2" onClick="{{ s2.down }}" onMouseEnter="{{ s2.enter }}" onMouseLeave="{{ s2.leave }}" onKeyDown="{{ s2.key }}" tabindex="0" style="width:{{ s2.w }}; height:{{ s2.h }}; background:#F4643A; color:#FCF8F0; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:12px 0; cursor:pointer; touch-action:none; user-select:none; position:relative; z-index:{{ s2.z }}; transform:{{ s2.t }}; transform-origin:center bottom; transform-style:preserve-3d; box-shadow:{{ s2.shadow }}; transition:{{ s2.trans }}">
             <div style="min-height:11px; display:flex; align-items:center; justify-content:center">
-              <div style="width:{{ s2.pianoW }}; height:{{ s2.pianoH }}; border:1px solid currentColor; background-image:repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px {{ s2.pianoKey }}); background-position:2px 0; background-size:auto 58%; background-repeat:repeat-x"></div>
+              <div style="width:{{ s2.pianoW }}; height:{{ s2.pianoH }}; border-radius:{{ s2.pianoR }}; background:currentColor; overflow:hidden; position:relative; box-shadow:0 0 0 0.5px rgba(34,31,26,0.22)">
+                <div style="position:absolute; left:0; right:0; top:0; height:62%; background-image:repeating-linear-gradient(90deg, transparent 0 {{ s2.pianoGap }}, #2A1B14 {{ s2.pianoGap }} {{ s2.pianoKey }}); background-position:{{ s2.pianoGap }} 0"></div>
+                <div style="position:absolute; left:0; right:0; bottom:0; height:38%; background-image:repeating-linear-gradient(90deg, transparent 0 {{ s2.pianoWhite }}, rgba(42,27,20,0.32) {{ s2.pianoWhite }} {{ s2.pianoLine }})"></div>
+              </div>
             </div>
             <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0; padding:6px 0">
               <span style="writing-mode:vertical-rl; text-orientation:mixed; font:{{ s2.font }}; letter-spacing:0.005em; white-space:nowrap">The Musical Book</span>
             </div>
-            <div style="min-height:11px"></div>
+            <div style="min-height:11px; display:flex; align-items:center; justify-content:center">
+              <span style="font:{{ s2.quaverFont }} Newsreader,'Instrument Serif',serif; line-height:1; opacity:0.95">&#9834;</span>
+            </div>
           </div>
         </div>
 
@@ -199,15 +205,25 @@
   </div>
   </sc-if>
 
+  <sc-if value="{{ polaOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closePola }}" style="position:fixed; inset:0; z-index:70; background:rgba(28,25,23,0.52); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px); display:flex; align-items:center; justify-content:center; padding:{{ bookPad }}; cursor:zoom-out; animation:csFade 240ms ease both">
+    <div style="width:{{ polaBigW }}; background:#FFFFFF; border:1px solid #DCD2BE; padding:{{ polaBigPad }}; box-shadow:0 34px 90px rgba(28,25,23,0.46); transform:rotate(-1.4deg); animation:bookIn 420ms cubic-bezier(.2,.8,.3,1) both">
+      <img src="uploads/ph-taipei-tech.jpeg" alt="Michelle at National Taipei University of Technology" style="width:100%; aspect-ratio:1206 / 678; object-fit:cover; display:block; background:#EFE9DA" />
+      <div style="padding:{{ polaBigCapPad }}; font:500 {{ polaBigCap }} 'Instrument Sans',sans-serif; letter-spacing:0.09em; color:#8A8175; text-align:center">Taipei Tech, 2025</div>
+    </div>
+  </div>
+  </sc-if>
+
   <sc-if value="{{ bookOpen }}" hint-placeholder-val="{{ false }}">
   <div onClick="{{ closeBook }}" style="position:fixed; inset:0; z-index:65; background:rgba(28,25,23,0.46); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:{{ bookPad }}; animation:csFade 260ms ease both">
 
-    <div onClick="{{ stop }}" style="width:min(1040px, 92vw, calc(82svh * 1.41)); height:calc(min(1040px, 92vw, 82svh * 1.41) / 1.41); padding:{{ coverPad }}; overflow:hidden; background:{{ bookColor }}; border:1.5px solid #221F1A; box-shadow:0 34px 90px rgba(28,25,23,0.44); animation:bookIn 420ms cubic-bezier(.2,.8,.3,1) both; display:flex">
-      <div style="flex:1; min-width:0; min-height:0; display:flex; align-items:stretch; background:#FBF8F1; border:1px solid rgba(34,31,26,0.35)">
+    <div onClick="{{ stop }}" style="width:{{ shellW }}; height:{{ shellH }}; padding:{{ coverPad }}; overflow:hidden; background:{{ bookColor }}; border:1.5px solid #221F1A; box-shadow:0 34px 90px rgba(28,25,23,0.44); animation:bookIn 420ms cubic-bezier(.2,.8,.3,1) both; display:flex">
+      <div style="flex:1; min-width:0; min-height:0; display:flex; flex-direction:{{ spreadDir }}; align-items:stretch; background:#FBF8F1; border:1px solid rgba(34,31,26,0.35)">
 
       <div style="flex:1 1 0; min-width:0; min-height:0; position:relative; overflow-y:auto; scrollbar-width:none; -ms-overflow-style:none; mask-image:linear-gradient(to bottom, #000 0, #000 calc(100% - 26px), transparent 100%); padding:{{ bookColPad }}; display:flex; flex-direction:column; gap:{{ pageGap }}; box-shadow:inset -16px 0 26px -20px rgba(34,31,26,0.3)">
         <div style="font:500 8.5px/1 'Instrument Sans',sans-serif; letter-spacing:0.24em; color:#8A8175; text-align:center">SUMMARY</div>
         <div style="font:600 {{ bookTitleSize }} 'Instrument Serif',serif; color:#3D4C80; text-align:center; text-wrap:pretty">{{ bookTitle }}</div>
+        <div style="flex:none; height:16px"></div>
 
         <sc-if value="{{ b0 }}" hint-placeholder-val="{{ true }}">
         <div style="display:flex; flex-direction:column; gap:16px">
@@ -427,7 +443,7 @@ class Component extends DCLogic {
     order: [0, 1, 2, 3, 4],
     rests: BOOKS.map(b => b.rest),
     hov: null, book: null, gone: null, tick: 0, card: 0, cardDragging: false, pd: {}, pdrag: null, fit: {},
-    contactOpen: false, menuOpen: false, copied: false, bioOpen: false, cFrom: "", cSubj: "", cMsg: ""
+    contactOpen: false, menuOpen: false, copied: false, bioOpen: false, polaOpen: false, cFrom: "", cSubj: "", cMsg: ""
   };
 
   componentDidUpdate() { this.fitTitles(); }
@@ -586,9 +602,14 @@ class Component extends DCLogic {
         h: Math.round(hs[key] * vScale) + "px",
         font: b.fam.replace("@", String(Math.round(fontFor(b, w, Math.round(hs[key] * vScale)) * (this.state.fit[key] || 1))) + "px"),
         charmFont: "400 " + Math.round(Math.max(8, Math.min(15, w * (b.charmK || 0.18)))) + "px/1 'IBM Plex Mono',monospace",
-        pianoW: Math.round(Math.max(22, w * 0.68)) + "px",
-        pianoH: Math.round(Math.max(15, w * 0.46)) + "px",
-        pianoKey: Math.max(3.4, w * 0.09).toFixed(1) + "px",
+        pianoW: Math.round(Math.max(24, w * 0.74)) + "px",
+        pianoH: Math.round(Math.max(13, w * 0.4)) + "px",
+        pianoR: Math.max(1.5, w * 0.035).toFixed(1) + "px",
+        pianoKey: Math.max(4.2, w * 0.115).toFixed(1) + "px",
+        pianoGap: Math.max(2.4, w * 0.066).toFixed(1) + "px",
+        pianoWhite: Math.max(3, w * 0.082).toFixed(1) + "px",
+        pianoLine: Math.max(3.6, w * 0.095).toFixed(1) + "px",
+        quaverFont: "400 " + Math.round(Math.max(11, Math.min(19, w * 0.42))) + "px/1" ,
         t,
         z: on ? 12 : 4,
         shadow: on ? "0 14px 26px -14px rgba(34,31,26,0.42)" : "0 6px 14px -12px rgba(34,31,26,0.34)",
@@ -642,6 +663,17 @@ class Component extends DCLogic {
       gap: gridGap + "px",
       rowGap: (mobile ? 40 : 60) + "px",
       polaW: polaPx + "px",
+      polaOpen: !!this.state.polaOpen,
+      openPola: () => this.setState({ polaOpen: true }),
+      closePola: () => this.setState({ polaOpen: false }),
+      polaKey: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.setState({ polaOpen: true }); } },
+      polaBigW: mobile ? "min(92vw, 420px)" : "min(1040px, 88vw, calc(74svh * 1.52))",
+      polaBigPad: mobile ? "12px 12px 0" : "20px 20px 0",
+      polaBigCap: mobile ? "11px/1.4" : "15px/1.4",
+      polaBigCapPad: mobile ? "13px 2px 15px" : "22px 2px 26px",
+      shellW: mobile ? "94vw" : "min(1040px, 92vw, calc(82svh * 1.41))",
+      shellH: mobile ? "88svh" : "calc(min(1040px, 92vw, 82svh * 1.41) / 1.41)",
+      spreadDir: mobile ? "column" : "row",
       polaJustify: stacked ? "start" : "center",
       polaTilt: mobile ? "-5.5deg" : "-2.5deg",
       recJustify: "end",

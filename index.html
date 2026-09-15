@@ -215,8 +215,8 @@
   <div onClick="{{ csClose }}" style="position:fixed; inset:0; z-index:60; background:rgba(28,25,23,0.55); display:flex; align-items:center; justify-content:center; padding:{{ csPad }}; animation:csFade 300ms ease both">
 
     <sc-if value="{{ csArrows }}" hint-placeholder-val="{{ true }}">
-    <div onClick="{{ csPrev }}" style="position:fixed; left:28px; top:50%; z-index:62; margin-top:-23px; cursor:pointer; width:46px; height:46px; border-radius:50%; background:#FFFFFF; color:#221F1A; display:flex; align-items:center; justify-content:center; font:400 14px/1 'Instrument Sans',sans-serif; box-shadow:0 8px 26px rgba(28,25,23,0.35)">←</div>
-    <div onClick="{{ csNext }}" style="position:fixed; right:28px; top:50%; z-index:62; margin-top:-23px; cursor:pointer; width:46px; height:46px; border-radius:50%; background:#FFFFFF; color:#221F1A; display:flex; align-items:center; justify-content:center; font:400 14px/1 'Instrument Sans',sans-serif; box-shadow:0 8px 26px rgba(28,25,23,0.35)">→</div>
+    <div onClick="{{ csPrev }}" style="position:fixed; left:{{ csArrowL }}; top:50%; z-index:62; margin-top:-23px; cursor:pointer; width:46px; height:46px; border-radius:50%; background:#FFFFFF; color:#221F1A; display:flex; align-items:center; justify-content:center; font:400 14px/1 'Instrument Sans',sans-serif; box-shadow:0 8px 26px rgba(28,25,23,0.35)">←</div>
+    <div onClick="{{ csNext }}" style="position:fixed; right:{{ csArrowR }}; top:50%; z-index:62; margin-top:-23px; cursor:pointer; width:46px; height:46px; border-radius:50%; background:#FFFFFF; color:#221F1A; display:flex; align-items:center; justify-content:center; font:400 14px/1 'Instrument Sans',sans-serif; box-shadow:0 8px 26px rgba(28,25,23,0.35)">→</div>
     </sc-if>
 
     <div onClick="{{ csStop }}" style="width:{{ csCardW }}; height:{{ csCardH }}; display:flex; flex-direction:{{ csDir }}; overflow-y:{{ csCardScroll }}; overflow-x:hidden; border-radius:{{ csCardR }}; background:#FFFFFF; box-shadow:0 30px 80px rgba(28,25,23,0.45); transform-origin:{{ csOrigin }}; animation:{{ csAnim }}">
@@ -1524,6 +1524,8 @@ class Component extends DCLogic {
       csArrows: !mobile,
       csPad: mobile ? "12px" : "40px 110px",
       csCardW: mobile ? "100%" : "min(1100px, 100%)",
+      csArrowL: "max(8px, calc(50% - min(550px, 50%) - 58px))",
+      csArrowR: "max(8px, calc(50% - min(550px, 50%) - 58px))",
       csCardH: mobile ? "100svh" : "86svh",
       csCardR: mobile ? "0px" : "16px",
       csDir: mobile ? "column-reverse" : "row",
